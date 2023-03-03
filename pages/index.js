@@ -9,5 +9,7 @@ export default function Home() {
 }
 
 const Heading = styled.h1`
-text-align: center;
+  text-align: center;
+  padding-top: 60px;
+  z-index: 2;
 `;
