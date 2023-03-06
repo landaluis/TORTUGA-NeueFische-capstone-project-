@@ -3,17 +3,15 @@ import styled from "styled-components";
 export default function Home() {
   return (
     <main>
-      <Heading>
-        <p>
-          Welcome to Tortuga app! To get started, simply tap the button in the
-          lower left corner to create your very first card.
-        </p>
-      </Heading>
+      <StyledWelcome>
+        Welcome to Tortuga app! To get started, simply tap the button in the
+        lower left corner to create your very first card.
+      </StyledWelcome>
     </main>
   );
 }
 
-const Heading = styled.p`
+const StyledWelcome = styled.p`
   justify-content: center;
   box-sizing: border-box;
   text-align: center;
