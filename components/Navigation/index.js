@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
+import "material-symbols";
 
 const StyledList = styled.ul`
   display: flex;
@@ -10,17 +11,11 @@ const StyledList = styled.ul`
   bottom: 0;
   font-size: 10px;
   padding: 3px;
+  align-items: center;
   background-color: lightgray;
   z-index: 21;
 `;
 
 export default function Navigation() {
-  return (
-    <StyledList>
-      <Link href={"/create-card"}>+ Card</Link>
-      <Link href={"/tickets"}>Tickets</Link>
-      <Link href={"/"}>Cards</Link>
-      <Link href={"/profile-page"}>Cards</Link>
-    </StyledList>
-  );
+  return <StyledList></StyledList>;
 }
