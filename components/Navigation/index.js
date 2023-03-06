@@ -1,6 +1,4 @@
-import Link from "next/link";
 import styled from "styled-components";
-import "material-symbols";
 
 const StyledList = styled.ul`
   display: flex;
