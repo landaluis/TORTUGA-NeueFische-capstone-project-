@@ -15,7 +15,6 @@ const StyledHeader = styled.h1`
   width: 100%;
   height: 59px;
   text-align: center;
-  justify-content: center;
   border-bottom: 1px solid black;
   z-index: 10;
   margin: 0;
