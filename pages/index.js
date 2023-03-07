@@ -3,7 +3,11 @@ import styled from "styled-components";
 export default function Home() {
   return (
     <main>
-      <StyledWelcome>Welcome ...</StyledWelcome>
+      <StyledWelcome>
+        {" "}
+        Welcome to Tortuga app! To get started, simply tap the button with the
+        (+) sign in the navigation bar to create your very first card.
+      </StyledWelcome>
     </main>
   );
 }

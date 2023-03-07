@@ -1,4 +1,5 @@
-import GlobalStyle from "@/styles";
+import Layout from "../components/Layout/index";
+import GlobalStyle from "../styles";
 import Head from "next/head";
 import Header from "../components/Header/index";
 
@@ -11,6 +12,7 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Capstone Project</title>
       </Head>
+      <Layout />
       <Component {...pageProps} />
     </>
   );
