@@ -6,10 +6,10 @@ export default function Navigation() {
   return (
     <StyledList>
       <Link href={"/"}>
-        <span class="material-symbols-outlined">view_agenda</span>
+        <span className="material-symbols-outlined">view_agenda</span>
       </Link>
       <Link href={"/create-card"}>
-        <span class="material-symbols-outlined">add_circle</span>
+        <span className="material-symbols-outlined">add_circle</span>
       </Link>
     </StyledList>
   );

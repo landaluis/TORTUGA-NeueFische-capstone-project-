@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export default function CreateCard(onAddEntry) {
   function handleSubmit(event) {
@@ -12,42 +13,55 @@ export default function CreateCard(onAddEntry) {
   }
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
-      <h4>New Card</h4>
-      <div>
+    <>
+      <StyledForm onSubmit={handleSubmit}>
+        <h4>New Card</h4>
         <div>
-          <label htmlFor="wish">Wanted: </label>
-          <input type="text" id="wish" name="wish" />
-        </div>
-        <div>
-          <label htmlFor="why">Why: </label>
-          <input type="text" id="why" name="why" />
-        </div>
-        <div>
-          <label htmlFor="price">Price: </label>
-          <input type="number" id="price" name="price" />
-        </div>
+          <div>
+            <label htmlFor="wish">Wanted: </label>
+            <input type="text" id="wish" name="wish" />
+          </div>
+          <div>
+            <label htmlFor="why">Why: </label>
+            <input type="text" id="why" name="why" />
+          </div>
+          <div>
+            <label htmlFor="price">Price: </label>
+            <input type="number" id="price" name="price" />
+          </div>
 
-        <div>
-          <label htmlFor="HowMuch">How much i will save: </label>
-          <input type="number" id="HowMuch" name="HowMuch" />
+          <div>
+            <label htmlFor="HowMuch">How much i will save: </label>
+            <input type="number" id="HowMuch" name="HowMuch" />
+          </div>
+          <div>
+            <label>How often will i save: </label>
+            <select name="Frequency">
+              <option value="o"></option>
+              <option value="1">Daily</option>
+              <option value="2">Weekly</option>
+              <option value="3">Monthly</option>
+            </select>
+          </div>
+          <button type="reset">Reset</button>
+          <button type="submit">Create</button>
         </div>
-        <div>
-          <label>How often will i save: </label>
-          <select name="Frequency">
-            <option value="o"></option>
-            <option value="1">Daily</option>
-            <option value="2">Weekly</option>
-            <option value="3">Monthly</option>
-          </select>
-        </div>
-        <button type="reset">Reset</button>
-        <button type="submit">Create</button>
-      </div>
-    </StyledForm>
+      </StyledForm>
+      <Exit>
+        <Link href={"/"}>
+          <span class="material-symbols-outlined">disabled_by_default</span>
+        </Link>
+      </Exit>
+    </>
   );
 }
 
+const Exit = styled.div`
+  z-index: 30;
+  top: 75px;
+  position: absolute;
+  right: 30px;
+`;
 const StyledForm = styled.form`
   display: flex;
   position: relative;
