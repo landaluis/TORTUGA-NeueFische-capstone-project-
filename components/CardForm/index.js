@@ -1,15 +1,16 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-export default function CreateCard(onAddEntry) {
+export default function CardForm({ onAddCard }) {
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
     const formDataCard = new FormData(form);
 
     const data = Object.fromEntries(formDataCard);
-    onAddEntry(data);
+    onAddCard(data);
     form.reset();
+    console.log(data);
   }
 
   return (
@@ -31,12 +32,12 @@ export default function CreateCard(onAddEntry) {
           </div>
 
           <div>
-            <label htmlFor="HowMuch">How much i will save: </label>
-            <input type="number" id="HowMuch" name="HowMuch" />
+            <label htmlFor="howMuch">How much i will save: </label>
+            <input type="number" id="howMuch" name="howMuch" />
           </div>
           <div>
             <label>How often will i save: </label>
-            <select name="Frequency">
+            <select name="frequency">
               <option value="o"></option>
               <option value="1">Daily</option>
               <option value="2">Weekly</option>
@@ -49,7 +50,7 @@ export default function CreateCard(onAddEntry) {
       </StyledForm>
       <Exit>
         <Link href={"/"}>
-          <span class="material-symbols-outlined">disabled_by_default</span>
+          <span className="material-symbols-outlined">disabled_by_default</span>
         </Link>
       </Exit>
     </>
