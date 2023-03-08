@@ -47,25 +47,27 @@ export default function CardForm({ onAddCard }) {
           <button type="reset">Reset</button>
           <button type="submit">Create</button>
         </div>
+        <Exit>
+          <Link href={"/"}>
+            <span className="material-symbols-outlined">
+              disabled_by_default
+            </span>
+          </Link>
+        </Exit>
       </StyledForm>
-      <Exit>
-        <Link href={"/"}>
-          <span className="material-symbols-outlined">disabled_by_default</span>
-        </Link>
-      </Exit>
     </>
   );
 }
 
 const Exit = styled.div`
   z-index: 30;
-  top: 75px;
+  top: -20px;
   position: absolute;
-  right: 30px;
+  right: -30px;
 `;
 const StyledForm = styled.form`
   display: flex;
-  position: relative;
+  position: fixed;
   justify-content: center;
   top: 100px;
   display: block;

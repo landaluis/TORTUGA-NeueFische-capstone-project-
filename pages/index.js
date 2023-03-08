@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Home() {
+export default function Home({ cards }) {
   return (
     <main>
       <StyledWelcome>
@@ -27,4 +27,9 @@ const StyledWelcome = styled.p`
   border-radius: 17px;
   margin: 0 auto;
   margin-top: 80px;
+`;
+
+const CardList = styled.div`
+  margin-top: 160px;
+  margin-bottom: 170px;
 `;

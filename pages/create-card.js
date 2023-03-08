@@ -38,6 +38,6 @@ const WrapperDiv = styled.div`
 `;
 
 const CardList = styled.div`
-  margin-top: 160px;
+  margin-top: 560px;
   margin-bottom: 170px;
 `;
