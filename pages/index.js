@@ -1,13 +1,31 @@
 import styled from "styled-components";
+import Card from "../components/Card/index";
 
 export default function Home({ cards }) {
   return (
     <main>
-      <StyledWelcome>
-        {" "}
-        Welcome to Tortuga app! To get started, simply tap the button with the
-        (+) sign in the navigation bar to create your very first card.
-      </StyledWelcome>
+      {cards.length === 0 ? (
+        <StyledWelcome>
+          Welcome to Tortuga app! To get started, simply tap the button with the
+          (+) sign in the navigation bar to create your very first card. You can
+          come back here to see your cards.
+        </StyledWelcome>
+      ) : null}
+      <WrapperDiv>
+        <CardList>
+          {cards?.map((card, index) => (
+            <Card
+              key={index}
+              id={index}
+              wish={card.wish}
+              why={card.why}
+              price={card.price}
+              howMuch={card.howMuch}
+              frequency={card.frequency}
+            />
+          ))}
+        </CardList>
+      </WrapperDiv>
     </main>
   );
 }
@@ -30,6 +48,12 @@ const StyledWelcome = styled.p`
 `;
 
 const CardList = styled.div`
-  margin-top: 160px;
-  margin-bottom: 170px;
+  margin-top: 70px;
+  margin-bottom: 70px;
+`;
+
+const WrapperDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

@@ -5,7 +5,7 @@ export default function Card({ wish, why, price, howMuch, frequency }) {
     <>
       <StyledCard>
         {" "}
-        <p>Wish: {wish}</p>
+        <p>What: {wish}</p>
         <div>Why: {why}</div>
         <div>Price: {price}</div>
         <div>How Much: {howMuch}</div>

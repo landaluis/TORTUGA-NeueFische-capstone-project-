@@ -20,7 +20,7 @@ export default function CardForm({ onAddCard }) {
         <div>
           <div>
             <label htmlFor="wish">Wanted: </label>
-            <input type="text" id="wish" name="wish" />
+            <input type="text" id="wish" name="wish" required />
           </div>
           <div>
             <label htmlFor="why">Why: </label>
@@ -28,16 +28,16 @@ export default function CardForm({ onAddCard }) {
           </div>
           <div>
             <label htmlFor="price">Price: </label>
-            <input type="number" id="price" name="price" />
+            <input type="number" id="price" name="price" required />
           </div>
 
           <div>
             <label htmlFor="howMuch">How much i will save: </label>
-            <input type="number" id="howMuch" name="howMuch" />
+            <input type="number" id="howMuch" name="howMuch" required />
           </div>
           <div>
             <label>How often will i save: </label>
-            <select name="frequency">
+            <select name="frequency" required>
               <option value="o"></option>
               <option value="1">Daily</option>
               <option value="2">Weekly</option>
@@ -67,7 +67,7 @@ const Exit = styled.div`
 `;
 const StyledForm = styled.form`
   display: flex;
-  position: fixed;
+  position: relative;
   justify-content: center;
   top: 100px;
   display: block;
