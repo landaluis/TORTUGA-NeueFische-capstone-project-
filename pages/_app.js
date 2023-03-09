@@ -1,8 +1,17 @@
-import GlobalStyle from "@/styles";
+import GlobalStyle from "../styles";
 import Head from "next/head";
 import Header from "../components/Header/index";
+import Layout from "../components/Layout/index";
+
+import useLocalStorageState from "use-local-storage-state";
 
 export default function App({ Component, pageProps }) {
+  const [cards, setCards] = useLocalStorageState("cards", { defaultValue: [] });
+
+  function handleAddCard(newCard) {
+    setCards([...cards, newCard]);
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -11,7 +20,9 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Capstone Project</title>
       </Head>
-      <Component {...pageProps} />
+      <Layout />
+
+      <Component {...pageProps} onAddCard={handleAddCard} cards={cards} />
     </>
   );
 }
