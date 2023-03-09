@@ -18,7 +18,7 @@ export default function FormTicket({ onAddTicket }) {
       <div>
         <div>
           <label htmlFor="ticketValue">Ticket value: </label>
-          <input type="number" id="ticketValue" name="ticketValue" />
+          <input type="number" id="ticketValue" name="ticketValue" required />
         </div>
 
         <button type="reset">Reset</button>

@@ -1,9 +1,14 @@
 import Ticket from "../components/Ticket/index";
 import FormTicket from "../components/TicketForm/index";
-import { useState } from "react";
+
 import styled from "styled-components";
 
-export default function CreateTicket({ onAddTicket, tickets }) {
+export default function CreateTicket({
+  onAddTicket,
+  tickets,
+  onDeleteTicket,
+  id,
+}) {
   return (
     <>
       <WrapperDiv>
@@ -12,8 +17,9 @@ export default function CreateTicket({ onAddTicket, tickets }) {
           {tickets?.map((ticket, index) => (
             <Ticket
               key={index}
-              id={ticket.index}
+              id={ticket.id}
               ticketValue={ticket.ticketValue}
+              onDeleteTicket={onDeleteTicket}
             />
           ))}
         </TicketList>

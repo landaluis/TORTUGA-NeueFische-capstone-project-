@@ -3,6 +3,7 @@ import Head from "next/head";
 import Header from "../components/Header/index";
 import Layout from "../components/Layout/index";
 import useLocalStorageState from "use-local-storage-state";
+import { uid } from "uid";
 
 export default function App({ Component, pageProps }) {
   const [cards, setCards] = useLocalStorageState("cards", { defaultValue: [] });
@@ -11,11 +12,15 @@ export default function App({ Component, pageProps }) {
   });
 
   function handleAddCard(newCard) {
-    setCards([...cards, newCard]);
+    setCards([{ id: uid(), ...newCard }, ...cards]);
   }
 
   function handleAddTicket(newTicket) {
-    setTickets([...tickets, newTicket]);
+    setTickets([{ id: uid(), ...newTicket }, ...tickets]);
+  }
+
+  function handleDeleteTicket(id) {
+    setTickets(tickets.filter((ticket) => ticket.id !== id));
   }
 
   return (
@@ -33,6 +38,7 @@ export default function App({ Component, pageProps }) {
         onAddCard={handleAddCard}
         cards={cards}
         onAddTicket={handleAddTicket}
+        onDeleteTicket={handleDeleteTicket}
         tickets={tickets}
       />
     </>

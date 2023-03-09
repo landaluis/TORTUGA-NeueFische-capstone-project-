@@ -1,11 +1,19 @@
 import styled from "styled-components";
 
-export default function Ticket({ ticketValue, newID }) {
+export default function Ticket({ ticketValue, id, onDeleteTicket }) {
+  console.log(typeof onDeleteTicket);
   return (
     <StyledTicket>
       <div>
         <StyledValue>{ticketValue}€</StyledValue>
       </div>
+      <StyledButton
+        onClick={() => onDeleteTicket(id)}
+        type="button"
+        title="delete movie"
+      >
+        ✕
+      </StyledButton>
     </StyledTicket>
   );
 }
@@ -32,9 +40,9 @@ const StyledValue = styled.h1`
   margin: 0;
 `;
 
-const StyledID = styled.div`
-  font-size: 16px;
+const StyledButton = styled.button`
   position: absolute;
-  top: 8px;
+  border: none;
   right: 8px;
+  top: 16px;
 `;
