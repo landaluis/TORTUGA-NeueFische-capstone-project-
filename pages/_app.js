@@ -15,6 +15,10 @@ export default function App({ Component, pageProps }) {
     setCards([{ id: uid(), ...newCard }, ...cards]);
   }
 
+  function handleDeleteCard(id) {
+    setCards(cards.filter((card) => card.id !== id));
+  }
+
   function handleAddTicket(newTicket) {
     setTickets([{ id: uid(), ...newTicket }, ...tickets]);
   }
@@ -35,11 +39,12 @@ export default function App({ Component, pageProps }) {
 
       <Component
         {...pageProps}
-        onAddCard={handleAddCard}
         cards={cards}
+        onAddCard={handleAddCard}
+        onDeleteCard={handleDeleteCard}
+        tickets={tickets}
         onAddTicket={handleAddTicket}
         onDeleteTicket={handleDeleteTicket}
-        tickets={tickets}
       />
     </>
   );

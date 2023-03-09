@@ -10,7 +10,7 @@ export default function Ticket({ ticketValue, id, onDeleteTicket }) {
       <StyledButton
         onClick={() => onDeleteTicket(id)}
         type="button"
-        title="delete movie"
+        title="delete ticket"
       >
         ✕
       </StyledButton>

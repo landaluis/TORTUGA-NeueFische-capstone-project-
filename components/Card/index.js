@@ -1,15 +1,30 @@
 import styled from "styled-components";
 
-export default function Card({ wish, why, price, howMuch, frequency }) {
+export default function Card({
+  what,
+  why,
+  price,
+  howMuch,
+  frequency,
+  id,
+  onDeleteCard,
+}) {
   return (
     <>
       <StyledCard>
         {" "}
-        <p>What: {wish}</p>
+        <p>What: {what}</p>
         <div>Why: {why}</div>
         <div>Price: {price}</div>
         <div>How Much: {howMuch}</div>
         <div>Frequency: {frequency}</div>
+        <StyledButton
+          onClick={() => onDeleteCard(id)}
+          type="button"
+          title="delete card"
+        >
+          ✕
+        </StyledButton>
       </StyledCard>
     </>
   );
@@ -29,4 +44,12 @@ const StyledCard = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+`;
+
+const StyledButton = styled.button`
+  position: absolute;
+  border: none;
+  z-index: 2;
+  right: 10px;
+  top: 10px;
 `;

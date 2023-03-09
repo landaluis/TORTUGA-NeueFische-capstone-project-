@@ -3,12 +3,7 @@ import FormTicket from "../components/TicketForm/index";
 
 import styled from "styled-components";
 
-export default function CreateTicket({
-  onAddTicket,
-  tickets,
-  onDeleteTicket,
-  id,
-}) {
+export default function CreateTicket({ onAddTicket, tickets, onDeleteTicket }) {
   return (
     <>
       <WrapperDiv>
