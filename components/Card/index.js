@@ -13,7 +13,7 @@ export default function Card({
     <>
       <StyledCard>
         {" "}
-        <p>What: {what}</p>
+        <div>What: {what}</div>
         <div>Why: {why}</div>
         <div>Price: {price}</div>
         <div>How Much: {howMuch}</div>
@@ -40,10 +40,9 @@ const StyledCard = styled.div`
   width: 340px;
   height: 250px;
   margin: 16px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   position: relative;
+  line-height: 35px;
 `;
 
 const StyledButton = styled.button`
