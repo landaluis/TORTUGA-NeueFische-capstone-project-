@@ -19,8 +19,8 @@ export default function CardForm({ onAddCard }) {
         <h4>New Card</h4>
         <div>
           <div>
-            <label htmlFor="wish">Wanted: </label>
-            <input type="text" id="wish" name="wish" required />
+            <label htmlFor="what">What: </label>
+            <input type="text" id="what" name="what" required />
           </div>
           <div>
             <label htmlFor="why">Why: </label>

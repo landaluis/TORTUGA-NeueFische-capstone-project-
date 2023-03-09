@@ -12,7 +12,7 @@ export default function Navigation() {
         <span className="material-symbols-outlined">add_circle</span>
       </Link>
       <Link href={"/tickets"}>
-        <span class="material-symbols-outlined">payments</span>
+        <span className="material-symbols-outlined">payments</span>
       </Link>
     </StyledList>
   );
