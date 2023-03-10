@@ -27,12 +27,12 @@ export default function CardForm({ onAddCard }) {
           </div>
           <div>
             <label htmlFor="price">Price: </label>
-            <input type="number" id="price" name="price" required />
+            <input type="number" id="price" name="price" min="1" required />
           </div>
 
           <div>
             <label htmlFor="howMuch">How much: </label>
-            <input type="number" id="howMuch" name="howMuch" required />
+            <input type="number" id="howMuch" name="howMuch" min="1" required />
           </div>
           <div>
             <label>How often: </label>

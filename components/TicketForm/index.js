@@ -17,7 +17,13 @@ export default function FormTicket({ onAddTicket }) {
       <section>
         <div>
           <label htmlFor="ticketValue">Ticket value: </label>
-          <input type="number" id="ticketValue" name="ticketValue" required />
+          <input
+            type="number"
+            id="ticketValue"
+            name="ticketValue"
+            min="0"
+            required
+          />
         </div>
 
         <button type="reset">Reset</button>
