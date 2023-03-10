@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export default function Ticket({ ticketValue, id, onDeleteTicket }) {
-  console.log(typeof onDeleteTicket);
   return (
     <StyledTicket>
       <div>

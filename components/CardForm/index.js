@@ -32,11 +32,11 @@ export default function CardForm({ onAddCard }) {
           </div>
 
           <div>
-            <label htmlFor="howMuch">How much i will save: </label>
+            <label htmlFor="howMuch">How much: </label>
             <input type="number" id="howMuch" name="howMuch" required />
           </div>
           <div>
-            <label>How often will i save: </label>
+            <label>How often: </label>
             <select name="frequency" required>
               <option value="o"></option>
               <option value="1">Daily</option>
