@@ -10,17 +10,16 @@ export default function CardForm({ onAddCard }) {
     const data = Object.fromEntries(formDataCard);
     onAddCard(data);
     form.reset();
-    console.log(data);
   }
 
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>
         <h4>New Card</h4>
-        <div>
+        <section>
           <div>
-            <label htmlFor="wish">Wanted: </label>
-            <input type="text" id="wish" name="wish" required />
+            <label htmlFor="what">What: </label>
+            <input type="text" id="what" name="what" required />
           </div>
           <div>
             <label htmlFor="why">Why: </label>
@@ -32,11 +31,11 @@ export default function CardForm({ onAddCard }) {
           </div>
 
           <div>
-            <label htmlFor="howMuch">How much i will save: </label>
+            <label htmlFor="howMuch">How much: </label>
             <input type="number" id="howMuch" name="howMuch" required />
           </div>
           <div>
-            <label>How often will i save: </label>
+            <label>How often: </label>
             <select name="frequency" required>
               <option value="o"></option>
               <option value="1">Daily</option>
@@ -46,7 +45,7 @@ export default function CardForm({ onAddCard }) {
           </div>
           <button type="reset">Reset</button>
           <button type="submit">Create</button>
-        </div>
+        </section>
         <Exit>
           <Link href={"/"}>
             <span className="material-symbols-outlined">

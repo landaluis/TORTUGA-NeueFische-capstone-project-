@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Card from "../components/Card/index";
 
-export default function Home({ cards }) {
+export default function Home({ cards, onDeleteCard }) {
   return (
     <main>
       {cards.length === 0 ? (
@@ -13,15 +13,16 @@ export default function Home({ cards }) {
       ) : null}
       <WrapperDiv>
         <CardList>
-          {cards?.map((card, index) => (
+          {cards?.map((card, id) => (
             <Card
-              key={index}
-              id={index}
-              wish={card.wish}
+              key={id}
+              id={card.id}
+              what={card.what}
               why={card.why}
               price={card.price}
               howMuch={card.howMuch}
               frequency={card.frequency}
+              onDeleteCard={onDeleteCard}
             />
           ))}
         </CardList>
