@@ -10,14 +10,13 @@ export default function CardForm({ onAddCard }) {
     const data = Object.fromEntries(formDataCard);
     onAddCard(data);
     form.reset();
-    console.log(data);
   }
 
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>
         <h4>New Card</h4>
-        <div>
+        <section>
           <div>
             <label htmlFor="what">What: </label>
             <input type="text" id="what" name="what" required />
@@ -46,7 +45,7 @@ export default function CardForm({ onAddCard }) {
           </div>
           <button type="reset">Reset</button>
           <button type="submit">Create</button>
-        </div>
+        </section>
         <Exit>
           <Link href={"/"}>
             <span className="material-symbols-outlined">

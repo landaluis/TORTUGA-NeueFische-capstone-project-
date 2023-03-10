@@ -13,9 +13,9 @@ export default function Home({ cards, onDeleteCard }) {
       ) : null}
       <WrapperDiv>
         <CardList>
-          {cards?.map((card, index) => (
+          {cards?.map((card, id) => (
             <Card
-              key={index}
+              key={id}
               id={card.id}
               what={card.what}
               why={card.why}

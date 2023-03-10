@@ -13,11 +13,11 @@ export default function Card({
     <>
       <StyledCard>
         {" "}
-        <div>What: {what}</div>
-        <div>Why: {why}</div>
-        <div>Price: {price}</div>
-        <div>How Much: {howMuch}</div>
-        <div>Frequency: {frequency}</div>
+        <p>What: {what}</p>
+        <p>Why: {why}</p>
+        <p>Price: {price}</p>
+        <p>How Much: {howMuch}</p>
+        <p>Frequency: {frequency}</p>
         <StyledButton
           onClick={() => onDeleteCard(id)}
           type="button"

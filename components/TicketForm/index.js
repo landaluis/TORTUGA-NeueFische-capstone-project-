@@ -9,13 +9,12 @@ export default function FormTicket({ onAddTicket }) {
     const data = Object.fromEntries(formDataTicket);
     onAddTicket(data);
     form.reset();
-    console.log(data);
   }
 
   return (
     <StyledForm onSubmit={handleSubmit}>
       <h4>New Ticket</h4>
-      <div>
+      <section>
         <div>
           <label htmlFor="ticketValue">Ticket value: </label>
           <input type="number" id="ticketValue" name="ticketValue" required />
@@ -23,7 +22,7 @@ export default function FormTicket({ onAddTicket }) {
 
         <button type="reset">Reset</button>
         <button type="submit">Buy a Ticket</button>
-      </div>
+      </section>
     </StyledForm>
   );
 }

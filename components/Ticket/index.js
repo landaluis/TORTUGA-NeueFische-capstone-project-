@@ -3,9 +3,8 @@ import styled from "styled-components";
 export default function Ticket({ ticketValue, id, onDeleteTicket }) {
   return (
     <StyledTicket>
-      <div>
-        <StyledValue>{ticketValue}€</StyledValue>
-      </div>
+      <StyledValue>{ticketValue}€</StyledValue>
+
       <StyledButton
         onClick={() => onDeleteTicket(id)}
         type="button"
