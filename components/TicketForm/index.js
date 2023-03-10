@@ -21,7 +21,7 @@ export default function FormTicket({ onAddTicket }) {
             type="number"
             id="ticketValue"
             name="ticketValue"
-            min="0"
+            min="1"
             required
           />
         </div>
