@@ -1,11 +1,9 @@
 import styled from "styled-components";
+import CardPhoto from "./CardPhoto";
 
 export default function Card({
   what,
-  why,
-  price,
-  howMuch,
-  frequency,
+
   id,
   onDeleteCard,
 }) {
@@ -13,11 +11,7 @@ export default function Card({
     <>
       <StyledCard>
         {" "}
-        <p>What: {what}</p>
-        <p>Why: {why}</p>
-        <p>Price: {price}</p>
-        <p>How Much: {howMuch}</p>
-        <p>Frequency: {frequency}</p>
+        <CardPhoto what={what}></CardPhoto>
         <StyledButton
           onClick={() => onDeleteCard(id)}
           type="button"
@@ -38,7 +32,7 @@ const StyledCard = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;
   width: 340px;
-  height: 250px;
+  height: 184px;
   margin: 16px auto;
   display: block;
   position: relative;

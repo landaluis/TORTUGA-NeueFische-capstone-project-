@@ -37,7 +37,7 @@ export default function CardForm({ onAddCard }) {
           <div>
             <label>How often: </label>
             <select name="frequency" required>
-              <option value="o"></option>
+              <option value="o">-Choose Frequency-</option>
               <option value="1">Daily</option>
               <option value="2">Weekly</option>
               <option value="3">Monthly</option>
