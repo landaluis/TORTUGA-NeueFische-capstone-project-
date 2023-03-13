@@ -1,4 +1,8 @@
-export const pixelArray = [
+import styled from "styled-components";
+import { uid } from "uid";
+import { useState } from "react";
+
+const pixelArray = [
   "#44CDE5",
   "#008292",
   "#163E42",
@@ -207,3 +211,71 @@ export const pixelArray = [
   "#022923",
   "#162320",
 ];
+let pixels = [];
+
+export default function Canvas() {
+  const [startIndex, setStartIndex] = useState(0);
+  const [endIndex, setEndIndex] = useState(16);
+
+  function handlefillCanvas() {
+    for (let i = startIndex; i < endIndex; i++) {
+      if (i >= pixelArray.length) break;
+
+      pixels.push(
+        <Pixel
+          key={uid()}
+          style={{
+            background: `${pixelArray[i]}`,
+            width: "7.5px",
+            height: "7.5px",
+            gap: 0,
+          }}
+        />
+      );
+    }
+    setStartIndex(startIndex + 16);
+    setEndIndex(endIndex + 16);
+    console.log(pixels);
+
+    return pixels;
+  }
+
+  return (
+    <>
+      <CanvasWrapper>
+        <PixelContainer>{pixels}</PixelContainer>
+        <GenerateButton onClick={handlefillCanvas}>Generate</GenerateButton>
+      </CanvasWrapper>
+    </>
+  );
+}
+
+const CanvasWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const PixelContainer = styled.div`
+  transform: rotate(180deg);
+  width: 120px;
+  max-width: 120px;
+  display: grid;
+  aspect-ratio: 1 / 1;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(15, 1fr);
+  background-color: #999;
+  border-radius: 4px;
+  overflow: hidden;
+  clip-path: ellipse(40% 46% at 52% 50%);
+`;
+
+const Pixel = styled.div`
+  width: 7.5px;
+  height: 50px;
+  z-index: 40;
+`;
+
+const GenerateButton = styled.button`
+  margin: 16px;
+`;
