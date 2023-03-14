@@ -4,7 +4,7 @@ import { useState } from "react";
 import { pixelArray } from "../../lib/pixelArray";
 
 let pixels = [];
-export default function Canvas({ day }) {
+export default function Canvas({ day, price, howMuch, frequency, birthday }) {
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(16);
 
@@ -35,7 +35,7 @@ export default function Canvas({ day }) {
       <CanvasWrapper>
         <PixelContainer>{pixels}</PixelContainer>
         <Title>Birthday:</Title>
-        <Birthday>{day}</Birthday>
+        <Birthday>{birthday}</Birthday>
         <GenerateButton onClick={handlefillCanvas}>€</GenerateButton>
       </CanvasWrapper>
     </>
@@ -89,11 +89,10 @@ const GenerateButton = styled.button`
 `;
 
 const Birthday = styled.div`
-  margin: 16px;
   position: absolute;
   text-align: center;
-  top: 110px;
-  left: 49px;
+  top: 127px;
+  font-size: 14px;
 `;
 
 const Title = styled.h5`

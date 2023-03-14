@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Card from "../components/Card/index";
 
 export default function Home({ cards, onDeleteCard }) {
+  console.log(cards);
   return (
     <main>
       {cards.length === 0 ? (
@@ -23,7 +24,7 @@ export default function Home({ cards, onDeleteCard }) {
               howMuch={card.howMuch}
               frequency={card.frequency}
               onDeleteCard={onDeleteCard}
-              day={card.day}
+              birthday={card.birthday}
             />
           ))}
         </CardList>

@@ -13,7 +13,26 @@ export default function App({ Component, pageProps }) {
   });
 
   function handleAddCard(newCard) {
-    setCards([{ id: uid(), ...newCard }, ...cards]);
+    const currentDate = new Date();
+    const NumSavings = Math.ceil(newCard.price / newCard.howMuch);
+
+    let daysToSave = NumSavings;
+    console.log(daysToSave);
+
+    if (newCard.frequency === 1) {
+      daysToSave = NumSavings;
+    } else if (newCard.frequency === 2) {
+      daysToSave = NumSavings * 7;
+    } else if (newCard.frequency === 3) {
+      daysToSave = NumSavings * 30;
+    }
+
+    const futureDate = new Date(
+      currentDate.getTime() + daysToSave * 24 * 60 * 60 * 1000
+    );
+    const birthday = futureDate.toDateString();
+
+    setCards([{ id: uid(), birthday, ...newCard }, ...cards]);
   }
 
   function handleDeleteCard(id) {

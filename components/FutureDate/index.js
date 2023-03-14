@@ -20,10 +20,11 @@ export default function CalculateFutureDate() {
   const futureDate = new Date(
     currentDate.getTime() + daysToSave * 24 * 60 * 60 * 1000
   );
+  const Birthday = futureDate.toDateString();
 
   return (
     <>
-      <StyledDiv>{futureDate.toDateString()}</StyledDiv>
+      <StyledDiv>{Birthday}</StyledDiv>
     </>
   );
 }
