@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Card from "../components/Card/index";
-import Canvas from "../components/Canvas/index";
 
 export default function Home({ cards, onDeleteCard }) {
   return (
@@ -24,12 +23,11 @@ export default function Home({ cards, onDeleteCard }) {
               howMuch={card.howMuch}
               frequency={card.frequency}
               onDeleteCard={onDeleteCard}
+              day={card.day}
             />
           ))}
         </CardList>
       </WrapperDiv>
-
-      <Canvas />
     </main>
   );
 }

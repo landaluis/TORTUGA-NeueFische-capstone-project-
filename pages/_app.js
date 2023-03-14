@@ -4,6 +4,7 @@ import Header from "../components/Header/index";
 import Layout from "../components/Layout/index";
 import useLocalStorageState from "use-local-storage-state";
 import { uid } from "uid";
+import styled from "styled-components";
 
 export default function App({ Component, pageProps }) {
   const [cards, setCards] = useLocalStorageState("cards", { defaultValue: [] });
@@ -49,3 +50,9 @@ export default function App({ Component, pageProps }) {
     </>
   );
 }
+
+const Pixel = styled.div`
+  width: 7.5px;
+  height: 50px;
+  z-index: 40;
+`;

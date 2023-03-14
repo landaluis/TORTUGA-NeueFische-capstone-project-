@@ -1,17 +1,16 @@
 import styled from "styled-components";
-import CardPhoto from "./CardPhoto";
+import CardPhoto from "../CardPhoto.js";
+import Canvas from "../Canvas";
 
-export default function Card({
-  what,
-
-  id,
-  onDeleteCard,
-}) {
+export default function Card({ what, id, onDeleteCard, day, frequency }) {
+  console.log(day);
+  console.log(frequency);
   return (
     <>
       <StyledCard>
         {" "}
         <CardPhoto what={what}></CardPhoto>
+        <Canvas day={day} frequency={frequency}></Canvas>
         <StyledButton
           onClick={() => onDeleteCard(id)}
           type="button"

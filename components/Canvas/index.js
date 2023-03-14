@@ -1,219 +1,10 @@
 import styled from "styled-components";
 import { uid } from "uid";
 import { useState } from "react";
+import { pixelArray } from "../../lib/pixelArray";
 
-const pixelArray = [
-  "#44CDE5",
-  "#008292",
-  "#163E42",
-  "#163E42",
-  "#072421",
-  "#044945",
-  "#075456",
-  "#013730",
-  "#063F38",
-  "#033B33",
-  "#0D4B3E",
-  "#036059",
-  "#075655",
-  "#04433F",
-  "#034436",
-  "#103F36",
-  "#008291",
-  "#045854",
-  "#072E28",
-  "#030509",
-  "#004E48",
-  "#086A6C",
-  "#016564",
-  "#06605E",
-  "#034A46",
-  "#044946",
-  "#023C3A",
-  "#0E4640",
-  "#14514D",
-  "#093F40",
-  "#102C28",
-  "#020202",
-  "#057E8B",
-  "#036A6B",
-  "#084D4D",
-  "#025B55",
-  "#067578",
-  "#036C71",
-  "#00555F",
-  "#01413B",
-  "#053534",
-  "#0E433D",
-  "#0E3C3A",
-  "#0C3428",
-  "#12362B",
-  "#0E2720",
-  "#040807",
-  "#040807",
-  "#047885",
-  "#027580",
-  "#047679",
-  "#066F71",
-  "#136A6A",
-  "#02575B",
-  "#0D4742",
-  "#0E3F39",
-  "#113533",
-  "#051F1E",
-  "#173631",
-  "#1B2C29",
-  "#172521",
-  "#090F0C",
-  "#020302",
-  "#030303",
-  "#0C7B88",
-  "#0B717D",
-  "#0B717D",
-  "#11696A",
-  "#0D675F",
-  "#0A423F",
-  "#13403E",
-  "#0E413B",
-  "#123732",
-  "#19332F",
-  "#162B28",
-  "#1C2220",
-  "#000201",
-  "#0C0C0C",
-  "#030303",
-  "#040404",
-  "#097682",
-  "#145866",
-  "#001717",
-  "#166568",
-  "#05554E",
-  "#135959",
-  "#075658",
-  "#064845",
-  "#0E3F38",
-  "#0C3126",
-  "#090D0C",
-  "#000200",
-  "#030404",
-  "#020302",
-  "#1D1D1D",
-  "#020907",
-  "#0B8492",
-  "#028188",
-  "#12201A",
-  "#0A6973",
-  "#036058",
-  "#03606A",
-  "#01453E",
-  "#0D4038",
-  "#113B37",
-  "#143029",
-  "#162721",
-  "#0C110D",
-  "#222B28",
-  "#020303",
-  "#020101",
-  "#030202",
-  "#008896",
-  "#01737D",
-  "#136069",
-  "#115D5E",
-  "#054248",
-  "#012828",
-  "#052C24",
-  "#000D0B",
-  "#000C0F",
-  "#050308",
-  "#071412",
-  "#000200",
-  "#0E1614",
-  "#020301",
-  "#1B2623",
-  "#202E2A",
-  "#0C6868",
-  "#0A809E",
-  "#0B8298",
-  "#147B85",
-  "#024049",
-  "#066067",
-  "#056B6E",
-  "#036260",
-  "#0E6D72",
-  "#106567",
-  "#0D4E4A",
-  "#19423F",
-  "#0F221D",
-  "#111D1B",
-  "#14211D",
-  "#0E1B17",
-  "#07110E",
-  "#0B8497",
-  "#0A696D",
-  "#066D72",
-  "#017171",
-  "#07666C",
-  "#096564",
-  "#076260",
-  "#0D6E70",
-  "#076262",
-  "#085A5C",
-  "#045458",
-  "#043F42",
-  "#123931",
-  "#010804",
-  "#151E1B",
-  "#010604",
-  "#034E56",
-  "#06606A",
-  "#085C62",
-  "#066068",
-  "#07646C",
-  "#085A59",
-  "#125356",
-  "#0F5C58",
-  "#076666",
-  "#05696A",
-  "#0B716E",
-  "#064E49",
-  "#001D1D",
-  "#0C3129",
-  "#0B1713",
-  "#1C2420",
-  "#023E3F",
-  "#044949",
-  "#04565D",
-  "#066064",
-  "#0F5A64",
-  "#024952",
-  "#125E63",
-  "#086A68",
-  "#0B6F6E",
-  "#06574F",
-  "#0E5F55",
-  "#0B4F48",
-  "#05322D",
-  "#132020",
-  "#0B130F",
-  "#125A56",
-  "#095551",
-  "#075651",
-  "#07544E",
-  "#024F46",
-  "#03483E",
-  "#02493C",
-  "#003F40",
-  "#044943",
-  "#02574D",
-  "#0B4B43",
-  "#004638",
-  "#04473E",
-  "#022923",
-  "#162320",
-];
 let pixels = [];
-
-export default function Canvas() {
+export default function Canvas({ day }) {
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(16);
 
@@ -235,7 +26,6 @@ export default function Canvas() {
     }
     setStartIndex(startIndex + 16);
     setEndIndex(endIndex + 16);
-    console.log(pixels);
 
     return pixels;
   }
@@ -244,7 +34,9 @@ export default function Canvas() {
     <>
       <CanvasWrapper>
         <PixelContainer>{pixels}</PixelContainer>
-        <GenerateButton onClick={handlefillCanvas}>Generate</GenerateButton>
+        <Title>Birthday:</Title>
+        <Birthday>{day}</Birthday>
+        <GenerateButton onClick={handlefillCanvas}>€</GenerateButton>
       </CanvasWrapper>
     </>
   );
@@ -254,12 +46,23 @@ const CanvasWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid grey;
+  width: 143px;
+  height: 163px;
+  margin: 0;
+  position: absolute;
+  right: 35px;
+  top: 10px;
+  border-radius: 17px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 const PixelContainer = styled.div`
+  position: relative;
+  top: 10px;
   transform: rotate(180deg);
-  width: 120px;
-  max-width: 120px;
+  height: 150px;
+  max-width: 150px;
   display: grid;
   aspect-ratio: 1 / 1;
   grid-template-columns: repeat(15, 1fr);
@@ -278,4 +81,24 @@ const Pixel = styled.div`
 
 const GenerateButton = styled.button`
   margin: 16px;
+  position: relative;
+  top: 15px;
+  left: 90px;
+  border-radius: 50%;
+  background-color: greenyellow;
+`;
+
+const Birthday = styled.div`
+  margin: 16px;
+  position: absolute;
+  text-align: center;
+  top: 110px;
+  left: 49px;
+`;
+
+const Title = styled.h5`
+  margin: 16px;
+  position: absolute;
+  top: 95px;
+  left: 25px;
 `;

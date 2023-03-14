@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 import NES from "./../../lib/NESswitch.png";
+import CalculateFutureDate from "../FutureDate";
 
 export default function CardPhoto({ what }) {
   return (
@@ -17,7 +18,9 @@ export default function CardPhoto({ what }) {
             top: "10px",
           }}
         />
-        <div>{what}</div>
+        <StyledName>
+          <strong>{what}</strong>
+        </StyledName>
       </StyledCardPhoto>
     </>
   );
@@ -36,6 +39,12 @@ const StyledCardPhoto = styled.div`
   display: block;
   position: relative;
   line-height: 35px;
-  left: 20px;
+  left: 10px;
   top: 10px;
+`;
+
+const StyledName = styled.div`
+  position: relative;
+  text-align: center;
+  top: 4px;
 `;
