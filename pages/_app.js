@@ -17,7 +17,6 @@ export default function App({ Component, pageProps }) {
     const NumSavings = Math.ceil(newCard.price / newCard.howMuch);
 
     let daysToSave = NumSavings;
-    console.log(daysToSave);
 
     if (newCard.frequency === 1) {
       daysToSave = NumSavings;
@@ -31,8 +30,10 @@ export default function App({ Component, pageProps }) {
       currentDate.getTime() + daysToSave * 24 * 60 * 60 * 1000
     );
     const birthday = futureDate.toDateString();
-
-    setCards([{ id: uid(), birthday, ...newCard }, ...cards]);
+    const daysDiff = Math.ceil(
+      (futureDate.getTime() - currentDate.getTime()) / (24 * 60 * 60 * 1000)
+    );
+    setCards([{ id: uid(), birthday, daysDiff, ...newCard }, ...cards]);
   }
 
   function handleDeleteCard(id) {

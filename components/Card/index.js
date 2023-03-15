@@ -7,18 +7,23 @@ export default function Card({
   id,
   onDeleteCard,
   day,
-  frequency,
   birthday,
+  daysDiff,
 }) {
-  console.log(what);
-  console.log(birthday);
+  /*   console.log(daysDiff);
+  console.log(birthday); */
 
   return (
     <>
       <StyledCard>
         {" "}
         <CardPhoto what={what}></CardPhoto>
-        <Canvas day={day} birthday={birthday}></Canvas>
+        <Canvas
+          day={day}
+          birthday={birthday}
+          daysDiff={daysDiff}
+          id={id}
+        ></Canvas>
         <StyledButton
           onClick={() => onDeleteCard(id)}
           type="button"

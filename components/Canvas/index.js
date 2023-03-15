@@ -3,16 +3,17 @@ import { uid } from "uid";
 import { useState } from "react";
 import { pixelArray } from "../../lib/pixelArray";
 
-let pixels = [];
-export default function Canvas({ day, price, howMuch, frequency, birthday }) {
-  const [startIndex, setStartIndex] = useState(0);
-  const [endIndex, setEndIndex] = useState(16);
+export default function Canvas({ birthday, daysDiff, id }) {
+  const [pixels, setPixels] = useState([]);
 
-  function handlefillCanvas() {
-    for (let i = startIndex; i < endIndex; i++) {
+  function handleFillCanvas() {
+    const divisor = Math.ceil(pixelArray.length / daysDiff);
+    const newPixels = [];
+
+    for (let i = 0; i < pixels.length + divisor; i++) {
       if (i >= pixelArray.length) break;
 
-      pixels.push(
+      newPixels.push(
         <Pixel
           key={uid()}
           style={{
@@ -24,10 +25,8 @@ export default function Canvas({ day, price, howMuch, frequency, birthday }) {
         />
       );
     }
-    setStartIndex(startIndex + 16);
-    setEndIndex(endIndex + 16);
 
-    return pixels;
+    setPixels(newPixels);
   }
 
   return (
@@ -36,7 +35,7 @@ export default function Canvas({ day, price, howMuch, frequency, birthday }) {
         <PixelContainer>{pixels}</PixelContainer>
         <Title>Birthday:</Title>
         <Birthday>{birthday}</Birthday>
-        <GenerateButton onClick={handlefillCanvas}>€</GenerateButton>
+        <GenerateButton onClick={() => handleFillCanvas(id)}>€</GenerateButton>
       </CanvasWrapper>
     </>
   );
