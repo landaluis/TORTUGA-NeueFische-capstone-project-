@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function CardForm({ onAddCard }) {
+  const [maxHowMuch, setMaxHowMuch] = useState(1);
+
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
@@ -9,8 +12,17 @@ export default function CardForm({ onAddCard }) {
 
     const data = Object.fromEntries(formDataCard);
 
+    if (data.frequency === "0") {
+      alert("Please select a valid frequency.");
+      return;
+    }
+
     onAddCard(data);
     form.reset();
+  }
+
+  function handlePriceChange(event) {
+    setMaxHowMuch(parseInt(event.target.value));
   }
 
   return (
@@ -28,12 +40,26 @@ export default function CardForm({ onAddCard }) {
           </div>
           <div>
             <label htmlFor="price">Price: </label>
-            <input type="number" id="price" name="price" min="1" required />
+            <input
+              type="number"
+              id="price"
+              name="price"
+              min="1"
+              required
+              onChange={handlePriceChange}
+            />
           </div>
 
           <div>
             <label htmlFor="howMuch">How much: </label>
-            <input type="number" id="howMuch" name="howMuch" min="1" required />
+            <input
+              type="number"
+              id="howMuch"
+              name="howMuch"
+              min="1"
+              max={maxHowMuch}
+              required
+            />
           </div>
           <div>
             <label>How often: </label>
