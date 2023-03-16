@@ -10,13 +10,21 @@ export default function Card({
   birthday,
   divisor,
   image,
+  handleFillCanvas,
+  pixels,
 }) {
   return (
     <>
       <StyledCard>
         {" "}
         <CardPhoto what={what} image={image}></CardPhoto>
-        <Canvas birthday={birthday} id={id} divisor={divisor} />
+        <Canvas
+          birthday={birthday}
+          id={id}
+          divisor={divisor}
+          handleFillCanvas={handleFillCanvas}
+          pixels={pixels}
+        />
         <StyledButton
           onClick={() => onDeleteCard(id)}
           type="button"

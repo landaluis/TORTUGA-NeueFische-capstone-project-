@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import Card from "../components/Card/index";
 
-export default function Home({ cards, onDeleteCard, image }) {
+export default function Home({
+  cards,
+  onDeleteCard,
+  image,
+  handleFillCanvas,
+  pixels,
+}) {
   return (
     <main>
       {cards.length === 0 ? (
@@ -24,7 +30,9 @@ export default function Home({ cards, onDeleteCard, image }) {
               onDeleteCard={onDeleteCard}
               birthday={card.birthday}
               divisor={card.divisor}
-              image={image.src}
+              image={card.image.src}
+              handleFillCanvas={handleFillCanvas}
+              pixels={pixels}
             />
           ))}
         </CardList>

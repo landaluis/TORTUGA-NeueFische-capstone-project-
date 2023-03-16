@@ -4,21 +4,28 @@ import { useState } from "react";
 import { pixelArray } from "../../lib/pixelArray";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function Canvas({ birthday, divisor, id }) {
+export default function Canvas({
+  birthday,
+  divisor,
+  id,
+  handleFillCanvas,
+  pixels,
+}) {
+  /*  
   const [pixels, setPixels] = useLocalStorageState("pixels", {
     defaultValue: [],
-  });
+  }); */
   /*   const [pixels, setPixels] = useState([]); */
 
-  function handleFillCanvas() {
+  /* function handleFillCanvas() {
     const newPixels = [];
 
     for (let i = 0; i < pixels?.length + divisor; i++) {
       if (i >= pixelArray.length) break;
 
-      newPixels.push(pixelArray[i]);
+      newPixels.push(pixelArray[i]); */
 
-      /* newPixels.push(
+  /* newPixels.push(
         <Pixel
           key={uid()}
           style={{
@@ -29,11 +36,11 @@ export default function Canvas({ birthday, divisor, id }) {
           }}
         />
       ); */
-    }
+  /*   } */
 
-    setPixels(newPixels);
+  /*     setPixels(newPixels);
     return newPixels;
-  }
+  } */
 
   return (
     <>

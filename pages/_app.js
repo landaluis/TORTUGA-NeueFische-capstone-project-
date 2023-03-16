@@ -6,6 +6,7 @@ import useLocalStorageState from "use-local-storage-state";
 import { uid } from "uid";
 import styled from "styled-components";
 import Router from "next/router";
+import { pixelArray } from "../lib/pixelArray";
 
 export default function App({ Component, pageProps }) {
   const [cards, setCards] = useLocalStorageState("cards", { defaultValue: [] });
@@ -17,8 +18,40 @@ export default function App({ Component, pageProps }) {
     defaultValue: {},
   });
 
+  const [pixels, setPixels] = useLocalStorageState("pixels", {
+    defaultValue: [],
+  });
+  /* 
+  const [divisor, setDivisor] = useLocalStorageState("divisor", {
+    defaultValue: [],
+  }); */
+
+  function handleFillCanvas() {
+    const newPixels = [];
+
+    for (let i = 0; i < pixels?.length + divisor; i++) {
+      if (i >= pixelArray.length) break;
+
+      newPixels.push(pixelArray[i]);
+
+      /* newPixels.push(
+        <Pixel
+          key={uid()}
+          style={{
+            background: `${pixelArray[i]}`,
+            width: "7.5px",
+            height: "7.5px",
+            gap: 0,
+          }}
+        />
+      ); */
+    }
+
+    setPixels(newPixels);
+    return newPixels;
+  }
+
   const handleImageUpload = (event) => {
-    console.log(event);
     if (event.event === "success") {
       setImage({
         src: event.info.secure_url,
@@ -52,7 +85,17 @@ export default function App({ Component, pageProps }) {
 
     const divisor = 207 / (newCard.price / newCard.howMuch);
 
-    setCards([{ id: uid(), birthday, divisor, ...newCard }, ...cards]);
+    setCards([
+      {
+        id: uid(),
+        birthday,
+        divisor,
+        image: { src: image.src, height: image.height, width: image.width },
+        ...newCard,
+      },
+      ...cards,
+    ]);
+    /*   setDivisor(divisor); */
   }
 
   function handleDeleteCard(id) {
@@ -120,7 +163,9 @@ export default function App({ Component, pageProps }) {
         onDeleteTicket={handleDeleteTicket}
         handleTicketApply={handleTicketApply}
         handleImageUpload={handleImageUpload}
+        handleFillCanvas={handleFillCanvas}
         image={image}
+        pixels={pixels}
       />
     </>
   );

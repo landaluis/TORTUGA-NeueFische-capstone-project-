@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import useLocalStorageState from "use-local-storage-state";
 
-export default function CardForm({ onAddCard, handleImageUpload, image }) {
+export default function CardForm({ onAddCard, onHandleImageUpload, image }) {
   const [maxHowMuch, setMaxHowMuch] = useState(1);
 
   function handleSubmit(event) {
@@ -42,7 +42,7 @@ export default function CardForm({ onAddCard, handleImageUpload, image }) {
 
           <CldUploadButton
             uploadPreset="ceduvcvz"
-            onUpload={handleImageUpload}
+            onUpload={onHandleImageUpload}
           />
           {image && <Image src={image.src} width={100} height={100} alt="" />}
 
