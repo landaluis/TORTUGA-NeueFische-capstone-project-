@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }) {
     } else {
       daysToSave = NumSavings * 30;
     }
-    console.log(daysToSave);
+
     const futureDate = new Date(
       currentDate.getTime() + daysToSave * 24 * 60 * 60 * 1000
     );
@@ -34,9 +34,10 @@ export default function App({ Component, pageProps }) {
     const birthday = futureDate.toDateString();
 
     const timeDiff = futureDate.getTime() - currentDate.getTime();
-    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-    setCards([{ id: uid(), birthday, daysDiff, ...newCard }, ...cards]);
+    const divisor = 207 / (newCard.price / newCard.howMuch);
+
+    setCards([{ id: uid(), birthday, divisor, ...newCard }, ...cards]);
   }
 
   function handleDeleteCard(id) {

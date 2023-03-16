@@ -4,12 +4,11 @@ import { useState } from "react";
 import { pixelArray } from "../../lib/pixelArray";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function Canvas({ birthday, daysDiff, id }) {
+export default function Canvas({ birthday, divisor, id }) {
   /*  const [pixels, setPixels] = useLocalStorageState("pixels", []); */
   const [pixels, setPixels] = useState([]);
 
   function handleFillCanvas() {
-    const divisor = Math.ceil(pixelArray.length / daysDiff);
     const newPixels = [];
 
     for (let i = 0; i < pixels?.length + divisor; i++) {

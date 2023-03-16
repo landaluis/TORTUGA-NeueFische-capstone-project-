@@ -1,8 +1,28 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";
+import { CldImage, CldUploadButton } from "next-cloudinary";
+import Image from "next/image";
+
+import useLocalStorageState from "use-local-storage-state";
 
 export default function CardForm({ onAddCard }) {
+  const [image, setImage] = useLocalStorageState("image", {
+    defaultValue: [],
+  });
+
+  const handleImageUpload = (event) => {
+    if (event.event === "success") {
+      setImage({
+        src: event.info.secure_url,
+        height: event.info.height,
+        width: event.info.width,
+      });
+    } else {
+      //Upload war nicht erfolgreich
+    }
+  };
+
   const [maxHowMuch, setMaxHowMuch] = useState(1);
   function handleSubmit(event) {
     event.preventDefault();
@@ -33,7 +53,11 @@ export default function CardForm({ onAddCard }) {
             <label htmlFor="what">What: </label>
             <input type="text" id="what" name="what" required />
           </div>
-
+          <CldUploadButton
+            uploadPreset="ceduvcvz"
+            onUpload={handleImageUpload}
+          />
+          {image && <Image src={image.src} width={100} height={100} alt="" />}
           <div>
             <label htmlFor="why">Why: </label>
             <input type="text" id="why" name="why" />

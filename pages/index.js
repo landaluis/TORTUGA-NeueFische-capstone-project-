@@ -3,44 +3,37 @@ import Card from "../components/Card/index";
 import { CldImage, CldUploadButton } from "next-cloudinary";
 import Image from "next/image";
 import { useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function Home({ cards, onDeleteCard }) {
-  /* const [maxHowMuch, setMaxHowMuch] = useState(1);
+  /*  const [image, setImage] = useLocalStorageState("image", {
+    defaultValue: [],
+  });
 
-  function Images() {
-    const [image, setImage] = useState();
+  const handleImageUpload = (event) => {
+    if (event.event === "success") {
+      setImage({
+        src: event.info.secure_url,
+        height: event.info.height,
+        width: event.info.width,
+      });
+    } else {
+      //Upload war nicht erfolgreich
+    }
+  }; */
 
-    const handleImageUpload = (event) => {
-      if (event.event === "success") {
-        setImage({
-          src: event.info.secure_url,
-          height: event.info.height,
-          width: event.info.width,
-        });
-      } else {
-        //Upload war nicht erfolgreich
-      }
-    };
-  }
- */
   return (
     <main>
-      <CldImage
+      {/* <CldImage
         width="960"
         height="600"
         src="https://res.cloudinary.com/dfkicjx4d/image/upload/v1667128837/samples/animals/three-dogs.jpg"
         sizes="100vw"
         alt="Three dogs looking great"
-      />
-      {/*  <CldUploadButton uploadPreset="ceduvcvz" onUpload={handleImageUpload} />
-      {image && (
-        <Image
-          src={image.src}
-          width={image.width}
-          height={image.height}
-          alt=""
-        />
-      )} */}
+      /> */}
+
+      {/*     <CldUploadButton uploadPreset="ceduvcvz" onUpload={handleImageUpload} />
+      {image && <Image src={image.src} width={100} height={100} alt="" />} */}
 
       {cards.length === 0 ? (
         <StyledWelcome>
@@ -59,10 +52,9 @@ export default function Home({ cards, onDeleteCard }) {
               why={card.why}
               price={card.price}
               howMuch={card.howMuch}
-              frequency={card.frequency}
               onDeleteCard={onDeleteCard}
               birthday={card.birthday}
-              daysDiff={card.daysDiff}
+              divisor={card.divisor}
             />
           ))}
         </CardList>

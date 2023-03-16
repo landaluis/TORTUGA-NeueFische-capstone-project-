@@ -11,7 +11,7 @@ export default function CardPhoto({ what }) {
           src={NES}
           alt={"My Wish photo"}
           width="100"
-          height="100"
+          height="auto"
           style={{
             position: "relative",
             top: "10px",
