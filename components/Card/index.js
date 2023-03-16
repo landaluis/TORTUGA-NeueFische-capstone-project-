@@ -1,29 +1,15 @@
 import styled from "styled-components";
 import CardPhoto from "../CardPhoto.js";
 import Canvas from "../Canvas";
+import TicketUse from "../TicketUse/index.js";
 
-export default function Card({
-  what,
-  id,
-  onDeleteCard,
-  day,
-  birthday,
-  daysDiff,
-}) {
-  /*   console.log(daysDiff);
-  console.log(birthday); */
-
+export default function Card({ what, id, onDeleteCard, birthday, daysDiff }) {
   return (
     <>
       <StyledCard>
         {" "}
         <CardPhoto what={what}></CardPhoto>
-        <Canvas
-          day={day}
-          birthday={birthday}
-          daysDiff={daysDiff}
-          id={id}
-        ></Canvas>
+        <Canvas birthday={birthday} id={id} daysDiff={daysDiff} />
         <StyledButton
           onClick={() => onDeleteCard(id)}
           type="button"
@@ -31,6 +17,7 @@ export default function Card({
         >
           ✕
         </StyledButton>
+        <TicketUse></TicketUse>
       </StyledCard>
     </>
   );

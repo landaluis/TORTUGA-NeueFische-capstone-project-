@@ -2,15 +2,17 @@ import styled from "styled-components";
 import { uid } from "uid";
 import { useState } from "react";
 import { pixelArray } from "../../lib/pixelArray";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function Canvas({ birthday, daysDiff, id }) {
+  /*  const [pixels, setPixels] = useLocalStorageState("pixels", []); */
   const [pixels, setPixels] = useState([]);
 
   function handleFillCanvas() {
     const divisor = Math.ceil(pixelArray.length / daysDiff);
     const newPixels = [];
 
-    for (let i = 0; i < pixels.length + divisor; i++) {
+    for (let i = 0; i < pixels?.length + divisor; i++) {
       if (i >= pixelArray.length) break;
 
       newPixels.push(
@@ -27,6 +29,7 @@ export default function Canvas({ birthday, daysDiff, id }) {
     }
 
     setPixels(newPixels);
+    return newPixels;
   }
 
   return (
@@ -81,7 +84,7 @@ const Pixel = styled.div`
 const GenerateButton = styled.button`
   margin: 16px;
   position: relative;
-  top: 15px;
+  top: 10px;
   left: 90px;
   border-radius: 50%;
   background-color: greenyellow;

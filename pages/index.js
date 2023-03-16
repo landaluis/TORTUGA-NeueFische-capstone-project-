@@ -1,9 +1,47 @@
 import styled from "styled-components";
 import Card from "../components/Card/index";
+import { CldImage, CldUploadButton } from "next-cloudinary";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function Home({ cards, onDeleteCard }) {
+  /* const [maxHowMuch, setMaxHowMuch] = useState(1);
+
+  function Images() {
+    const [image, setImage] = useState();
+
+    const handleImageUpload = (event) => {
+      if (event.event === "success") {
+        setImage({
+          src: event.info.secure_url,
+          height: event.info.height,
+          width: event.info.width,
+        });
+      } else {
+        //Upload war nicht erfolgreich
+      }
+    };
+  }
+ */
   return (
     <main>
+      <CldImage
+        width="960"
+        height="600"
+        src="https://res.cloudinary.com/dfkicjx4d/image/upload/v1667128837/samples/animals/three-dogs.jpg"
+        sizes="100vw"
+        alt="Three dogs looking great"
+      />
+      {/*  <CldUploadButton uploadPreset="ceduvcvz" onUpload={handleImageUpload} />
+      {image && (
+        <Image
+          src={image.src}
+          width={image.width}
+          height={image.height}
+          alt=""
+        />
+      )} */}
+
       {cards.length === 0 ? (
         <StyledWelcome>
           Welcome to Tortuga app! To get started, simply tap the button with the

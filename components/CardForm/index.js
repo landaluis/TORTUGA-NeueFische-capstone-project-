@@ -4,7 +4,6 @@ import { useState } from "react";
 
 export default function CardForm({ onAddCard }) {
   const [maxHowMuch, setMaxHowMuch] = useState(1);
-
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
@@ -12,8 +11,8 @@ export default function CardForm({ onAddCard }) {
 
     const data = Object.fromEntries(formDataCard);
 
-    if (data.frequency === "0") {
-      alert("Please select a valid frequency.");
+    if (data.frequency == "0") {
+      alert("Please select a frequency");
       return;
     }
 
@@ -34,6 +33,7 @@ export default function CardForm({ onAddCard }) {
             <label htmlFor="what">What: </label>
             <input type="text" id="what" name="what" required />
           </div>
+
           <div>
             <label htmlFor="why">Why: </label>
             <input type="text" id="why" name="why" />
