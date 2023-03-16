@@ -3,12 +3,19 @@ import CardPhoto from "../CardPhoto.js";
 import Canvas from "../Canvas";
 import TicketUse from "../TicketUse/index.js";
 
-export default function Card({ what, id, onDeleteCard, birthday, divisor }) {
+export default function Card({
+  what,
+  id,
+  onDeleteCard,
+  birthday,
+  divisor,
+  image,
+}) {
   return (
     <>
       <StyledCard>
         {" "}
-        <CardPhoto what={what}></CardPhoto>
+        <CardPhoto what={what} image={image}></CardPhoto>
         <Canvas birthday={birthday} id={id} divisor={divisor} />
         <StyledButton
           onClick={() => onDeleteCard(id)}

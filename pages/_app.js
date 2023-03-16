@@ -13,9 +13,26 @@ export default function App({ Component, pageProps }) {
     defaultValue: [],
   });
 
+  const [image, setImage] = useLocalStorageState("image", {
+    defaultValue: {},
+  });
+
+  const handleImageUpload = (event) => {
+    console.log(event);
+    if (event.event === "success") {
+      setImage({
+        src: event.info.secure_url,
+        height: event.info.height,
+        width: event.info.width,
+      });
+    } else {
+      //Upload war nicht erfolgreich
+    }
+  };
+
   function handleAddCard(newCard) {
     const currentDate = new Date();
-    const NumSavings = newCard.price / newCard.howMuch;
+    const NumSavings = Math.ceil(newCard.price / newCard.howMuch);
 
     let daysToSave = NumSavings;
 
@@ -32,8 +49,6 @@ export default function App({ Component, pageProps }) {
     );
 
     const birthday = futureDate.toDateString();
-
-    const timeDiff = futureDate.getTime() - currentDate.getTime();
 
     const divisor = 207 / (newCard.price / newCard.howMuch);
 
@@ -80,6 +95,7 @@ export default function App({ Component, pageProps }) {
 
     setCards(updatedCards);
     setTickets(updatedTickets);
+    console.log(cards);
 
     Router.push("/");
   }
@@ -103,6 +119,8 @@ export default function App({ Component, pageProps }) {
         onAddTicket={handleAddTicket}
         onDeleteTicket={handleDeleteTicket}
         handleTicketApply={handleTicketApply}
+        handleImageUpload={handleImageUpload}
+        image={image}
       />
     </>
   );

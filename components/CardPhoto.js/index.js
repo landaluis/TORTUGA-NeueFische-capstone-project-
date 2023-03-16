@@ -2,16 +2,16 @@ import styled from "styled-components";
 import Image from "next/image";
 import NES from "./../../lib/NESswitch.png";
 
-export default function CardPhoto({ what }) {
+export default function CardPhoto({ what, image }) {
   return (
     <>
       <StyledCardPhoto>
         {" "}
         <Image
-          src={NES}
+          src={image}
           alt={"My Wish photo"}
           width="100"
-          height="auto"
+          height="100"
           style={{
             position: "relative",
             top: "10px",

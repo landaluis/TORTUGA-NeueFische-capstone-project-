@@ -5,8 +5,10 @@ import { pixelArray } from "../../lib/pixelArray";
 import useLocalStorageState from "use-local-storage-state";
 
 export default function Canvas({ birthday, divisor, id }) {
-  /*  const [pixels, setPixels] = useLocalStorageState("pixels", []); */
-  const [pixels, setPixels] = useState([]);
+  const [pixels, setPixels] = useLocalStorageState("pixels", {
+    defaultValue: [],
+  });
+  /*   const [pixels, setPixels] = useState([]); */
 
   function handleFillCanvas() {
     const newPixels = [];
@@ -14,7 +16,9 @@ export default function Canvas({ birthday, divisor, id }) {
     for (let i = 0; i < pixels?.length + divisor; i++) {
       if (i >= pixelArray.length) break;
 
-      newPixels.push(
+      newPixels.push(pixelArray[i]);
+
+      /* newPixels.push(
         <Pixel
           key={uid()}
           style={{
@@ -24,7 +28,7 @@ export default function Canvas({ birthday, divisor, id }) {
             gap: 0,
           }}
         />
-      );
+      ); */
     }
 
     setPixels(newPixels);
@@ -34,7 +38,19 @@ export default function Canvas({ birthday, divisor, id }) {
   return (
     <>
       <CanvasWrapper>
-        <PixelContainer>{pixels}</PixelContainer>
+        <PixelContainer>
+          {pixels.map((pixel) => (
+            <Pixel
+              key={uid()}
+              style={{
+                background: `${pixel}`,
+                width: "7.5px",
+                height: "7.5px",
+                gap: 0,
+              }}
+            />
+          ))}
+        </PixelContainer>
         <Title>Birthday:</Title>
         <Birthday>{birthday}</Birthday>
         <GenerateButton onClick={() => handleFillCanvas(id)}>€</GenerateButton>
