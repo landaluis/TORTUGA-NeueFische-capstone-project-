@@ -1,31 +1,6 @@
 import styled from "styled-components";
-import Router from "next/router";
 
 export default function TicketPage({ tickets, handleTicketApply }) {
-  /* function handleTicketApply (ticketValue)  {
-    console.log(`Applying ticket: ${ticketValue}`);
-
-    const ticketIndex = tickets.findIndex(
-      (ticket) => ticket.ticketValue === ticketValue
-    );
-
-    const ticket = tickets[ticketIndex];
-
-    const newPrice = cards[0].price - ticket.ticketValue;
-
-    const updatedTickets = [
-      ...tickets.slice(0, ticketIndex),
-      ...tickets.slice(ticketIndex + 1),
-    ];
-
-    setTickets(updatedTickets);
-
-    const updatedCards = [{ ...cards[0], price: newPrice }, ...cards.slice(1)];
-    setCards(updatedCards);
-    Router.push("/");
-  };
- */
-
   return (
     <>
       {tickets.length === 0 ? (

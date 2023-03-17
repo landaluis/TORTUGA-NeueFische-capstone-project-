@@ -1,46 +1,25 @@
 import styled from "styled-components";
 import { uid } from "uid";
-import { useState } from "react";
 import { pixelArray } from "../../lib/pixelArray";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function Canvas({
-  birthday,
-  divisor,
-  id,
-  handleFillCanvas,
-  pixels,
-}) {
-  /*  
+export default function Canvas({ birthday, divisor, id }) {
   const [pixels, setPixels] = useLocalStorageState("pixels", {
     defaultValue: [],
-  }); */
-  /*   const [pixels, setPixels] = useState([]); */
+  });
 
-  /* function handleFillCanvas() {
+  function handleFillCanvas() {
     const newPixels = [];
 
     for (let i = 0; i < pixels?.length + divisor; i++) {
       if (i >= pixelArray.length) break;
 
-      newPixels.push(pixelArray[i]); */
+      newPixels.push(pixelArray[i]);
+    }
 
-  /* newPixels.push(
-        <Pixel
-          key={uid()}
-          style={{
-            background: `${pixelArray[i]}`,
-            width: "7.5px",
-            height: "7.5px",
-            gap: 0,
-          }}
-        />
-      ); */
-  /*   } */
-
-  /*     setPixels(newPixels);
+    setPixels(newPixels);
     return newPixels;
-  } */
+  }
 
   return (
     <>

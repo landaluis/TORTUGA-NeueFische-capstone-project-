@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-export default function TicketUse() {
+export default function TicketUse({ id }) {
   return (
     <>
-      <Link href="/ticketpage">
+      <Link href={`/ticketpage?id=${id}`}>
         <TicketButton></TicketButton>
       </Link>
     </>
@@ -14,7 +14,7 @@ export default function TicketUse() {
 const TicketButton = styled.button`
   margin: 16px;
   position: absolute;
-  width: 10px;
+  width: 13px;
   height: 20px;
   top: 90px;
   left: 298px;

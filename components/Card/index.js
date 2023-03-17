@@ -32,7 +32,7 @@ export default function Card({
         >
           ✕
         </StyledButton>
-        <TicketUse></TicketUse>
+        <TicketUse id={id}></TicketUse>
       </StyledCard>
     </>
   );

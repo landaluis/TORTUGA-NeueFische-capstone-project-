@@ -4,8 +4,6 @@ import { useState } from "react";
 import { CldImage, CldUploadButton } from "next-cloudinary";
 import Image from "next/image";
 
-import useLocalStorageState from "use-local-storage-state";
-
 export default function CardForm({ onAddCard, onHandleImageUpload, image }) {
   const [maxHowMuch, setMaxHowMuch] = useState(1);
 
