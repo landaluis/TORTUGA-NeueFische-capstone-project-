@@ -3,12 +3,20 @@ import { uid } from "uid";
 import { pixelArray } from "../../lib/pixelArray";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function Canvas({ birthday, divisor, id }) {
+export default function Canvas({
+  birthday,
+  divisor,
+  id,
+  cards,
+  /*   handleFillCanvas, */
+  /* pixels, */
+}) {
   const [pixels, setPixels] = useLocalStorageState("pixels", {
     defaultValue: [],
   });
-
-  function handleFillCanvas() {
+  /*  let divisor = 1; */
+  function handleFillCanvas(id) {
+    /*  const cardIndex = cards.findIndex((card) => card.id === id); */
     const newPixels = [];
 
     for (let i = 0; i < pixels?.length + divisor; i++) {

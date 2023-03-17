@@ -6,16 +6,35 @@ import useLocalStorageState from "use-local-storage-state";
 import { uid } from "uid";
 import styled from "styled-components";
 import Router from "next/router";
+import { pixelArray } from "@/lib/pixelArray";
 
 export default function App({ Component, pageProps }) {
   const [cards, setCards] = useLocalStorageState("cards", { defaultValue: [] });
   const [tickets, setTickets] = useLocalStorageState("tickets", {
     defaultValue: [],
   });
-
   const [image, setImage] = useLocalStorageState("image", {
     defaultValue: {},
   });
+
+  /*   const [pixels, setPixels] = useLocalStorageState("pixels", {
+    defaultValue: [],
+  }); */
+
+  let divisor = 1;
+  /*   function handleFillCanvas(id) { */
+  /* const cardIndex = cards.findIndex((card) => card.id === id); */
+  /*    const newPixels = [];
+
+    for (let i = 0; i < pixels?.length + divisor; i++) {
+      if (i >= pixelArray.length) break;
+
+      newPixels.push(pixelArray[i]);
+    }
+
+    setPixels(newPixels);
+    return newPixels;
+  } */
 
   const handleImageUpload = (event) => {
     if (event.event === "success") {
@@ -84,17 +103,11 @@ export default function App({ Component, pageProps }) {
 
     const cardIndex = cards.findIndex((card) => card.id === id);
 
-    if (cardIndex === -1) {
-      return;
-    }
     const card = { ...cards[cardIndex] };
 
     const ticketIndex = tickets.findIndex(
       (ticket) => ticket.ticketValue == ticketValue
     );
-    if (ticketIndex === -1) {
-      return;
-    }
 
     const ticket = tickets[ticketIndex];
 
@@ -143,9 +156,9 @@ export default function App({ Component, pageProps }) {
         onDeleteTicket={handleDeleteTicket}
         handleTicketApply={handleTicketApply}
         handleImageUpload={handleImageUpload}
-        /*  handleFillCanvas={handleFillCanvas} */
+        /* handleFillCanvas={handleFillCanvas} */
         /* image={image} */
-        /*  pixels={pixels} */
+        /*       pixels={pixels} */
       />
     </>
   );

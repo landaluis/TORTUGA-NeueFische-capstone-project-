@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import Card from "../components/Card/index";
 
-export default function Home({ cards, onDeleteCard }) {
+export default function Home({
+  cards,
+  onDeleteCard,
+  pixels,
+  handleFillCanvas,
+}) {
   console.log(cards);
   return (
     <main>
@@ -26,6 +31,8 @@ export default function Home({ cards, onDeleteCard }) {
               birthday={card.birthday}
               divisor={card.divisor}
               image={card.image?.src}
+              pixels={pixels}
+              handleFillCanvas={handleFillCanvas}
             />
           ))}
         </CardList>
