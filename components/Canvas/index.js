@@ -8,32 +8,31 @@ export default function Canvas({
   divisor,
   id,
   cards,
-  /*   handleFillCanvas, */
-  /* pixels, */
+  card,
+  handleFillCanvas,
+  pixels,
 }) {
-  const [pixels, setPixels] = useLocalStorageState("pixels", {
+  /* const [pixels, setPixels] = useLocalStorageState("pixels", {
     defaultValue: [],
   });
-  /*  let divisor = 1; */
-  function handleFillCanvas(id) {
-    /*  const cardIndex = cards.findIndex((card) => card.id === id); */
+
+  function handleFillCanvas() {
     const newPixels = [];
 
     for (let i = 0; i < pixels?.length + divisor; i++) {
       if (i >= pixelArray.length) break;
-
       newPixels.push(pixelArray[i]);
     }
 
-    setPixels(newPixels);
+    setPixels([...newPixels]);
     return newPixels;
-  }
+  } */
 
   return (
     <>
       <CanvasWrapper>
         <PixelContainer>
-          {pixels.map((pixel) => (
+          {pixels?.map((pixel) => (
             <Pixel
               key={uid()}
               style={{
@@ -47,7 +46,9 @@ export default function Canvas({
         </PixelContainer>
         <Title>Birthday:</Title>
         <Birthday>{birthday}</Birthday>
-        <GenerateButton onClick={() => handleFillCanvas(id)}>€</GenerateButton>
+        <GenerateButton onClick={() => handleFillCanvas(divisor, pixels, id)}>
+          €
+        </GenerateButton>
       </CanvasWrapper>
     </>
   );

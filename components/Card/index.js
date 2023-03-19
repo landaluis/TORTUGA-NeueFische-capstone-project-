@@ -2,6 +2,7 @@ import styled from "styled-components";
 import CardPhoto from "../CardPhoto.js";
 import Canvas from "../Canvas";
 import TicketUse from "../TicketUse/index.js";
+import Counter from "../Counter/index.js";
 
 export default function Card({
   what,
@@ -24,7 +25,8 @@ export default function Card({
           divisor={divisor}
           handleFillCanvas={handleFillCanvas}
           pixels={pixels}
-        />
+        />{" "}
+        {/* <Counter /> */}
         <StyledButton
           onClick={() => onDeleteCard(id)}
           type="button"

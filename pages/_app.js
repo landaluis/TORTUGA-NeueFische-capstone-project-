@@ -17,24 +17,25 @@ export default function App({ Component, pageProps }) {
     defaultValue: {},
   });
 
-  /*   const [pixels, setPixels] = useLocalStorageState("pixels", {
-    defaultValue: [],
-  }); */
+  function handleFillCanvas(divisor, pixels, id) {
+    console.log("divisor value:", divisor);
+    console.log("id value:", id);
+    console.log("pixels value:", pixels);
 
-  let divisor = 1;
-  /*   function handleFillCanvas(id) { */
-  /* const cardIndex = cards.findIndex((card) => card.id === id); */
-  /*    const newPixels = [];
-
+    let newPixels = [];
+    const cardIndex = cards.findIndex((card) => card.id === id);
     for (let i = 0; i < pixels?.length + divisor; i++) {
       if (i >= pixelArray.length) break;
-
       newPixels.push(pixelArray[i]);
     }
 
-    setPixels(newPixels);
+    const updatedCards = [...cards];
+    updatedCards[cardIndex] = { ...updatedCards[cardIndex], pixels: newPixels };
+
+    setCards(updatedCards);
+
     return newPixels;
-  } */
+  }
 
   const handleImageUpload = (event) => {
     if (event.event === "success") {
@@ -69,18 +70,18 @@ export default function App({ Component, pageProps }) {
     const birthday = futureDate.toDateString();
 
     const divisor = 207 / (newCard.price / newCard.howMuch);
-
+    const pixels = [];
     setCards([
       {
         id: uid(),
         birthday,
         divisor,
+        pixels,
         image: { src: image.src, height: image.height, width: image.width },
         ...newCard,
       },
       ...cards,
     ]);
-    /*   setDivisor(divisor); */
   }
 
   function handleDeleteCard(id) {
@@ -112,8 +113,8 @@ export default function App({ Component, pageProps }) {
     const ticket = tickets[ticketIndex];
 
     const newPrice = card?.price - ticket.ticketValue;
-
-    /* console.log */ console.log(newPrice);
+    /* console.log */ console.log(`Price: ${card.price}`);
+    /* console.log */ console.log(`New Price: ${newPrice}`);
 
     card.price = newPrice;
 
@@ -131,7 +132,7 @@ export default function App({ Component, pageProps }) {
     setCards(updatedCards);
     setTickets(updatedTickets);
 
-    /* console.log */ console.log(updatedCards);
+    /* console.log */ /* console.log(updatedCards); */
 
     Router.push("/");
   }
@@ -156,9 +157,7 @@ export default function App({ Component, pageProps }) {
         onDeleteTicket={handleDeleteTicket}
         handleTicketApply={handleTicketApply}
         handleImageUpload={handleImageUpload}
-        /* handleFillCanvas={handleFillCanvas} */
-        /* image={image} */
-        /*       pixels={pixels} */
+        handleFillCanvas={handleFillCanvas}
       />
     </>
   );

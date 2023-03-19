@@ -7,7 +7,10 @@ export default function Home({
   pixels,
   handleFillCanvas,
 }) {
-  console.log(cards);
+  /*   console.log(cards);
+  console.log("hola");
+  const hola = [];
+  console.log(hola.length); */
   return (
     <main>
       {cards.length === 0 ? (
@@ -31,7 +34,7 @@ export default function Home({
               birthday={card.birthday}
               divisor={card.divisor}
               image={card.image?.src}
-              pixels={pixels}
+              pixels={card.pixels}
               handleFillCanvas={handleFillCanvas}
             />
           ))}
