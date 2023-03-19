@@ -7,27 +7,9 @@ export default function Canvas({
   birthday,
   divisor,
   id,
-  cards,
-  card,
   handleFillCanvas,
   pixels,
 }) {
-  /* const [pixels, setPixels] = useLocalStorageState("pixels", {
-    defaultValue: [],
-  });
-
-  function handleFillCanvas() {
-    const newPixels = [];
-
-    for (let i = 0; i < pixels?.length + divisor; i++) {
-      if (i >= pixelArray.length) break;
-      newPixels.push(pixelArray[i]);
-    }
-
-    setPixels([...newPixels]);
-    return newPixels;
-  } */
-
   return (
     <>
       <CanvasWrapper>

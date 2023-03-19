@@ -18,12 +18,9 @@ export default function App({ Component, pageProps }) {
   });
 
   function handleFillCanvas(divisor, pixels, id) {
-    console.log("divisor value:", divisor);
-    console.log("id value:", id);
-    console.log("pixels value:", pixels);
-
     let newPixels = [];
     const cardIndex = cards.findIndex((card) => card.id === id);
+
     for (let i = 0; i < pixels?.length + divisor; i++) {
       if (i >= pixelArray.length) break;
       newPixels.push(pixelArray[i]);
