@@ -44,7 +44,7 @@ const StyledWelcome = styled.p`
   position: relative;
   width: 340px;
   height: 184px;
-  background: #d9d9d9;
+  background: #eaeaea;
   border: 1px solid #a6a6a6;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;
