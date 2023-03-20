@@ -94,8 +94,6 @@ export default function App({ Component, pageProps }) {
   }
 
   function handleTicketApply(ticketValue) {
-    /* console.log */ console.log(`Applying ticket: ${ticketValue}`);
-
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
 
@@ -110,8 +108,6 @@ export default function App({ Component, pageProps }) {
     const ticket = tickets[ticketIndex];
 
     const newPrice = card?.price - ticket.ticketValue;
-    /* console.log */ console.log(`Price: ${card.price}`);
-    /* console.log */ console.log(`New Price: ${newPrice}`);
 
     card.price = newPrice;
 
@@ -128,8 +124,6 @@ export default function App({ Component, pageProps }) {
 
     setCards(updatedCards);
     setTickets(updatedTickets);
-
-    /* console.log */ /* console.log(updatedCards); */
 
     Router.push("/");
   }

@@ -1,16 +1,7 @@
 import styled from "styled-components";
 import Card from "../components/Card/index";
 
-export default function Home({
-  cards,
-  onDeleteCard,
-  pixels,
-  handleFillCanvas,
-}) {
-  /*   console.log(cards);
-  console.log("hola");
-  const hola = [];
-  console.log(hola.length); */
+export default function Home({ cards, onDeleteCard, handleFillCanvas }) {
   return (
     <main>
       {cards.length === 0 ? (
