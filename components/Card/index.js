@@ -48,8 +48,8 @@ const StyledCard = styled.div`
   width: 340px;
   height: 184px;
   margin: 16px auto;
-  display: block;
   position: relative;
+  display: block;
   line-height: 35px;
 `;
 
