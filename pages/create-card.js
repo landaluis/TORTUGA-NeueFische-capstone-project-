@@ -1,12 +1,9 @@
 import CardForm from "../components/CardForm/index";
-import Card from "../components/Card/index";
 
-import styled from "styled-components";
-
-export default function CreateCard({ onAddCard }) {
+export default function CreateCard({ onAddCard, handleImageUpload }) {
   return (
     <>
-      <CardForm onAddCard={onAddCard} />
+      <CardForm onAddCard={onAddCard} onHandleImageUpload={handleImageUpload} />
     </>
   );
 }

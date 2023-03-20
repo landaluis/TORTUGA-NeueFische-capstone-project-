@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Card from "../components/Card/index";
 
-export default function Home({ cards, onDeleteCard }) {
+export default function Home({ cards, onDeleteCard, handleFillCanvas }) {
   return (
     <main>
       {cards.length === 0 ? (
@@ -13,16 +13,20 @@ export default function Home({ cards, onDeleteCard }) {
       ) : null}
       <WrapperDiv>
         <CardList>
-          {cards?.map((card, id) => (
+          {cards?.map((card) => (
             <Card
-              key={id}
+              key={card.id}
               id={card.id}
               what={card.what}
               why={card.why}
               price={card.price}
               howMuch={card.howMuch}
-              frequency={card.frequency}
               onDeleteCard={onDeleteCard}
+              birthday={card.birthday}
+              divisor={card.divisor}
+              image={card.image?.src}
+              pixels={card.pixels}
+              handleFillCanvas={handleFillCanvas}
             />
           ))}
         </CardList>
@@ -40,7 +44,7 @@ const StyledWelcome = styled.p`
   position: relative;
   width: 340px;
   height: 184px;
-  background: #d9d9d9;
+  background: #eaeaea;
   border: 1px solid #a6a6a6;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;

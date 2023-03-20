@@ -1,23 +1,30 @@
 import styled from "styled-components";
+import CardPhoto from "../CardPhoto.js";
+import Canvas from "../Canvas";
+import TicketUse from "../TicketUse/index.js";
 
 export default function Card({
   what,
-  why,
-  price,
-  howMuch,
-  frequency,
   id,
   onDeleteCard,
+  birthday,
+  divisor,
+  image,
+  handleFillCanvas,
+  pixels,
 }) {
   return (
     <>
       <StyledCard>
         {" "}
-        <p>What: {what}</p>
-        <p>Why: {why}</p>
-        <p>Price: {price}</p>
-        <p>How Much: {howMuch}</p>
-        <p>Frequency: {frequency}</p>
+        <CardPhoto what={what} image={image}></CardPhoto>
+        <Canvas
+          birthday={birthday}
+          id={id}
+          divisor={divisor}
+          handleFillCanvas={handleFillCanvas}
+          pixels={pixels}
+        />{" "}
         <StyledButton
           onClick={() => onDeleteCard(id)}
           type="button"
@@ -25,6 +32,7 @@ export default function Card({
         >
           ✕
         </StyledButton>
+        <TicketUse id={id}></TicketUse>
       </StyledCard>
     </>
   );
@@ -38,10 +46,10 @@ const StyledCard = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;
   width: 340px;
-  height: 250px;
+  height: 184px;
   margin: 16px auto;
-  display: block;
   position: relative;
+  display: block;
   line-height: 35px;
 `;
 

@@ -36,7 +36,7 @@ export default function FormTicket({ onAddTicket }) {
 const StyledForm = styled.form`
   box-sizing: border-box;
   text-align: center;
-  background: #eaeaea;
+  background: #cccfcc;
   border: 1px solid #eaeaea;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;

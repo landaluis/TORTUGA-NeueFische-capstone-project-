@@ -1,15 +1,31 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { useState } from "react";
+import { CldImage, CldUploadButton } from "next-cloudinary";
+import Image from "next/image";
 
-export default function CardForm({ onAddCard }) {
+export default function CardForm({ onAddCard, onHandleImageUpload, image }) {
+  const [maxHowMuch, setMaxHowMuch] = useState(1);
+
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
     const formDataCard = new FormData(form);
 
     const data = Object.fromEntries(formDataCard);
+
+    if (data.frequency == "0") {
+      alert("Please select a frequency");
+      return;
+    }
+
     onAddCard(data);
     form.reset();
+    console.log(data);
+  }
+
+  function handlePriceChange(event) {
+    setMaxHowMuch(parseInt(event.target.value));
   }
 
   return (
@@ -21,23 +37,44 @@ export default function CardForm({ onAddCard }) {
             <label htmlFor="what">What: </label>
             <input type="text" id="what" name="what" required />
           </div>
+
+          <CldUploadButton
+            uploadPreset="ceduvcvz"
+            onUpload={onHandleImageUpload}
+          />
+          {image && <Image src={image.src} width={100} height={100} alt="" />}
+
           <div>
             <label htmlFor="why">Why: </label>
             <input type="text" id="why" name="why" />
           </div>
           <div>
             <label htmlFor="price">Price: </label>
-            <input type="number" id="price" name="price" min="1" required />
+            <input
+              type="number"
+              id="price"
+              name="price"
+              min="1"
+              required
+              onChange={handlePriceChange}
+            />
           </div>
 
           <div>
             <label htmlFor="howMuch">How much: </label>
-            <input type="number" id="howMuch" name="howMuch" min="1" required />
+            <input
+              type="number"
+              id="howMuch"
+              name="howMuch"
+              min="1"
+              max={maxHowMuch}
+              required
+            />
           </div>
           <div>
             <label>How often: </label>
             <select name="frequency" required>
-              <option value="o"></option>
+              <option value="0">-Choose Frequency-</option>
               <option value="1">Daily</option>
               <option value="2">Weekly</option>
               <option value="3">Monthly</option>

@@ -9,9 +9,9 @@ export default function CreateTicket({ onAddTicket, tickets, onDeleteTicket }) {
       <WrapperDiv>
         <FormTicket onAddTicket={onAddTicket} />
         <TicketList>
-          {tickets?.map((ticket, id) => (
+          {tickets?.map((ticket) => (
             <Ticket
-              key={id}
+              key={ticket.id}
               id={ticket.id}
               ticketValue={ticket.ticketValue}
               onDeleteTicket={onDeleteTicket}

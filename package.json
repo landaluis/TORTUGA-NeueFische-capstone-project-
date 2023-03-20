@@ -14,8 +14,10 @@
     "eslint-config-next": "13.2.3",
     "material-symbols": "^0.4.6",
     "next": "13.2.3",
+    "next-cloudinary": "^4.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-router-dom": "^6.9.0",
     "styled-components": "^5.3.8",
     "uid": "^2.0.1",
     "use-local-storage-state": "^18.2.1"
