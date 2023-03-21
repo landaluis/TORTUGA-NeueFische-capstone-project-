@@ -20,15 +20,16 @@ const StyledProgressBar = styled.div`
   height: 10px;
   border: 1px solid black;
   position: absolute;
-  top: 105px;
+  top: 97px;
   left: 15px;
+  border-radius: 2px;
 `;
 const StyledSavings = styled.div`
-  background-color: green;
+  background-color: #0ccf67;
   height: 10px;
 `;
 
 const StyledNeeded = styled.div`
-  background-color: red;
+  background-color: #eb2a15;
   height: 10px;
 `;

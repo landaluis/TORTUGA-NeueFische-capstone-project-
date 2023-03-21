@@ -8,6 +8,8 @@ export default function CardInfo({
   nextSav,
   savings,
   needed,
+  id,
+  onDeleteCard,
 }) {
   return (
     <>
@@ -15,32 +17,47 @@ export default function CardInfo({
         <strong>{what}</strong>{" "}
       </What>
       <Why>{why}</Why>
-      <Price>Price: {price}€</Price>
+      <Price>
+        <span style={{ fontSize: 15 }}>Price: </span>
+        <strong>{price}€</strong>
+      </Price>
       <NextSav>
         <Span>Next saving date:</Span>
         <Span> {nextSav}</Span>
       </NextSav>
-      <Savings>Savings: {savings}</Savings>
-      <Needed>Needed: {needed}</Needed>
+      <Savings>
+        <span style={{ fontSize: 15 }}>Savings: </span> {savings}€
+      </Savings>
+      <Needed>
+        <span style={{ fontSize: 15 }}>Needed: </span>{" "}
+        <span style={{ color: "red" }}>{needed}€</span>
+      </Needed>
       <ProgressBar
         savings={savings}
         needed={needed}
         price={price}
       ></ProgressBar>
+      <DeleteButton
+        onClick={() => onDeleteCard(id)}
+        type="button"
+        title="delete card"
+      >
+        Delete Card
+      </DeleteButton>
     </>
   );
 }
 
 const What = styled.div`
   position: absolute;
-  top: 25px;
+  top: 20px;
   left: 50%;
   transform: translate(-50%, -50%);
 `;
 
 const Why = styled.div`
   position: absolute;
-  top: 45px;
+  top: 40px;
   left: 50%;
   transform: translate(-50%, -50%);
 `;
@@ -48,14 +65,14 @@ const Why = styled.div`
 const Price = styled.p`
   position: absolute;
   display: inline;
-  top: 45px;
+  top: 40px;
   left: 20px;
 `;
 
 const NextSav = styled.p`
   position: absolute;
   display: inline;
-  top: 50px;
+  top: 45px;
   font-size: 12px;
   line-height: 16px;
   right: 55px;
@@ -63,16 +80,25 @@ const NextSav = styled.p`
 
 const Savings = styled.p`
   position: absolute;
-  top: 110px;
-  left: 20px;
+  top: 95px;
+  left: 19px;
 `;
 
 const Needed = styled.p`
   position: absolute;
-  top: 110px;
-  right: 100px;
+  top: 95px;
+  right: 50px;
 `;
 
 const Span = styled.span`
   display: block;
+`;
+
+const DeleteButton = styled.button`
+  position: absolute;
+  border: 1px solid gray;
+  border-radius: 4px;
+  z-index: 2;
+  left: 70px;
+  top: 150px;
 `;

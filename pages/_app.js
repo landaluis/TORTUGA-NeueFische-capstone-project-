@@ -128,7 +128,7 @@ export default function App({ Component, pageProps }) {
     const divisor = 207 / (newCard.price / newCard.howMuch);
     const pixels = [];
     let x = 1;
-    let showInfo = false;
+    let showInfo = true;
     let savings = 0;
     let s = 0;
     let needed = newCard.price - savings;
@@ -158,6 +158,7 @@ export default function App({ Component, pageProps }) {
   }
 
   function handleDeleteCard(id) {
+    console.log(id);
     setCards(cards.filter((card) => card.id !== id));
   }
 

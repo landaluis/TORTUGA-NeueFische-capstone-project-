@@ -6,7 +6,6 @@ export default function Home({
   onDeleteCard,
   handleFillCanvas,
   handleShowInfo,
-  showInfo,
 }) {
   console.log(cards);
   return (

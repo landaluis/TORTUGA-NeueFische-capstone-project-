@@ -53,61 +53,45 @@ export default function Card({
             savings={savings}
             howMuch={howMuch}
             needed={needed}
+            onDeleteCard={onDeleteCard}
+            id={id}
           />
         )}
-
-        <DeleteButton
+        {/*    <DeleteButton
           onClick={() => onDeleteCard(id)}
           type="button"
           title="delete card"
         >
-          ✕
-        </DeleteButton>
+          Delete Card
+        </DeleteButton> */}
         <InfoButton onClick={() => handleShowInfo(id, showInfo)}>i</InfoButton>
         <TicketUse id={id}></TicketUse>
-        {savings >= price ? (
-          <GenerateButton2
-            onClick={() =>
-              handleFillCanvas(
-                divisor,
-                pixels,
-                id,
-                frequencyDays,
-                x,
-                startDate,
-                savings,
-                s,
-                howMuch,
-                needed,
-                price,
-                usedTickets
-              )
-            }
-          >
-            €
-          </GenerateButton2>
-        ) : (
-          <GenerateButton1
-            onClick={() =>
-              handleFillCanvas(
-                divisor,
-                pixels,
-                id,
-                frequencyDays,
-                x,
-                startDate,
-                savings,
-                s,
-                howMuch,
-                needed,
-                price,
-                usedTickets
-              )
-            }
-          >
-            €
-          </GenerateButton1>
-        )}
+
+        <GenerateButton
+          style={
+            savings >= price
+              ? { background: "red" }
+              : { background: "greenyellow" }
+          }
+          onClick={() =>
+            handleFillCanvas(
+              divisor,
+              pixels,
+              id,
+              frequencyDays,
+              x,
+              startDate,
+              savings,
+              s,
+              howMuch,
+              needed,
+              price,
+              usedTickets
+            )
+          }
+        >
+          €
+        </GenerateButton>
       </StyledCard>
     </>
   );
@@ -130,32 +114,23 @@ const StyledCard = styled.div`
 
 const DeleteButton = styled.button`
   position: absolute;
-  border: none;
+  border: 1px solid gray;
+  border-radius: 4px;
   z-index: 2;
-  right: 10px;
-  top: 10px;
+  left: 70px;
+  top: 150px;
 `;
 
-const GenerateButton1 = styled.button`
+const GenerateButton = styled.button`
   margin: 16px;
   position: absolute;
   bottom: 0px;
   right: -10px;
   border-radius: 50%;
-  background-color: greenyellow;
 `;
 
 const InfoButton = styled.button`
   position: absolute;
-  top: 45px;
+  top: 70px;
   right: 8px;
-`;
-
-const GenerateButton2 = styled.button`
-  margin: 16px;
-  position: absolute;
-  bottom: 0px;
-  right: -10px;
-  border-radius: 50%;
-  background-color: red;
 `;
