@@ -21,11 +21,9 @@ export default function Card({
   numIterations,
   x,
   startDate,
+  handleShowInfo,
+  showInfo,
 }) {
-  const [showInfo, setShowInfo] = useState(false);
-  function handleShowInfo() {
-    setShowInfo(!showInfo);
-  }
   return (
     <>
       <StyledCard>
@@ -57,7 +55,7 @@ export default function Card({
         >
           ✕
         </DeleteButton>
-        <InfoButton onClick={handleShowInfo}>i</InfoButton>
+        <InfoButton onClick={() => handleShowInfo(id, showInfo)}>i</InfoButton>
         <TicketUse id={id}></TicketUse>
         <GenerateButton
           onClick={() =>

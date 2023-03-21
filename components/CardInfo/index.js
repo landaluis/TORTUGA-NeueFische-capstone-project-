@@ -8,7 +8,10 @@ export default function CardInfo({ what, why, price, nextSav }) {
       </What>
       <Why>{why}</Why>
       <Price>Price: {price}€</Price>
-      <NextSav>Next saving date: {nextSav}</NextSav>
+      <NextSav>
+        <Span>Next saving date:</Span>
+        <Span> {nextSav}</Span>
+      </NextSav>
       <Savings>Savings: </Savings>
       <Needed>Needed:</Needed>
     </>
@@ -16,38 +19,47 @@ export default function CardInfo({ what, why, price, nextSav }) {
 }
 
 const What = styled.div`
-  position: relative;
-  top: 10px;
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const Why = styled.div`
-  position: relative;
-  top: 0px;
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
-const Price = styled.section`
-  position: relative;
+const Price = styled.p`
+  position: absolute;
   display: inline;
-  top: -2px;
-  right: 40px;
+  top: 45px;
+  left: 20px;
 `;
 
-const NextSav = styled.section`
-  position: relative;
+const NextSav = styled.p`
+  position: absolute;
   display: inline;
-  top: -2px;
+  top: 50px;
   font-size: 12px;
+  line-height: 16px;
+  right: 55px;
 `;
 
-const Savings = styled.section`
-  position: relative;
+const Savings = styled.p`
+  position: absolute;
+  top: 110px;
+  left: 20px;
+`;
 
-  top: 15px;
+const Needed = styled.p`
+  position: absolute;
+  top: 110px;
   right: 100px;
 `;
 
-const Needed = styled.section`
-  position: relative;
-  top: -19px;
-  left: 30px;
+const Span = styled.span`
+  display: block;
 `;

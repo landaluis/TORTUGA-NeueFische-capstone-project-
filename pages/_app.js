@@ -18,6 +18,17 @@ export default function App({ Component, pageProps }) {
     defaultValue: {},
   });
 
+  function handleShowInfo(id, showInfo) {
+    const cardIndex = cards.findIndex((card) => card.id === id);
+    const updatedCards = [...cards];
+    updatedCards[cardIndex] = {
+      ...updatedCards[cardIndex],
+      showInfo: !showInfo,
+    };
+
+    setCards(updatedCards);
+  }
+
   function handleFillCanvas(divisor, pixels, id, frequencyDays, x, startDate) {
     let newPixels = [];
     const cardIndex = cards.findIndex((card) => card.id === id);
@@ -94,7 +105,8 @@ export default function App({ Component, pageProps }) {
     const divisor = 207 / (newCard.price / newCard.howMuch);
     const pixels = [];
     let x = 1;
-    console.log(x);
+    let showInfo = false;
+
     setCards([
       {
         id: uid(),
@@ -106,6 +118,7 @@ export default function App({ Component, pageProps }) {
         pixels,
         nextSav,
         x,
+        showInfo,
         image: { src: image.src, height: image.height, width: image.width },
         ...newCard,
       },
@@ -181,6 +194,8 @@ export default function App({ Component, pageProps }) {
         handleTicketApply={handleTicketApply}
         handleImageUpload={handleImageUpload}
         handleFillCanvas={handleFillCanvas}
+        handleShowInfo={handleShowInfo}
+        /*  showInfo={showInfo} */
       />
     </>
   );

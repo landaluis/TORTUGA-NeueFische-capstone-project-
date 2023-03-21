@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { uid } from "uid";
-import { pixelArray } from "../../lib/pixelArray";
-import useLocalStorageState from "use-local-storage-state";
 
 export default function Canvas({ birthday, pixels }) {
   return (
