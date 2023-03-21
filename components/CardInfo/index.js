@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ProgressBar from "../ProgressBar";
 
 export default function CardInfo({
   what,
@@ -21,6 +22,11 @@ export default function CardInfo({
       </NextSav>
       <Savings>Savings: {savings}</Savings>
       <Needed>Needed: {needed}</Needed>
+      <ProgressBar
+        savings={savings}
+        needed={needed}
+        price={price}
+      ></ProgressBar>
     </>
   );
 }
