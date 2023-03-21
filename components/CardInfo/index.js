@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
-export default function CardInfo({ what, why, price, nextSav }) {
+export default function CardInfo({
+  what,
+  why,
+  price,
+  nextSav,
+  savings,
+  needed,
+}) {
   return (
     <>
       <What>
@@ -12,8 +19,8 @@ export default function CardInfo({ what, why, price, nextSav }) {
         <Span>Next saving date:</Span>
         <Span> {nextSav}</Span>
       </NextSav>
-      <Savings>Savings: </Savings>
-      <Needed>Needed:</Needed>
+      <Savings>Savings: {savings}</Savings>
+      <Needed>Needed: {needed}</Needed>
     </>
   );
 }

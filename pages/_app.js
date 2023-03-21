@@ -29,7 +29,23 @@ export default function App({ Component, pageProps }) {
     setCards(updatedCards);
   }
 
-  function handleFillCanvas(divisor, pixels, id, frequencyDays, x, startDate) {
+  function handleFillCanvas(
+    divisor,
+    pixels,
+    id,
+    frequencyDays,
+    x,
+    startDate,
+    savings,
+    s,
+    howMuch,
+    needed,
+    price,
+    usedTickets
+  ) {
+    if (savings >= price) {
+      return;
+    }
     let newPixels = [];
     const cardIndex = cards.findIndex((card) => card.id === id);
 
@@ -47,12 +63,19 @@ export default function App({ Component, pageProps }) {
 
     let newNextSav = nextSavPeriod.toDateString();
 
+    s = s + 1;
+    savings = usedTickets + howMuch * s;
+    needed = price - savings;
+
     const updatedCards = [...cards];
     updatedCards[cardIndex] = {
       ...updatedCards[cardIndex],
       pixels: newPixels,
       nextSav: newNextSav,
       x: x,
+      s: s,
+      savings: savings,
+      needed: needed,
     };
 
     setCards(updatedCards);
@@ -106,6 +129,10 @@ export default function App({ Component, pageProps }) {
     const pixels = [];
     let x = 1;
     let showInfo = false;
+    let savings = 0;
+    let s = 0;
+    let needed = newCard.price - savings;
+    let usedTickets = 0;
 
     setCards([
       {
@@ -119,6 +146,10 @@ export default function App({ Component, pageProps }) {
         nextSav,
         x,
         showInfo,
+        savings,
+        s,
+        needed,
+        usedTickets,
         image: { src: image.src, height: image.height, width: image.width },
         ...newCard,
       },
@@ -138,7 +169,7 @@ export default function App({ Component, pageProps }) {
     setTickets(tickets.filter((ticket) => ticket.id !== id));
   }
 
-  function handleTicketApply(ticketValue) {
+  function handleTicketApply(ticketValue, savings, price, needed, usedTickets) {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
 
@@ -152,20 +183,35 @@ export default function App({ Component, pageProps }) {
 
     const ticket = tickets[ticketIndex];
 
-    const newPrice = card?.price - ticket.ticketValue;
+    ticket.ticketValue = parseInt(ticket.ticketValue);
+    card.savings = parseInt(card.savings);
 
-    card.price = newPrice;
+    const newSavings = card.savings + ticket.ticketValue;
 
-    const updatedCards = [
-      ...cards.slice(0, cardIndex),
-      card,
-      ...cards.slice(cardIndex + 1),
-    ];
+    card.needed = parseInt(card.needed);
+    card.price = parseInt(card.price);
+    card.usedTickets = parseInt(card.usedTickets);
+
+    let totalUsedTickets = card.usedTickets + ticket.ticketValue;
+    const newNeeded = card.price - newSavings;
+
+    usedTickets = totalUsedTickets;
+    savings = newSavings;
+    needed = newNeeded;
+    price = card.price;
 
     const updatedTickets = [
       ...tickets.slice(0, ticketIndex),
       ...tickets.slice(ticketIndex + 1),
     ];
+
+    const updatedCards = [...cards];
+    updatedCards[cardIndex] = {
+      ...updatedCards[cardIndex],
+      savings: savings,
+      needed: needed,
+      usedTickets: usedTickets,
+    };
 
     setCards(updatedCards);
     setTickets(updatedTickets);
@@ -195,7 +241,6 @@ export default function App({ Component, pageProps }) {
         handleImageUpload={handleImageUpload}
         handleFillCanvas={handleFillCanvas}
         handleShowInfo={handleShowInfo}
-        /*  showInfo={showInfo} */
       />
     </>
   );

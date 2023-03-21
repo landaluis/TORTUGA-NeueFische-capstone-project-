@@ -23,6 +23,11 @@ export default function Card({
   startDate,
   handleShowInfo,
   showInfo,
+  savings,
+  howMuch,
+  s,
+  needed,
+  usedTickets,
 }) {
   return (
     <>
@@ -45,6 +50,9 @@ export default function Card({
             price={price}
             nextSav={nextSav}
             numnumIterations={numIterations}
+            savings={savings}
+            howMuch={howMuch}
+            needed={needed}
           />
         )}
 
@@ -57,13 +65,49 @@ export default function Card({
         </DeleteButton>
         <InfoButton onClick={() => handleShowInfo(id, showInfo)}>i</InfoButton>
         <TicketUse id={id}></TicketUse>
-        <GenerateButton
-          onClick={() =>
-            handleFillCanvas(divisor, pixels, id, frequencyDays, x, startDate)
-          }
-        >
-          €
-        </GenerateButton>
+        {savings >= price ? (
+          <GenerateButton2
+            onClick={() =>
+              handleFillCanvas(
+                divisor,
+                pixels,
+                id,
+                frequencyDays,
+                x,
+                startDate,
+                savings,
+                s,
+                howMuch,
+                needed,
+                price,
+                usedTickets
+              )
+            }
+          >
+            €
+          </GenerateButton2>
+        ) : (
+          <GenerateButton1
+            onClick={() =>
+              handleFillCanvas(
+                divisor,
+                pixels,
+                id,
+                frequencyDays,
+                x,
+                startDate,
+                savings,
+                s,
+                howMuch,
+                needed,
+                price,
+                usedTickets
+              )
+            }
+          >
+            €
+          </GenerateButton1>
+        )}
       </StyledCard>
     </>
   );
@@ -92,7 +136,7 @@ const DeleteButton = styled.button`
   top: 10px;
 `;
 
-const GenerateButton = styled.button`
+const GenerateButton1 = styled.button`
   margin: 16px;
   position: absolute;
   bottom: 0px;
@@ -105,4 +149,13 @@ const InfoButton = styled.button`
   position: absolute;
   top: 45px;
   right: 8px;
+`;
+
+const GenerateButton2 = styled.button`
+  margin: 16px;
+  position: absolute;
+  bottom: 0px;
+  right: -10px;
+  border-radius: 50%;
+  background-color: red;
 `;

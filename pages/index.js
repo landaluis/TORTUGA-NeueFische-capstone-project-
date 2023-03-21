@@ -8,6 +8,7 @@ export default function Home({
   handleShowInfo,
   showInfo,
 }) {
+  console.log(cards);
   return (
     <main>
       {cards.length === 0 ? (
@@ -40,6 +41,10 @@ export default function Home({
               x={card.x}
               handleShowInfo={handleShowInfo}
               showInfo={card.showInfo}
+              savings={card.savings}
+              s={card.s}
+              needed={card.needed}
+              usedTickets={card.usedTickets}
             />
           ))}
         </CardList>
