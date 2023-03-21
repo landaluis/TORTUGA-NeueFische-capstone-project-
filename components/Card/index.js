@@ -2,9 +2,13 @@ import styled from "styled-components";
 import CardPhoto from "../CardPhoto.js";
 import Canvas from "../Canvas";
 import TicketUse from "../TicketUse/index.js";
+import { useState } from "react";
+import CardInfo from "../CardInfo/index.js";
 
 export default function Card({
   what,
+  why,
+  price,
   id,
   onDeleteCard,
   birthday,
@@ -12,27 +16,56 @@ export default function Card({
   image,
   handleFillCanvas,
   pixels,
+  nextSav,
+  frequencyDays,
+  numIterations,
+  x,
+  startDate,
 }) {
+  const [showInfo, setShowInfo] = useState(false);
+  function handleShowInfo() {
+    setShowInfo(!showInfo);
+  }
   return (
     <>
       <StyledCard>
-        {" "}
-        <CardPhoto what={what} image={image}></CardPhoto>
-        <Canvas
-          birthday={birthday}
-          id={id}
-          divisor={divisor}
-          handleFillCanvas={handleFillCanvas}
-          pixels={pixels}
-        />{" "}
-        <StyledButton
+        {showInfo ? (
+          <>
+            <CardPhoto what={what} image={image}></CardPhoto>
+            <Canvas
+              birthday={birthday}
+              id={id}
+              divisor={divisor}
+              handleFillCanvas={handleFillCanvas}
+              pixels={pixels}
+            />
+          </>
+        ) : (
+          <CardInfo
+            what={what}
+            why={why}
+            price={price}
+            nextSav={nextSav}
+            numnumIterations={numIterations}
+          />
+        )}
+
+        <DeleteButton
           onClick={() => onDeleteCard(id)}
           type="button"
           title="delete card"
         >
           ✕
-        </StyledButton>
+        </DeleteButton>
+        <InfoButton onClick={handleShowInfo}>i</InfoButton>
         <TicketUse id={id}></TicketUse>
+        <GenerateButton
+          onClick={() =>
+            handleFillCanvas(divisor, pixels, id, frequencyDays, x, startDate)
+          }
+        >
+          €
+        </GenerateButton>
       </StyledCard>
     </>
   );
@@ -53,10 +86,25 @@ const StyledCard = styled.div`
   line-height: 35px;
 `;
 
-const StyledButton = styled.button`
+const DeleteButton = styled.button`
   position: absolute;
   border: none;
   z-index: 2;
   right: 10px;
   top: 10px;
+`;
+
+const GenerateButton = styled.button`
+  margin: 16px;
+  position: absolute;
+  bottom: 0px;
+  right: -10px;
+  border-radius: 50%;
+  background-color: greenyellow;
+`;
+
+const InfoButton = styled.button`
+  position: absolute;
+  top: 45px;
+  right: 8px;
 `;

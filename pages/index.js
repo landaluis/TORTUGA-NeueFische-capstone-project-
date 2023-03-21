@@ -27,6 +27,11 @@ export default function Home({ cards, onDeleteCard, handleFillCanvas }) {
               image={card.image?.src}
               pixels={card.pixels}
               handleFillCanvas={handleFillCanvas}
+              nextSav={card.nextSav}
+              frequencyDays={card.frequencyDays}
+              startDate={card.startDate}
+              numIterations={card.numIterations}
+              x={card.x}
             />
           ))}
         </CardList>
