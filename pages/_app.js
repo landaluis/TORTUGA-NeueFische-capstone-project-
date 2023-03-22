@@ -67,6 +67,15 @@ export default function App({ Component, pageProps }) {
     savings = usedTickets + howMuch * s;
     needed = price - savings;
 
+    if (needed < 0) {
+      const newTicket = {
+        id: uid(),
+        ticketValue: -needed,
+      };
+      setTickets([...tickets, newTicket]);
+      console.log(tickets);
+    }
+
     const updatedCards = [...cards];
     updatedCards[cardIndex] = {
       ...updatedCards[cardIndex],
@@ -158,7 +167,6 @@ export default function App({ Component, pageProps }) {
   }
 
   function handleDeleteCard(id) {
-    console.log(id);
     setCards(cards.filter((card) => card.id !== id));
   }
 
@@ -171,6 +179,10 @@ export default function App({ Component, pageProps }) {
   }
 
   function handleTicketApply(ticketValue, savings, price, needed, usedTickets) {
+    if (savings >= price) {
+      return;
+    }
+
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
 
@@ -216,6 +228,15 @@ export default function App({ Component, pageProps }) {
 
     setCards(updatedCards);
     setTickets(updatedTickets);
+
+    if (needed < 0) {
+      const newTicket = {
+        id: uid(),
+        ticketValue: -needed,
+      };
+      setTickets([...updatedTickets, newTicket]);
+      console.log(tickets);
+    }
 
     Router.push("/");
   }

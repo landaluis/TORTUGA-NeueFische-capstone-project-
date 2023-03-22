@@ -7,7 +7,6 @@ export default function Home({
   handleFillCanvas,
   handleShowInfo,
 }) {
-  console.log(cards);
   return (
     <main>
       {cards.length === 0 ? (

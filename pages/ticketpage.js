@@ -11,7 +11,7 @@ export default function TicketPage({ tickets, handleTicketApply }) {
       ) : null}
 
       <TicketPageContainer>
-        {tickets?.map((ticket, card) => (
+        {tickets?.map((ticket) => (
           <StyledTicketContainer key={ticket?.id}>
             <StyledTicket>{ticket?.ticketValue}€</StyledTicket>
 

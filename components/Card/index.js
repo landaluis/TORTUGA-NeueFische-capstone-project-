@@ -57,15 +57,9 @@ export default function Card({
             id={id}
           />
         )}
-        {/*    <DeleteButton
-          onClick={() => onDeleteCard(id)}
-          type="button"
-          title="delete card"
-        >
-          Delete Card
-        </DeleteButton> */}
+
         <InfoButton onClick={() => handleShowInfo(id, showInfo)}>i</InfoButton>
-        <TicketUse id={id}></TicketUse>
+        <TicketUse id={id} savings={savings} price={price}></TicketUse>
 
         <GenerateButton
           style={
@@ -112,15 +106,6 @@ const StyledCard = styled.div`
   line-height: 35px;
 `;
 
-const DeleteButton = styled.button`
-  position: absolute;
-  border: 1px solid gray;
-  border-radius: 4px;
-  z-index: 2;
-  left: 70px;
-  top: 150px;
-`;
-
 const GenerateButton = styled.button`
   margin: 16px;
   position: absolute;
@@ -131,6 +116,7 @@ const GenerateButton = styled.button`
 
 const InfoButton = styled.button`
   position: absolute;
-  top: 70px;
+  top: 10px;
   right: 8px;
+  border-radius: 50%;
 `;

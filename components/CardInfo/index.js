@@ -80,13 +80,13 @@ const NextSav = styled.p`
 
 const Savings = styled.p`
   position: absolute;
-  top: 95px;
+  top: 92px;
   left: 19px;
 `;
 
 const Needed = styled.p`
   position: absolute;
-  top: 95px;
+  top: 92px;
   right: 50px;
 `;
 
@@ -99,6 +99,6 @@ const DeleteButton = styled.button`
   border: 1px solid gray;
   border-radius: 4px;
   z-index: 2;
-  left: 70px;
+  left: 120px;
   top: 150px;
 `;
