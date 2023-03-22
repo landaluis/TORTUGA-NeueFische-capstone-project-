@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import Card from "../components/Card/index";
 
-export default function Home({ cards, onDeleteCard, handleFillCanvas }) {
+export default function Home({
+  cards,
+  onDeleteCard,
+  handleFillCanvas,
+  handleShowInfo,
+}) {
   return (
     <main>
       {cards.length === 0 ? (
@@ -27,6 +32,17 @@ export default function Home({ cards, onDeleteCard, handleFillCanvas }) {
               image={card.image?.src}
               pixels={card.pixels}
               handleFillCanvas={handleFillCanvas}
+              nextSav={card.nextSav}
+              frequencyDays={card.frequencyDays}
+              startDate={card.startDate}
+              numIterations={card.numIterations}
+              x={card.x}
+              handleShowInfo={handleShowInfo}
+              showInfo={card.showInfo}
+              savings={card.savings}
+              s={card.s}
+              needed={card.needed}
+              usedTickets={card.usedTickets}
             />
           ))}
         </CardList>

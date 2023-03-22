@@ -7,6 +7,8 @@ import { uid } from "uid";
 import styled from "styled-components";
 import Router from "next/router";
 import { pixelArray } from "@/lib/pixelArray";
+import { useState } from "react";
+import next from "next";
 
 export default function App({ Component, pageProps }) {
   const [cards, setCards] = useLocalStorageState("cards", { defaultValue: [] });
@@ -16,8 +18,36 @@ export default function App({ Component, pageProps }) {
   const [image, setImage] = useLocalStorageState("image", {
     defaultValue: {},
   });
+  const [isUploaded, setIsUploaded] = useState(false);
 
-  function handleFillCanvas(divisor, pixels, id) {
+  function handleShowInfo(id, showInfo) {
+    const cardIndex = cards.findIndex((card) => card.id === id);
+    const updatedCards = [...cards];
+    updatedCards[cardIndex] = {
+      ...updatedCards[cardIndex],
+      showInfo: !showInfo,
+    };
+
+    setCards(updatedCards);
+  }
+
+  function handleFillCanvas(
+    divisor,
+    pixels,
+    id,
+    frequencyDays,
+    x,
+    startDate,
+    savings,
+    s,
+    howMuch,
+    needed,
+    price,
+    usedTickets
+  ) {
+    if (savings >= price) {
+      return;
+    }
     let newPixels = [];
     const cardIndex = cards.findIndex((card) => card.id === id);
 
@@ -26,8 +56,37 @@ export default function App({ Component, pageProps }) {
       newPixels.push(pixelArray[i]);
     }
 
+    x = x + 1;
+    let currentDate = new Date(startDate);
+
+    let nextSavPeriod = new Date(
+      currentDate.getTime() + frequencyDays * x * 24 * 60 * 60 * 1000
+    );
+
+    let newNextSav = nextSavPeriod.toDateString();
+
+    s = s + 1;
+    savings = usedTickets + howMuch * s;
+    needed = price - savings;
+
+    if (needed < 0) {
+      const newTicket = {
+        id: uid(),
+        ticketValue: -needed,
+      };
+      setTickets([...tickets, newTicket]);
+    }
+
     const updatedCards = [...cards];
-    updatedCards[cardIndex] = { ...updatedCards[cardIndex], pixels: newPixels };
+    updatedCards[cardIndex] = {
+      ...updatedCards[cardIndex],
+      pixels: newPixels,
+      nextSav: newNextSav,
+      x: x,
+      s: s,
+      savings: savings,
+      needed: needed,
+    };
 
     setCards(updatedCards);
 
@@ -41,39 +100,68 @@ export default function App({ Component, pageProps }) {
         height: event.info.height,
         width: event.info.width,
       });
+      setIsUploaded(true);
     } else {
+      setIsUploaded(false);
       //Upload war nicht erfolgreich
     }
   };
 
   function handleAddCard(newCard) {
-    const currentDate = new Date();
+    let startDate = new Date();
     const NumSavings = Math.ceil(newCard.price / newCard.howMuch);
+    const numIterations = Math.ceil(newCard.price / newCard.howMuch);
 
     let daysToSave = NumSavings;
+    let frequencyDays = 0;
 
     if (newCard.frequency == 1) {
       daysToSave = NumSavings;
+      frequencyDays = 1;
     } else if (newCard.frequency == 2) {
       daysToSave = NumSavings * 7;
+      frequencyDays = 7;
     } else {
       daysToSave = NumSavings * 30;
+      frequencyDays = 30;
     }
 
     const futureDate = new Date(
-      currentDate.getTime() + daysToSave * 24 * 60 * 60 * 1000
+      startDate.getTime() + daysToSave * 24 * 60 * 60 * 1000
     );
 
+    const firstSavData = new Date(
+      startDate.getTime() + frequencyDays * 24 * 60 * 60 * 1000
+    );
+
+    const nextSav = firstSavData.toDateString();
     const birthday = futureDate.toDateString();
 
     const divisor = 207 / (newCard.price / newCard.howMuch);
     const pixels = [];
+    let x = 1;
+    let showInfo = true;
+    let savings = 0;
+    let s = 0;
+    let needed = newCard.price - savings;
+    let usedTickets = 0;
+
     setCards([
       {
         id: uid(),
         birthday,
+        frequencyDays,
+        startDate,
+        numIterations,
         divisor,
         pixels,
+        nextSav,
+        x,
+        showInfo,
+        savings,
+        s,
+        needed,
+        usedTickets,
         image: { src: image.src, height: image.height, width: image.width },
         ...newCard,
       },
@@ -93,7 +181,11 @@ export default function App({ Component, pageProps }) {
     setTickets(tickets.filter((ticket) => ticket.id !== id));
   }
 
-  function handleTicketApply(ticketValue) {
+  function handleTicketApply(ticketValue, savings, price, needed, usedTickets) {
+    if (savings >= price) {
+      return;
+    }
+
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
 
@@ -107,23 +199,46 @@ export default function App({ Component, pageProps }) {
 
     const ticket = tickets[ticketIndex];
 
-    const newPrice = card?.price - ticket.ticketValue;
+    ticket.ticketValue = parseInt(ticket.ticketValue);
+    card.savings = parseInt(card.savings);
 
-    card.price = newPrice;
+    const newSavings = card.savings + ticket.ticketValue;
 
-    const updatedCards = [
-      ...cards.slice(0, cardIndex),
-      card,
-      ...cards.slice(cardIndex + 1),
-    ];
+    card.needed = parseInt(card.needed);
+    card.price = parseInt(card.price);
+    card.usedTickets = parseInt(card.usedTickets);
+
+    let totalUsedTickets = card.usedTickets + ticket.ticketValue;
+    const newNeeded = card.price - newSavings;
+
+    usedTickets = totalUsedTickets;
+    savings = newSavings;
+    needed = newNeeded;
+    price = card.price;
 
     const updatedTickets = [
       ...tickets.slice(0, ticketIndex),
       ...tickets.slice(ticketIndex + 1),
     ];
 
+    const updatedCards = [...cards];
+    updatedCards[cardIndex] = {
+      ...updatedCards[cardIndex],
+      savings: savings,
+      needed: needed,
+      usedTickets: usedTickets,
+    };
+
     setCards(updatedCards);
     setTickets(updatedTickets);
+
+    if (needed < 0) {
+      const newTicket = {
+        id: uid(),
+        ticketValue: -needed,
+      };
+      setTickets([...updatedTickets, newTicket]);
+    }
 
     Router.push("/");
   }
@@ -149,6 +264,8 @@ export default function App({ Component, pageProps }) {
         handleTicketApply={handleTicketApply}
         handleImageUpload={handleImageUpload}
         handleFillCanvas={handleFillCanvas}
+        handleShowInfo={handleShowInfo}
+        isUploaded={isUploaded}
       />
     </>
   );

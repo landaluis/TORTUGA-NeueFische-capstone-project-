@@ -1,15 +1,7 @@
 import styled from "styled-components";
 import { uid } from "uid";
-import { pixelArray } from "../../lib/pixelArray";
-import useLocalStorageState from "use-local-storage-state";
 
-export default function Canvas({
-  birthday,
-  divisor,
-  id,
-  handleFillCanvas,
-  pixels,
-}) {
+export default function Canvas({ birthday, pixels }) {
   return (
     <>
       <CanvasWrapper>
@@ -28,9 +20,6 @@ export default function Canvas({
         </PixelContainer>
         <Title>Birthday:</Title>
         <Birthday>{birthday}</Birthday>
-        <GenerateButton onClick={() => handleFillCanvas(divisor, pixels, id)}>
-          €
-        </GenerateButton>
       </CanvasWrapper>
     </>
   );
@@ -53,9 +42,9 @@ const CanvasWrapper = styled.section`
 
 const PixelContainer = styled.div`
   position: relative;
-  top: 10px;
+  top: 8px;
   transform: rotate(180deg);
-  height: 150px;
+  height: 110px;
   max-width: 150px;
   display: grid;
   aspect-ratio: 1 / 1;
@@ -73,15 +62,6 @@ const Pixel = styled.div`
   z-index: 40;
 `;
 
-const GenerateButton = styled.button`
-  margin: 16px;
-  position: relative;
-  top: 10px;
-  left: 90px;
-  border-radius: 50%;
-  background-color: greenyellow;
-`;
-
 const Birthday = styled.div`
   position: absolute;
   text-align: center;
@@ -92,6 +72,7 @@ const Birthday = styled.div`
 const Title = styled.h5`
   margin: 16px;
   position: absolute;
-  top: 95px;
-  left: 25px;
+  text-align: center;
+  top: 110px;
+  margin: 0;
 `;

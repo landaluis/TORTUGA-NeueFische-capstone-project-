@@ -4,7 +4,12 @@ import { useState } from "react";
 import { CldImage, CldUploadButton } from "next-cloudinary";
 import Image from "next/image";
 
-export default function CardForm({ onAddCard, onHandleImageUpload, image }) {
+export default function CardForm({
+  onAddCard,
+  onHandleImageUpload,
+  image,
+  isUploaded,
+}) {
   const [maxHowMuch, setMaxHowMuch] = useState(1);
 
   function handleSubmit(event) {
@@ -21,7 +26,6 @@ export default function CardForm({ onAddCard, onHandleImageUpload, image }) {
 
     onAddCard(data);
     form.reset();
-    console.log(data);
   }
 
   function handlePriceChange(event) {
@@ -31,24 +35,27 @@ export default function CardForm({ onAddCard, onHandleImageUpload, image }) {
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>
-        <h4>New Card</h4>
+        <Title>New Card</Title>
         <section>
-          <div>
+          <What>
             <label htmlFor="what">What: </label>
             <input type="text" id="what" name="what" required />
-          </div>
+          </What>
 
-          <CldUploadButton
-            uploadPreset="ceduvcvz"
-            onUpload={onHandleImageUpload}
-          />
-          {image && <Image src={image.src} width={100} height={100} alt="" />}
+          <Upload>
+            <CldUploadButton
+              uploadPreset="ceduvcvz"
+              onUpload={onHandleImageUpload}
+            />
+            {image && <Image src={image.src} width={100} height={100} alt="" />}
+            {isUploaded && <Checked></Checked>}
+          </Upload>
 
-          <div>
+          <Why>
             <label htmlFor="why">Why: </label>
             <input type="text" id="why" name="why" />
-          </div>
-          <div>
+          </Why>
+          <Price>
             <label htmlFor="price">Price: </label>
             <input
               type="number"
@@ -58,9 +65,9 @@ export default function CardForm({ onAddCard, onHandleImageUpload, image }) {
               required
               onChange={handlePriceChange}
             />
-          </div>
+          </Price>
 
-          <div>
+          <HowMuch>
             <label htmlFor="howMuch">How much: </label>
             <input
               type="number"
@@ -70,8 +77,8 @@ export default function CardForm({ onAddCard, onHandleImageUpload, image }) {
               max={maxHowMuch}
               required
             />
-          </div>
-          <div>
+          </HowMuch>
+          <Frequency>
             <label>How often: </label>
             <select name="frequency" required>
               <option value="0">-Choose Frequency-</option>
@@ -79,9 +86,9 @@ export default function CardForm({ onAddCard, onHandleImageUpload, image }) {
               <option value="2">Weekly</option>
               <option value="3">Monthly</option>
             </select>
-          </div>
-          <button type="reset">Reset</button>
-          <button type="submit">Create</button>
+          </Frequency>
+          <Reset type="reset">Reset</Reset>
+          <Create type="submit">Create</Create>
         </section>
         <Exit>
           <Link href={"/"}>
@@ -118,4 +125,63 @@ const StyledForm = styled.form`
   background-color: #eaeaea;
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+`;
+
+const Reset = styled.button`
+  position: relative;
+  top: 160px;
+  left: -20px;
+`;
+
+const Create = styled.button`
+  position: relative;
+  top: 160px;
+  right: -20px;
+`;
+
+const Frequency = styled.div`
+  position: relative;
+  top: 120px;
+`;
+
+const HowMuch = styled.div`
+  position: relative;
+  top: 100px;
+`;
+
+const Price = styled.div`
+  position: relative;
+  top: 80px;
+`;
+
+const Why = styled.div`
+  position: relative;
+  top: 55px;
+`;
+
+const What = styled.div`
+  position: relative;
+  top: 30px;
+`;
+
+const Title = styled.h4`
+  position: relative;
+  top: 25px;
+`;
+
+const Upload = styled.div`
+  position: relative;
+  top: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+`;
+
+const Checked = styled.span`
+  background-color: green;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 5px;
 `;

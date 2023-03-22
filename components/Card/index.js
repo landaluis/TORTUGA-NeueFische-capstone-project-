@@ -2,9 +2,12 @@ import styled from "styled-components";
 import CardPhoto from "../CardPhoto.js";
 import Canvas from "../Canvas";
 import TicketUse from "../TicketUse/index.js";
+import CardInfo from "../CardInfo/index.js";
 
 export default function Card({
   what,
+  why,
+  price,
   id,
   onDeleteCard,
   birthday,
@@ -12,27 +15,76 @@ export default function Card({
   image,
   handleFillCanvas,
   pixels,
+  nextSav,
+  frequencyDays,
+  numIterations,
+  x,
+  startDate,
+  handleShowInfo,
+  showInfo,
+  savings,
+  howMuch,
+  s,
+  needed,
+  usedTickets,
 }) {
   return (
     <>
       <StyledCard>
-        {" "}
-        <CardPhoto what={what} image={image}></CardPhoto>
-        <Canvas
-          birthday={birthday}
-          id={id}
-          divisor={divisor}
-          handleFillCanvas={handleFillCanvas}
-          pixels={pixels}
-        />{" "}
-        <StyledButton
-          onClick={() => onDeleteCard(id)}
-          type="button"
-          title="delete card"
+        {showInfo ? (
+          <>
+            <CardPhoto what={what} image={image}></CardPhoto>
+            <Canvas
+              birthday={birthday}
+              id={id}
+              divisor={divisor}
+              handleFillCanvas={handleFillCanvas}
+              pixels={pixels}
+            />
+          </>
+        ) : (
+          <CardInfo
+            what={what}
+            why={why}
+            price={price}
+            nextSav={nextSav}
+            numnumIterations={numIterations}
+            savings={savings}
+            howMuch={howMuch}
+            needed={needed}
+            onDeleteCard={onDeleteCard}
+            id={id}
+          />
+        )}
+
+        <InfoButton onClick={() => handleShowInfo(id, showInfo)}>i</InfoButton>
+        <TicketUse id={id} savings={savings} price={price}></TicketUse>
+
+        <GenerateButton
+          style={
+            savings >= price
+              ? { background: "red" }
+              : { background: "greenyellow" }
+          }
+          onClick={() =>
+            handleFillCanvas(
+              divisor,
+              pixels,
+              id,
+              frequencyDays,
+              x,
+              startDate,
+              savings,
+              s,
+              howMuch,
+              needed,
+              price,
+              usedTickets
+            )
+          }
         >
-          ✕
-        </StyledButton>
-        <TicketUse id={id}></TicketUse>
+          €
+        </GenerateButton>
       </StyledCard>
     </>
   );
@@ -53,10 +105,17 @@ const StyledCard = styled.div`
   line-height: 35px;
 `;
 
-const StyledButton = styled.button`
+const GenerateButton = styled.button`
+  margin: 16px;
   position: absolute;
-  border: none;
-  z-index: 2;
-  right: 10px;
+  bottom: 0px;
+  right: -10px;
+  border-radius: 50%;
+`;
+
+const InfoButton = styled.button`
+  position: absolute;
   top: 10px;
+  right: 8px;
+  border-radius: 50%;
 `;
