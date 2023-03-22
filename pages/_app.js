@@ -137,7 +137,7 @@ export default function App({ Component, pageProps }) {
     const divisor = 207 / (newCard.price / newCard.howMuch);
     const pixels = [];
     let x = 1;
-    let showInfo = true;
+    let showInfo = false;
     let savings = 0;
     let s = 0;
     let needed = newCard.price - savings;

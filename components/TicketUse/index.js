@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Link from "next/link";
 
 export default function TicketUse({ id, savings, price }) {
-  console.log(savings >= price);
   return (
     <>
       <Link href={`/ticketpage?id=${id}`}>

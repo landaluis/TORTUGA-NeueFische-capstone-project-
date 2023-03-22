@@ -2,7 +2,6 @@ import styled from "styled-components";
 import CardPhoto from "../CardPhoto.js";
 import Canvas from "../Canvas";
 import TicketUse from "../TicketUse/index.js";
-import { useState } from "react";
 import CardInfo from "../CardInfo/index.js";
 
 export default function Card({
