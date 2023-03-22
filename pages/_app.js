@@ -7,6 +7,7 @@ import { uid } from "uid";
 import styled from "styled-components";
 import Router from "next/router";
 import { pixelArray } from "@/lib/pixelArray";
+import { useState } from "react";
 import next from "next";
 
 export default function App({ Component, pageProps }) {
@@ -17,6 +18,7 @@ export default function App({ Component, pageProps }) {
   const [image, setImage] = useLocalStorageState("image", {
     defaultValue: {},
   });
+  const [isUploaded, setIsUploaded] = useState(false);
 
   function handleShowInfo(id, showInfo) {
     const cardIndex = cards.findIndex((card) => card.id === id);
@@ -99,7 +101,9 @@ export default function App({ Component, pageProps }) {
         height: event.info.height,
         width: event.info.width,
       });
+      setIsUploaded(true);
     } else {
+      setIsUploaded(false);
       //Upload war nicht erfolgreich
     }
   };
@@ -137,7 +141,7 @@ export default function App({ Component, pageProps }) {
     const divisor = 207 / (newCard.price / newCard.howMuch);
     const pixels = [];
     let x = 1;
-    let showInfo = false;
+    let showInfo = true;
     let savings = 0;
     let s = 0;
     let needed = newCard.price - savings;
@@ -263,6 +267,7 @@ export default function App({ Component, pageProps }) {
         handleImageUpload={handleImageUpload}
         handleFillCanvas={handleFillCanvas}
         handleShowInfo={handleShowInfo}
+        isUploaded={isUploaded}
       />
     </>
   );

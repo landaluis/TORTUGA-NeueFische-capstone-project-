@@ -42,9 +42,9 @@ const CanvasWrapper = styled.section`
 
 const PixelContainer = styled.div`
   position: relative;
-  top: 10px;
+  top: 8px;
   transform: rotate(180deg);
-  /* height: 140px; */
+  height: 110px;
   max-width: 150px;
   display: grid;
   aspect-ratio: 1 / 1;

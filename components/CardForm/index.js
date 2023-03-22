@@ -4,7 +4,12 @@ import { useState } from "react";
 import { CldImage, CldUploadButton } from "next-cloudinary";
 import Image from "next/image";
 
-export default function CardForm({ onAddCard, onHandleImageUpload, image }) {
+export default function CardForm({
+  onAddCard,
+  onHandleImageUpload,
+  image,
+  isUploaded,
+}) {
   const [maxHowMuch, setMaxHowMuch] = useState(1);
 
   function handleSubmit(event) {
@@ -43,6 +48,7 @@ export default function CardForm({ onAddCard, onHandleImageUpload, image }) {
               onUpload={onHandleImageUpload}
             />
             {image && <Image src={image.src} width={100} height={100} alt="" />}
+            {isUploaded && <Checked></Checked>}
           </Upload>
 
           <Why>
@@ -153,11 +159,6 @@ const Why = styled.div`
   top: 55px;
 `;
 
-const Upload = styled.div`
-  position: relative;
-  top: 45px;
-`;
-
 const What = styled.div`
   position: relative;
   top: 30px;
@@ -166,4 +167,21 @@ const What = styled.div`
 const Title = styled.h4`
   position: relative;
   top: 25px;
+`;
+
+const Upload = styled.div`
+  position: relative;
+  top: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+`;
+
+const Checked = styled.span`
+  background-color: green;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 5px;
 `;
