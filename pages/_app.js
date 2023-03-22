@@ -75,7 +75,6 @@ export default function App({ Component, pageProps }) {
         ticketValue: -needed,
       };
       setTickets([...tickets, newTicket]);
-      console.log(tickets);
     }
 
     const updatedCards = [...cards];
@@ -239,7 +238,6 @@ export default function App({ Component, pageProps }) {
         ticketValue: -needed,
       };
       setTickets([...updatedTickets, newTicket]);
-      console.log(tickets);
     }
 
     Router.push("/");
