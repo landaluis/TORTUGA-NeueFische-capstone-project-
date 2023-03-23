@@ -14,6 +14,9 @@ export default function Navigation() {
       <Link href={"/tickets"}>
         <span className="material-symbols-outlined">payments</span>
       </Link>
+      <Link href={"/profilePage"}>
+        <span className="material-symbols-outlined">person</span>
+      </Link>
     </StyledList>
   );
 }
