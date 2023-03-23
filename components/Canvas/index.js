@@ -18,6 +18,7 @@ export default function Canvas({ birthday, pixels }) {
             />
           ))}
         </PixelContainer>
+
         <Title>Birthday:</Title>
         <Birthday>{birthday}</Birthday>
       </StyledCardCanvas>

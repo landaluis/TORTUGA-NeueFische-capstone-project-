@@ -74,7 +74,7 @@ export default function App({ Component, pageProps }) {
         id: uid(),
         ticketValue: -needed,
       };
-      setTickets([...tickets, newTicket]);
+      setTickets([newTicket, ...tickets]);
     }
 
     const updatedCards = [...cards];
@@ -286,7 +286,7 @@ export default function App({ Component, pageProps }) {
         id: uid(),
         ticketValue: -needed,
       };
-      setTickets([...updatedTickets, newTicket]);
+      setTickets([newTicket, ...updatedTickets]);
     }
 
     Router.push("/");

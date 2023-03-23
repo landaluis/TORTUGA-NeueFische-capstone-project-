@@ -54,7 +54,13 @@ export default function CardForm({
               onUpload={onHandleImageUpload}
             />
             {image && <Image src={image.src} width={100} height={100} alt="" />}
-            {isUploaded && <Checked></Checked>}
+            <Checked
+              style={
+                isUploaded
+                  ? { background: "green" }
+                  : { background: "#eaeaea", border: "1px solid grey" }
+              }
+            ></Checked>
           </Upload>
 
           <Why>
@@ -138,11 +144,11 @@ const StyledForm = styled.form`
     rgba(223, 217, 219, 1) 0%,
     rgba(251, 250, 250, 1) 0%,
     rgba(247, 245, 246, 1) 12%,
-    rgba(242, 237, 239, 1) 28%,
-    rgba(208, 201, 204, 1) 51%,
+    rgba(242, 237, 239, 1) 34%,
+    rgba(208, 201, 204, 1) 53%,
     rgba(180, 173, 175, 1) 66%,
-    rgba(166, 157, 160, 1) 84%,
-    rgba(165, 156, 159, 1) 96%,
+    rgba(116, 113, 114, 1) 78%,
+    rgba(165, 156, 159, 1) 99%,
     rgba(171, 163, 165, 1) 100%,
     rgba(190, 179, 183, 1) 100%
   );
@@ -203,7 +209,6 @@ const Upload = styled.div`
 `;
 
 const Checked = styled.span`
-  background-color: green;
   width: 12px;
   height: 12px;
   border-radius: 50%;

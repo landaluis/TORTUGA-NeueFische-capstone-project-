@@ -3,6 +3,8 @@ import CardPhoto from "../CardPhoto/index.js";
 import Canvas from "../Canvas";
 import TicketUse from "../TicketUse/index.js";
 import CardInfo from "../CardInfo/index.js";
+import Image from "next/image";
+import TortugaLogo from "../../lib/TortugaLogo.png";
 
 export default function Card({
   what,
@@ -41,6 +43,19 @@ export default function Card({
               handleFillCanvas={handleFillCanvas}
               pixels={pixels}
             />
+            {savings < price ? null : (
+              <Image
+                src={TortugaLogo}
+                alt="Tortuga Logo"
+                width={97}
+                height={109}
+                style={{
+                  position: "absolute",
+                  top: "20px",
+                  right: "60px",
+                }}
+              />
+            )}
           </>
         ) : (
           <CardInfo

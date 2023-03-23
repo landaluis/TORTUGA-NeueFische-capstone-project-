@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import { TortugaLogo } from "../../lib/TortugaLogo.png";
 
 export default function CardPhoto({ what, image }) {
   return (
