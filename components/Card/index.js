@@ -30,7 +30,7 @@ export default function Card({
 }) {
   return (
     <>
-      <StyledCard>
+      <StyledCard gold={savings < price}>
         {showInfo ? (
           <>
             <CardPhoto what={what} image={image}></CardPhoto>
@@ -93,7 +93,12 @@ export default function Card({
 const StyledCard = styled.div`
   box-sizing: border-box;
   text-align: center;
-  background: #eaeaea;
+
+  background: ${(props) =>
+    props.gold
+      ? "#eaeaea"
+      : "linear-gradient(56deg, rgba(131,101,30,1) 0%, rgba(186,150,38,1) 12%, rgba(216,183,64,1) 24%, rgba(231,201,78,1) 37%, rgba(239,211,86,1) 44%, rgba(246,232,94,1) 54%, rgba(238,182,11,1) 86%, rgba(219,165,19,1) 91%, rgba(198,147,32,1) 96%, rgba(184,134,41,1) 100%)"};
+
   border: 1px solid #eaeaea;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;
