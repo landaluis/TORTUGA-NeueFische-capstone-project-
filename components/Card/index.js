@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CardPhoto from "../CardPhoto.js";
+import CardPhoto from "../CardPhoto/index.js";
 import Canvas from "../Canvas";
 import TicketUse from "../TicketUse/index.js";
 import CardInfo from "../CardInfo/index.js";
