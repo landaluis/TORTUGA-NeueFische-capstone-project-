@@ -25,6 +25,13 @@ export default function CardForm({
     }
 
     onAddCard(data);
+    const clearLocalStorageKey = (image) => {
+      localStorage.removeItem(image);
+    };
+
+    clearLocalStorageKey("image");
+    window.location.reload();
+
     form.reset();
   }
 
