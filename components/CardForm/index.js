@@ -39,7 +39,13 @@ export default function CardForm({
         <section>
           <What>
             <label htmlFor="what">What: </label>
-            <input type="text" id="what" name="what" required />
+            <input
+              type="text"
+              id="what"
+              name="what"
+              placeholder="New videogame, Travel vacations, etc"
+              required
+            />
           </What>
 
           <Upload>
@@ -53,7 +59,12 @@ export default function CardForm({
 
           <Why>
             <label htmlFor="why">Why: </label>
-            <input type="text" id="why" name="why" />
+            <input
+              type="text"
+              id="why"
+              name="why"
+              placeholder="x-mas present"
+            />
           </Why>
           <Price>
             <label htmlFor="price">Price: </label>
@@ -117,14 +128,27 @@ const StyledForm = styled.form`
   width: 315px;
   height: 450px;
   text-align: center;
-  border: 1px solid white;
+  border: 1px solid grey;
   z-index: 10;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
-  background-color: #eaeaea;
+  background: radial-gradient(
+    at 35% 160px,
+    rgba(223, 217, 219, 1) 0%,
+    rgba(251, 250, 250, 1) 0%,
+    rgba(247, 245, 246, 1) 12%,
+    rgba(242, 237, 239, 1) 28%,
+    rgba(208, 201, 204, 1) 51%,
+    rgba(180, 173, 175, 1) 66%,
+    rgba(166, 157, 160, 1) 84%,
+    rgba(165, 156, 159, 1) 96%,
+    rgba(171, 163, 165, 1) 100%,
+    rgba(190, 179, 183, 1) 100%
+  );
+
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 4px 24px 1px rgba(0, 0, 0, 0.79);
 `;
 
 const Reset = styled.button`
