@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ProgressBar from "../ProgressBar";
+import DeleteButton from "../DeleteButton";
 
 export default function CardInfo({
   what,
@@ -39,13 +40,9 @@ export default function CardInfo({
             needed={needed}
             price={price}
           ></ProgressBar>
-          <DeleteButton
-            onClick={() => onDeleteCard(id)}
-            type="button"
-            title="delete card"
-          >
-            Delete Card
-          </DeleteButton>
+          <DeleteContainer>
+            <DeleteButton onDeleteCard={onDeleteCard} id={id}></DeleteButton>
+          </DeleteContainer>
         </>
       ) : null}
     </>
@@ -98,11 +95,10 @@ const Span = styled.span`
   display: block;
 `;
 
-const DeleteButton = styled.button`
+const DeleteContainer = styled.div`
   position: absolute;
-  border: 1px solid gray;
   border-radius: 4px;
   z-index: 2;
-  left: 120px;
-  top: 150px;
+  left: 122px;
+  bottom: 5px;
 `;

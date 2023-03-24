@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import DeleteButton from "../DeleteButton";
 
 export default function CardInfoGold({
   what,
@@ -34,14 +35,9 @@ export default function CardInfoGold({
           <Tickets>
             <strong>Tickets</strong>({usedTickets}): {totalTickets}€
           </Tickets>
-
-          <DeleteButton
-            onClick={() => onDeleteCard(id)}
-            type="button"
-            title="delete card"
-          >
-            Delete
-          </DeleteButton>
+          <DeleteContainer>
+            <DeleteButton onDeleteCard={onDeleteCard} id={id}></DeleteButton>
+          </DeleteContainer>
         </>
       )}
     </>
@@ -93,9 +89,8 @@ const Tickets = styled.div`
   font-size: 15px;
 `;
 
-const DeleteButton = styled.button`
+const DeleteContainer = styled.div`
   position: absolute;
-  border: 1px solid gray;
   border-radius: 4px;
   z-index: 2;
   right: 5%;
