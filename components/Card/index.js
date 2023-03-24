@@ -5,6 +5,7 @@ import TicketUse from "../TicketUse/index.js";
 import CardInfo from "../CardInfo/index.js";
 import Image from "next/image";
 import TortugaLogo from "../../lib/TortugaLogo.png";
+import CardInfoGold from "../CardInfoGold/index.js";
 
 export default function Card({
   what,
@@ -28,8 +29,10 @@ export default function Card({
   howMuch,
   s,
   needed,
+  totalTickets,
   usedTickets,
 }) {
+  const gold = savings < price;
   return (
     <>
       <StyledCard gold={savings < price}>
@@ -58,24 +61,48 @@ export default function Card({
             )}
           </>
         ) : (
-          <CardInfo
-            what={what}
-            why={why}
-            price={price}
-            nextSav={nextSav}
-            numnumIterations={numIterations}
-            savings={savings}
-            howMuch={howMuch}
-            needed={needed}
-            onDeleteCard={onDeleteCard}
-            id={id}
-          />
+          <>
+            <CardInfo
+              what={what}
+              why={why}
+              price={price}
+              nextSav={nextSav}
+              numnumIterations={numIterations}
+              savings={savings}
+              howMuch={howMuch}
+              needed={needed}
+              onDeleteCard={onDeleteCard}
+              id={id}
+            />
+
+            <CardInfoGold
+              what={what}
+              why={why}
+              price={price}
+              nextSav={nextSav}
+              numnumIterations={numIterations}
+              savings={savings}
+              howMuch={howMuch}
+              needed={needed}
+              onDeleteCard={onDeleteCard}
+              id={id}
+              birthday={birthday}
+              totalTickets={totalTickets}
+              usedTickets={usedTickets}
+            />
+          </>
         )}
 
-        <InfoButton onClick={() => handleShowInfo(id, showInfo)}>i</InfoButton>
+        <InfoButton
+          onClick={() => handleShowInfo(id, showInfo)}
+          gold={savings < price}
+        >
+          i
+        </InfoButton>
         <TicketUse id={id} savings={savings} price={price}></TicketUse>
 
         <GenerateButton
+          gold={savings < price}
           style={
             savings >= price
               ? { background: "red" }
@@ -94,7 +121,7 @@ export default function Card({
               howMuch,
               needed,
               price,
-              usedTickets
+              totalTickets
             )
           }
         >
@@ -131,6 +158,7 @@ const GenerateButton = styled.button`
   bottom: 0px;
   right: -10px;
   border-radius: 50%;
+  visibility: ${(props) => (props.gold ? "visible" : "hidden")};
 `;
 
 const InfoButton = styled.button`

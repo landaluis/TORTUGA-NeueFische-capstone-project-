@@ -13,37 +13,41 @@ export default function CardInfo({
 }) {
   return (
     <>
-      <What>
-        <strong>{what}</strong>{" "}
-      </What>
-      <Why>{why}</Why>
-      <Price>
-        <span style={{ fontSize: 15 }}>Price: </span>
-        <strong>{price}€</strong>
-      </Price>
-      <NextSav>
-        <Span>Next saving date:</Span>
-        <Span> {nextSav}</Span>
-      </NextSav>
-      <Savings>
-        <span style={{ fontSize: 15 }}>Savings: </span> {savings}€
-      </Savings>
-      <Needed>
-        <span style={{ fontSize: 15 }}>Needed: </span>{" "}
-        <span style={{ color: "red" }}>{needed}€</span>
-      </Needed>
-      <ProgressBar
-        savings={savings}
-        needed={needed}
-        price={price}
-      ></ProgressBar>
-      <DeleteButton
-        onClick={() => onDeleteCard(id)}
-        type="button"
-        title="delete card"
-      >
-        Delete Card
-      </DeleteButton>
+      {savings < price ? (
+        <>
+          <What>
+            <strong>{what}</strong>{" "}
+          </What>
+          <Why>{why}</Why>
+          <Price>
+            <span style={{ fontSize: 15 }}>Price: </span>
+            <strong>{price}€</strong>
+          </Price>
+          <NextSav>
+            <Span>Next saving date:</Span>
+            <Span> {nextSav}</Span>
+          </NextSav>
+          <Savings>
+            <span style={{ fontSize: 15 }}>Savings: </span> {savings}€
+          </Savings>
+          <Needed>
+            <span style={{ fontSize: 15 }}>Needed: </span>{" "}
+            <span style={{ color: "red" }}>{needed}€</span>
+          </Needed>
+          <ProgressBar
+            savings={savings}
+            needed={needed}
+            price={price}
+          ></ProgressBar>
+          <DeleteButton
+            onClick={() => onDeleteCard(id)}
+            type="button"
+            title="delete card"
+          >
+            Delete Card
+          </DeleteButton>
+        </>
+      ) : null}
     </>
   );
 }

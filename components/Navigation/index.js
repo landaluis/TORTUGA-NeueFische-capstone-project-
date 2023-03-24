@@ -11,7 +11,7 @@ export default function Navigation() {
       <Link href={"/create-card"}>
         <span className="material-symbols-outlined">add_circle</span>
       </Link>
-      <Link href={"/tickets"}>
+      <Link href={"/create-ticket"}>
         <span className="material-symbols-outlined">payments</span>
       </Link>
       <Link href={"/profilePage"}>

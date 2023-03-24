@@ -9,7 +9,7 @@ export default function CardPhoto({ what, image }) {
         {" "}
         <Image
           src={image}
-          alt={"My Wish photo"}
+          alt={"My Wish"}
           width="100"
           height="100"
           style={{

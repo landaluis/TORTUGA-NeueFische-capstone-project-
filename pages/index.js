@@ -7,6 +7,7 @@ export default function Home({
   handleFillCanvas,
   handleShowInfo,
 }) {
+  console.log(cards);
   return (
     <main>
       {cards.length === 0 ? (
@@ -42,6 +43,7 @@ export default function Home({
               savings={card.savings}
               s={card.s}
               needed={card.needed}
+              totalTickets={card.totalTickets}
               usedTickets={card.usedTickets}
             />
           ))}

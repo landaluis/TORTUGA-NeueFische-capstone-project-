@@ -42,7 +42,7 @@ export default function CardForm({
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>
-        <Title>New Card</Title>
+        <Title>New Wish</Title>
         <section>
           <What>
             <label htmlFor="what">What: </label>
@@ -50,7 +50,7 @@ export default function CardForm({
               type="text"
               id="what"
               name="what"
-              placeholder="New videogame, Travel vacations, etc"
+              placeholder="Travel"
               required
             />
           </What>
@@ -72,12 +72,7 @@ export default function CardForm({
 
           <Why>
             <label htmlFor="why">Why: </label>
-            <input
-              type="text"
-              id="why"
-              name="why"
-              placeholder="x-mas present"
-            />
+            <input type="text" id="why" name="why" placeholder="I need relax" />
           </Why>
           <Price>
             <label htmlFor="price">Price: </label>
@@ -161,7 +156,8 @@ const StyledForm = styled.form`
   );
 
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  box-shadow: 4px 4px 24px 1px rgba(0, 0, 0, 0.79);
+  box-shadow: inset 14px 26px 49px 0px rgba(255, 244, 222, 0.94),
+    14px 26px 49px 0px rgba(0, 0, 0, 0.94);
 `;
 
 const Reset = styled.button`
