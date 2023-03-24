@@ -3,6 +3,9 @@ import CardPhoto from "../CardPhoto/index.js";
 import Canvas from "../Canvas";
 import TicketUse from "../TicketUse/index.js";
 import CardInfo from "../CardInfo/index.js";
+import Image from "next/image";
+import TortugaLogo from "../../lib/TortugaLogo.png";
+import CardInfoGold from "../CardInfoGold/index.js";
 
 export default function Card({
   what,
@@ -26,11 +29,13 @@ export default function Card({
   howMuch,
   s,
   needed,
+  totalTickets,
   usedTickets,
 }) {
+  const gold = savings < price;
   return (
     <>
-      <StyledCard>
+      <StyledCard gold={savings < price}>
         {showInfo ? (
           <>
             <CardPhoto what={what} image={image}></CardPhoto>
@@ -41,26 +46,63 @@ export default function Card({
               handleFillCanvas={handleFillCanvas}
               pixels={pixels}
             />
+            {savings < price ? null : (
+              <Image
+                src={TortugaLogo}
+                alt="Tortuga Logo"
+                width={97}
+                height={109}
+                style={{
+                  position: "absolute",
+                  top: "20px",
+                  right: "60px",
+                }}
+              />
+            )}
           </>
         ) : (
-          <CardInfo
-            what={what}
-            why={why}
-            price={price}
-            nextSav={nextSav}
-            numnumIterations={numIterations}
-            savings={savings}
-            howMuch={howMuch}
-            needed={needed}
-            onDeleteCard={onDeleteCard}
-            id={id}
-          />
+          <>
+            <CardInfo
+              what={what}
+              why={why}
+              price={price}
+              nextSav={nextSav}
+              numnumIterations={numIterations}
+              savings={savings}
+              howMuch={howMuch}
+              needed={needed}
+              onDeleteCard={onDeleteCard}
+              id={id}
+            />
+
+            <CardInfoGold
+              what={what}
+              why={why}
+              price={price}
+              nextSav={nextSav}
+              numnumIterations={numIterations}
+              savings={savings}
+              howMuch={howMuch}
+              needed={needed}
+              onDeleteCard={onDeleteCard}
+              id={id}
+              birthday={birthday}
+              totalTickets={totalTickets}
+              usedTickets={usedTickets}
+            />
+          </>
         )}
 
-        <InfoButton onClick={() => handleShowInfo(id, showInfo)}>i</InfoButton>
+        <InfoButton
+          onClick={() => handleShowInfo(id, showInfo)}
+          gold={savings < price}
+        >
+          i
+        </InfoButton>
         <TicketUse id={id} savings={savings} price={price}></TicketUse>
 
         <GenerateButton
+          gold={savings < price}
           style={
             savings >= price
               ? { background: "red" }
@@ -79,7 +121,7 @@ export default function Card({
               howMuch,
               needed,
               price,
-              usedTickets
+              totalTickets
             )
           }
         >
@@ -93,7 +135,12 @@ export default function Card({
 const StyledCard = styled.div`
   box-sizing: border-box;
   text-align: center;
-  background: #eaeaea;
+
+  background: ${(props) =>
+    props.gold
+      ? "#eaeaea"
+      : "linear-gradient(56deg, rgba(131,101,30,1) 0%, rgba(186,150,38,1) 12%, rgba(216,183,64,1) 24%, rgba(231,201,78,1) 37%, rgba(239,211,86,1) 44%, rgba(246,232,94,1) 54%, rgba(238,182,11,1) 86%, rgba(219,165,19,1) 91%, rgba(198,147,32,1) 96%, rgba(184,134,41,1) 100%)"};
+
   border: 1px solid #eaeaea;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;
@@ -111,6 +158,7 @@ const GenerateButton = styled.button`
   bottom: 0px;
   right: -10px;
   border-radius: 50%;
+  visibility: ${(props) => (props.gold ? "visible" : "hidden")};
 `;
 
 const InfoButton = styled.button`

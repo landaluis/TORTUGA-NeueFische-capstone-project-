@@ -25,6 +25,13 @@ export default function CardForm({
     }
 
     onAddCard(data);
+    const clearLocalStorageKey = (image) => {
+      localStorage.removeItem(image);
+    };
+
+    clearLocalStorageKey("image");
+    window.location.reload();
+
     form.reset();
   }
 
@@ -35,11 +42,17 @@ export default function CardForm({
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>
-        <Title>New Card</Title>
+        <Title>New Wish</Title>
         <section>
           <What>
             <label htmlFor="what">What: </label>
-            <input type="text" id="what" name="what" required />
+            <input
+              type="text"
+              id="what"
+              name="what"
+              placeholder="Travel"
+              required
+            />
           </What>
 
           <Upload>
@@ -48,12 +61,18 @@ export default function CardForm({
               onUpload={onHandleImageUpload}
             />
             {image && <Image src={image.src} width={100} height={100} alt="" />}
-            {isUploaded && <Checked></Checked>}
+            <Checked
+              style={
+                isUploaded
+                  ? { background: "green" }
+                  : { background: "#eaeaea", border: "1px solid grey" }
+              }
+            ></Checked>
           </Upload>
 
           <Why>
             <label htmlFor="why">Why: </label>
-            <input type="text" id="why" name="why" />
+            <input type="text" id="why" name="why" placeholder="I need relax" />
           </Why>
           <Price>
             <label htmlFor="price">Price: </label>
@@ -117,14 +136,28 @@ const StyledForm = styled.form`
   width: 315px;
   height: 450px;
   text-align: center;
-  border: 1px solid white;
+  border: 1px solid grey;
   z-index: 10;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
-  background-color: #eaeaea;
+  background: radial-gradient(
+    at 35% 160px,
+    rgba(223, 217, 219, 1) 0%,
+    rgba(251, 250, 250, 1) 0%,
+    rgba(247, 245, 246, 1) 12%,
+    rgba(242, 237, 239, 1) 34%,
+    rgba(208, 201, 204, 1) 53%,
+    rgba(180, 173, 175, 1) 66%,
+    rgba(116, 113, 114, 1) 78%,
+    rgba(165, 156, 159, 1) 99%,
+    rgba(171, 163, 165, 1) 100%,
+    rgba(190, 179, 183, 1) 100%
+  );
+
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 14px 26px 49px 0px rgba(255, 244, 222, 0.94),
+    14px 26px 49px 0px rgba(0, 0, 0, 0.94);
 `;
 
 const Reset = styled.button`
@@ -179,7 +212,6 @@ const Upload = styled.div`
 `;
 
 const Checked = styled.span`
-  background-color: green;
   width: 12px;
   height: 12px;
   border-radius: 50%;

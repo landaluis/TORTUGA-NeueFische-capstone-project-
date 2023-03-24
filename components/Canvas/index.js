@@ -4,7 +4,7 @@ import { uid } from "uid";
 export default function Canvas({ birthday, pixels }) {
   return (
     <>
-      <CanvasWrapper>
+      <StyledCardCanvas>
         <PixelContainer>
           {pixels?.map((pixel) => (
             <Pixel
@@ -18,18 +18,20 @@ export default function Canvas({ birthday, pixels }) {
             />
           ))}
         </PixelContainer>
+
         <Title>Birthday:</Title>
         <Birthday>{birthday}</Birthday>
-      </CanvasWrapper>
+      </StyledCardCanvas>
     </>
   );
 }
 
-const CanvasWrapper = styled.section`
+const StyledCardCanvas = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid grey;
+  background: rgba(242, 242, 242, 0.4);
   width: 143px;
   height: 163px;
   margin: 0;

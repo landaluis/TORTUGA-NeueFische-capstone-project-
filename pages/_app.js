@@ -43,7 +43,7 @@ export default function App({ Component, pageProps }) {
     howMuch,
     needed,
     price,
-    usedTickets
+    totalTickets
   ) {
     if (savings >= price) {
       return;
@@ -66,7 +66,7 @@ export default function App({ Component, pageProps }) {
     let newNextSav = nextSavPeriod.toDateString();
 
     s = s + 1;
-    savings = usedTickets + howMuch * s;
+    savings = totalTickets + howMuch * s;
     needed = price - savings;
 
     if (needed < 0) {
@@ -74,7 +74,7 @@ export default function App({ Component, pageProps }) {
         id: uid(),
         ticketValue: -needed,
       };
-      setTickets([...tickets, newTicket]);
+      setTickets([newTicket, ...tickets]);
     }
 
     const updatedCards = [...cards];
@@ -144,6 +144,7 @@ export default function App({ Component, pageProps }) {
     let savings = 0;
     let s = 0;
     let needed = newCard.price - savings;
+    let totalTickets = 0;
     let usedTickets = 0;
 
     setCards([
@@ -161,6 +162,7 @@ export default function App({ Component, pageProps }) {
         savings,
         s,
         needed,
+        totalTickets,
         usedTickets,
         image: { src: image.src, height: image.height, width: image.width },
         ...newCard,
@@ -187,10 +189,11 @@ export default function App({ Component, pageProps }) {
     price,
     needed,
     howMuch,
-    usedTickets,
+    totalTickets,
     frequency,
     birthday,
-    pixels
+    pixels,
+    usedTickets
   ) {
     if (savings >= price) {
       return;
@@ -216,20 +219,24 @@ export default function App({ Component, pageProps }) {
 
     card.needed = parseInt(card.needed);
     card.price = parseInt(card.price);
-    card.usedTickets = parseInt(card.usedTickets);
+    card.totalTickets = parseInt(card.totalTickets);
     card.howMuch = parseInt(card.howMuch);
     card.frequency = parseInt(card.frequency);
+    card.usedTickets = parseInt(card.usedTickets);
 
-    let totalUsedTickets = card.usedTickets + ticket.ticketValue;
+    let newTotalTickets = card.totalTickets + ticket.ticketValue;
     const newNeeded = card.price - newSavings;
 
-    usedTickets = totalUsedTickets;
+    let newUsedTickets = card.usedTickets + 1;
+
+    totalTickets = newTotalTickets;
     savings = newSavings;
     needed = newNeeded;
     price = card.price;
     howMuch = card.howMuch;
     frequency = card.frequency;
     pixels = card.pixels;
+    usedTickets = newUsedTickets;
 
     const NumSavings = Math.ceil(needed / howMuch);
     let daysToSave = NumSavings;
@@ -273,9 +280,10 @@ export default function App({ Component, pageProps }) {
       ...updatedCards[cardIndex],
       savings: savings,
       needed: needed,
-      usedTickets: usedTickets,
+      totalTickets: totalTickets,
       birthday: birthday,
       pixels: newPixels,
+      usedTickets: usedTickets,
     };
 
     setCards(updatedCards);
@@ -286,7 +294,7 @@ export default function App({ Component, pageProps }) {
         id: uid(),
         ticketValue: -needed,
       };
-      setTickets([...updatedTickets, newTicket]);
+      setTickets([newTicket, ...updatedTickets]);
     }
 
     Router.push("/");

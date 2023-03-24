@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ProgressBar from "../ProgressBar";
+import DeleteButton from "../DeleteButton";
 
 export default function CardInfo({
   what,
@@ -13,37 +14,37 @@ export default function CardInfo({
 }) {
   return (
     <>
-      <What>
-        <strong>{what}</strong>{" "}
-      </What>
-      <Why>{why}</Why>
-      <Price>
-        <span style={{ fontSize: 15 }}>Price: </span>
-        <strong>{price}€</strong>
-      </Price>
-      <NextSav>
-        <Span>Next saving date:</Span>
-        <Span> {nextSav}</Span>
-      </NextSav>
-      <Savings>
-        <span style={{ fontSize: 15 }}>Savings: </span> {savings}€
-      </Savings>
-      <Needed>
-        <span style={{ fontSize: 15 }}>Needed: </span>{" "}
-        <span style={{ color: "red" }}>{needed}€</span>
-      </Needed>
-      <ProgressBar
-        savings={savings}
-        needed={needed}
-        price={price}
-      ></ProgressBar>
-      <DeleteButton
-        onClick={() => onDeleteCard(id)}
-        type="button"
-        title="delete card"
-      >
-        Delete Card
-      </DeleteButton>
+      {savings < price ? (
+        <>
+          <What>
+            <strong>{what}</strong>{" "}
+          </What>
+          <Why>{why}</Why>
+          <Price>
+            <span style={{ fontSize: 15 }}>Price: </span>
+            <strong>{price}€</strong>
+          </Price>
+          <NextSav>
+            <Span>Next saving date:</Span>
+            <Span> {nextSav}</Span>
+          </NextSav>
+          <Savings>
+            <span style={{ fontSize: 15 }}>Savings: </span> {savings}€
+          </Savings>
+          <Needed>
+            <span style={{ fontSize: 15 }}>Needed: </span>{" "}
+            <span style={{ color: "red" }}>{needed}€</span>
+          </Needed>
+          <ProgressBar
+            savings={savings}
+            needed={needed}
+            price={price}
+          ></ProgressBar>
+          <DeleteContainer>
+            <DeleteButton onDeleteCard={onDeleteCard} id={id}></DeleteButton>
+          </DeleteContainer>
+        </>
+      ) : null}
     </>
   );
 }
@@ -94,11 +95,10 @@ const Span = styled.span`
   display: block;
 `;
 
-const DeleteButton = styled.button`
+const DeleteContainer = styled.div`
   position: absolute;
-  border: 1px solid gray;
   border-radius: 4px;
   z-index: 2;
-  left: 120px;
-  top: 150px;
+  left: 122px;
+  bottom: 5px;
 `;

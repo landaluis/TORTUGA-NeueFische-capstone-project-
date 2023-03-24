@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import { TortugaLogo } from "../../lib/TortugaLogo.png";
 
 export default function CardPhoto({ what, image }) {
   return (
@@ -8,7 +9,7 @@ export default function CardPhoto({ what, image }) {
         {" "}
         <Image
           src={image}
-          alt={"My Wish photo"}
+          alt={"My Wish"}
           width="100"
           height="100"
           style={{
@@ -27,7 +28,7 @@ export default function CardPhoto({ what, image }) {
 const StyledCardPhoto = styled.div`
   box-sizing: border-box;
   text-align: center;
-  background: #eaeaea;
+  background: rgba(242, 242, 242, 0.4);
   border: 1px solid grey;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;

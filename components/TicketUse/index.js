@@ -5,7 +5,7 @@ export default function TicketUse({ id, savings, price }) {
   return (
     <>
       <Link href={`/ticketpage?id=${id}`}>
-        <TicketButton disabled={savings >= price}></TicketButton>
+        <TicketButton gold={savings < price}></TicketButton>
       </Link>
     </>
   );
@@ -19,11 +19,7 @@ const TicketButton = styled.button`
   top: 90px;
   left: 298px;
   border: 1px solid grey;
-
   background-color: #e08989;
   transform: rotate(20deg);
-
-  &[disabled] {
-    background-color: red;
-  }
+  visibility: ${(props) => (props.gold ? "visible" : "hidden")};
 `;
