@@ -44,6 +44,8 @@ export default function Home({
               needed={card.needed}
               totalTickets={card.totalTickets}
               usedTickets={card.usedTickets}
+              frequencyName={card.frequencyName}
+              savPeriod={card.savPeriod}
             />
           ))}
         </CardList>

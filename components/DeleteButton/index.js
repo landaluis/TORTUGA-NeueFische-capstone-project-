@@ -36,6 +36,7 @@ const QuestionWrapper = styled.div`
   right: 40px;
   height: 150px;
   width: 200px;
+  border-radius: 10px;
 `;
 
 const Question = styled.p`

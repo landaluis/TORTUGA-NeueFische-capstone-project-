@@ -57,13 +57,14 @@ export default function App({ Component, pageProps }) {
     }
 
     x = x + 1;
-    let currentDate = new Date(startDate);
 
+    let currentDate = new Date(startDate);
     let nextSavPeriod = new Date(
       currentDate.getTime() + frequencyDays * x * 24 * 60 * 60 * 1000
     );
 
-    let newNextSav = nextSavPeriod.toDateString();
+    let newNextSav = new Date(nextSavPeriod);
+    let newStartDate = new Date(startDate);
 
     s = s + 1;
     savings = totalTickets + howMuch * s;
@@ -72,10 +73,17 @@ export default function App({ Component, pageProps }) {
     if (needed < 0) {
       const newTicket = {
         id: uid(),
-        ticketValue: -needed,
+        ticketValue: Math.abs("needed"),
       };
       setTickets([newTicket, ...tickets]);
     }
+
+    let diffInDays = Math.floor(
+      (newNextSav.getTime() - newStartDate.getTime()) / (24 * 60 * 60 * 1000)
+    );
+    let savPeriod = Math.floor(diffInDays / frequencyDays) - 1;
+
+    newNextSav = newNextSav.toDateString();
 
     const updatedCards = [...cards];
     updatedCards[cardIndex] = {
@@ -86,6 +94,7 @@ export default function App({ Component, pageProps }) {
       s: s,
       savings: savings,
       needed: needed,
+      savPeriod: savPeriod,
     };
 
     setCards(updatedCards);
@@ -109,21 +118,26 @@ export default function App({ Component, pageProps }) {
 
   function handleAddCard(newCard) {
     let startDate = new Date();
+
     const NumSavings = Math.ceil(newCard.price / newCard.howMuch);
     const numIterations = Math.ceil(newCard.price / newCard.howMuch);
 
     let daysToSave = NumSavings;
     let frequencyDays = 0;
+    let frequencyName = "";
 
     if (newCard.frequency == 1) {
       daysToSave = NumSavings;
       frequencyDays = 1;
+      frequencyName = "days";
     } else if (newCard.frequency == 2) {
       daysToSave = NumSavings * 7;
       frequencyDays = 7;
+      frequencyName = "weeks";
     } else {
       daysToSave = NumSavings * 30.416;
       frequencyDays = 30;
+      frequencyName = "months";
     }
 
     const futureDate = new Date(
@@ -147,11 +161,16 @@ export default function App({ Component, pageProps }) {
     let totalTickets = 0;
     let usedTickets = 0;
 
+    const diffInMs = Math.abs(startDate - futureDate);
+    const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+    const savPeriod = Math.ceil(diffInDays / frequencyDays);
+
     setCards([
       {
         id: uid(),
         birthday,
         frequencyDays,
+        frequencyName,
         startDate,
         numIterations,
         divisor,
@@ -164,6 +183,7 @@ export default function App({ Component, pageProps }) {
         needed,
         totalTickets,
         usedTickets,
+        savPeriod,
         image: { src: image.src, height: image.height, width: image.width },
         ...newCard,
       },
@@ -224,6 +244,9 @@ export default function App({ Component, pageProps }) {
     card.frequency = parseInt(card.frequency);
     card.usedTickets = parseInt(card.usedTickets);
 
+    let startDate = card.startDate;
+    let nextSav = card.nextSav;
+
     let newTotalTickets = card.totalTickets + ticket.ticketValue;
     const newNeeded = card.price - newSavings;
 
@@ -237,6 +260,7 @@ export default function App({ Component, pageProps }) {
     frequency = card.frequency;
     pixels = card.pixels;
     usedTickets = newUsedTickets;
+    let savPeriod = card.savPeriod;
 
     const NumSavings = Math.ceil(needed / howMuch);
     let daysToSave = NumSavings;
@@ -270,6 +294,17 @@ export default function App({ Component, pageProps }) {
       newPixels.push(pixelArray[i]);
     }
 
+    if (savings < price) {
+    } else {
+      let newStartDate = new Date(startDate);
+      let newNextSav = new Date(nextSav);
+      const diffInMs = Math.abs(newStartDate.getTime() - newNextSav.getTime());
+
+      const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+      savPeriod = Math.ceil(diffInDays / frequencyDays) - 1;
+      birthday = nextSav;
+    }
+
     const updatedTickets = [
       ...tickets.slice(0, ticketIndex),
       ...tickets.slice(ticketIndex + 1),
@@ -284,6 +319,7 @@ export default function App({ Component, pageProps }) {
       birthday: birthday,
       pixels: newPixels,
       usedTickets: usedTickets,
+      savPeriod: savPeriod,
     };
 
     setCards(updatedCards);

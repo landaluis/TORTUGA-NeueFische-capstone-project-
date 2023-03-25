@@ -11,6 +11,8 @@ export default function CardInfoGold({
   birthday,
   totalTickets,
   usedTickets,
+  frequencyName,
+  savPeriod,
 }) {
   return (
     <>
@@ -22,15 +24,16 @@ export default function CardInfoGold({
           </What>
           <Why>{why}</Why>
           <Price>
-            <strong>Price:</strong>
+            <strong>Price : </strong>
             {price}€
           </Price>
           <SavingPeriod>
-            <strong>Saving period:</strong>{" "}
+            <strong>Saving period : </strong>
+            {savPeriod} {frequencyName}
           </SavingPeriod>
 
           <Birthday>
-            <strong>Birthday:</strong> {birthday}
+            <strong>Birthday :</strong> {birthday}
           </Birthday>
           <Tickets>
             <strong>Tickets</strong>({usedTickets}): {totalTickets}€

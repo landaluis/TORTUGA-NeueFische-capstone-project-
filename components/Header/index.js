@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function Header() {
   return (
     <>
-      <StyledHeader>TORTUGA</StyledHeader>
+      <StyledHeader>T O R T U G A</StyledHeader>
     </>
   );
 }

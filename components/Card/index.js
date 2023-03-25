@@ -31,8 +31,9 @@ export default function Card({
   needed,
   totalTickets,
   usedTickets,
+  frequencyName,
+  savPeriod,
 }) {
-  const gold = savings < price;
   return (
     <>
       <StyledCard gold={savings < price}>
@@ -89,6 +90,8 @@ export default function Card({
               birthday={birthday}
               totalTickets={totalTickets}
               usedTickets={usedTickets}
+              frequencyName={frequencyName}
+              savPeriod={savPeriod}
             />
           </>
         )}
