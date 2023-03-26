@@ -1,5 +1,10 @@
 import styled from "styled-components";
 import DeleteButton from "../DeleteButton";
+import { CldImage, CldUploadButton } from "next-cloudinary";
+import Image from "next/image";
+import useLocalStorageState from "use-local-storage-state";
+import { useState } from "react";
+import playaTortuga from "../../public/playaTortuga.png";
 
 export default function CardInfoGold({
   what,
@@ -13,12 +18,86 @@ export default function CardInfoGold({
   usedTickets,
   frequencyName,
   savPeriod,
+  imageWish,
+  handleImageWishUpload,
+  isUploaded2,
 }) {
+  /* const [imageWish, setImageWish] = useState({});
+
+  console.log(cards);
+
+  const handleImageWishUpload = (event) => {
+    if (event.event === "success") {
+      setImageWish({
+        src: event.info.secure_url,
+        height: event.info.height,
+        width: event.info.width,
+      });
+      let updatedCards = [...cards];
+      const index = updatedCards.findIndex((card) => card.id === cardId);
+      updatedCards[index] = {
+        ...updatedCards[index],
+        imageWish: {
+          src: imageWish.src,
+          height: imageWish.height,
+          width: imageWish.width,
+        },
+      };
+      setCards(updatedCards);
+    } else {
+      //Upload war nicht erfolgreich
+    }
+  }; */
+
   return (
     <>
       {savings < price ? null : (
         <>
-          <PhotoContainer></PhotoContainer>
+          {isUploaded2 ? (
+            <ImagesContainer>
+              <Image
+                src={imageWish}
+                alt={"My Wish come true"}
+                width="80"
+                height="80"
+                style={{
+                  position: "absolute",
+                  top: "11px",
+                  left: "10px",
+                  borderTopLeftRadius: "10px",
+                  borderTopRightRadius: "10px",
+
+                  /*    borderRadius: "10px", */
+                }}
+              />
+              <Image
+                src={playaTortuga}
+                alt={"My Wish come true"}
+                width="80"
+                height="80"
+                style={{
+                  position: "absolute",
+                  top: "91px",
+                  left: "10px",
+                  borderBottomLeftRadius: "10px",
+                  borderBottomRightRadius: "10px",
+                  /* borderRadius: "10px", */
+                }}
+              />
+            </ImagesContainer>
+          ) : (
+            <PhotoContainer>
+              <div>Take a picture of it</div>
+              <CldUploadButton
+                uploadPreset="ceduvcvz"
+                onUpload={(event) => handleImageWishUpload(event, id)}
+              />
+              {imageWish && (
+                <Image src={imageWish.src} width={10} height={10} alt="" />
+              )}
+            </PhotoContainer>
+          )}
+
           <What>
             <strong>{what}</strong>{" "}
           </What>
@@ -110,4 +189,8 @@ const PhotoContainer = styled.div`
   position: absolute;
   background: grey;
   top: 10%;
+`;
+
+const ImagesContainer = styled.div`
+  border-radius: 10px;
 `;

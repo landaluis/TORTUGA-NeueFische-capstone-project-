@@ -6,7 +6,9 @@ export default function Home({
   onDeleteCard,
   handleFillCanvas,
   handleShowInfo,
+  handleImageWishUpload,
 }) {
+  console.log(cards);
   return (
     <main>
       {cards.length === 0 ? (
@@ -46,6 +48,9 @@ export default function Home({
               usedTickets={card.usedTickets}
               frequencyName={card.frequencyName}
               savPeriod={card.savPeriod}
+              imageWish={card.imageWish?.src}
+              handleImageWishUpload={handleImageWishUpload}
+              isUploaded2={card.isUploaded2}
             />
           ))}
         </CardList>

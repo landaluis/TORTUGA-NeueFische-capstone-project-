@@ -15,6 +15,7 @@ export default function CardPhoto({ what, image }) {
           style={{
             position: "relative",
             top: "10px",
+            borderRadius: "10px",
           }}
         />
         <StyledName>

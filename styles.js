@@ -3,8 +3,8 @@ import { createGlobalStyle } from "styled-components";
 export default createGlobalStyle`
 
 @font-face {
-  font-family: 'Bahnschrift';
-  src: url('/Font /BAHNSCHRIFT1.TTF') format('truetype');
+  font-family:'Bahnschrift';
+  src: url('/Font/BAHNSCHRIFT1.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -16,8 +16,8 @@ export default createGlobalStyle`
   }
   body {
     margin: 0;
-    font-family:  "Bahnschrift", sans-serif; 
-  background-color: grey; 
+    font-family:"Bahnschrift", sans-serif; 
+  background-color: black; 
 /*   background: #09182f; */
   }
 `;

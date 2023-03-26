@@ -1,11 +1,18 @@
 import styled from "styled-components";
 
 export default function CounterCards({ cards }) {
+  console.log(cards);
   const activeCardsFilter = cards.filter((card) => card.savings < card.price);
   const activeCards = activeCardsFilter.length;
 
-  const goldenCardsFilter = cards.filter((card) => card.savings >= card.price);
+  const goldenCardsFilter = cards.filter(
+    (card) => card.savings >= card.price && card.isUploaded2 === false
+  );
   const goldenCards = goldenCardsFilter.length;
+
+  const platinumCardsFilter = cards.filter((card) => card.isUploaded2);
+  const platinumCards = platinumCardsFilter.length;
+
   return (
     <>
       <CountContainer>
@@ -16,6 +23,10 @@ export default function CounterCards({ cards }) {
         <Box>
           <Span>Golden</Span>
           <Span2> {goldenCards}</Span2>
+        </Box>
+        <Box>
+          <Span>Platinum</Span>
+          <Span2> {platinumCards}</Span2>
         </Box>
       </CountContainer>
     </>

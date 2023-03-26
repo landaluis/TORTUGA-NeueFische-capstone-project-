@@ -20,6 +20,33 @@ export default function App({ Component, pageProps }) {
   });
   const [isUploaded, setIsUploaded] = useState(false);
 
+  const handleImageWishUpload = (event, id) => {
+    const cardIndex = cards.findIndex((card) => card.id === id);
+
+    if (event.event === "success") {
+      const updatedCards = [...cards];
+      updatedCards[cardIndex] = {
+        ...updatedCards[cardIndex],
+
+        imageWish: {
+          src: event.info.secure_url,
+          height: event.info.height,
+          width: event.info.width,
+        },
+        image: {
+          src: event.info.secure_url,
+          height: event.info.height,
+          width: event.info.width,
+        },
+        isUploaded2: true,
+      };
+      setCards(updatedCards);
+    } else {
+      /*  setIsUploaded(false); */
+      //Upload war nicht erfolgreich
+    }
+  };
+
   function handleShowInfo(id, showInfo) {
     const cardIndex = cards.findIndex((card) => card.id === id);
     const updatedCards = [...cards];
@@ -165,6 +192,9 @@ export default function App({ Component, pageProps }) {
     const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
     const savPeriod = Math.ceil(diffInDays / frequencyDays);
 
+    let imageWish = {};
+    let isUploaded2 = false;
+
     setCards([
       {
         id: uid(),
@@ -184,7 +214,13 @@ export default function App({ Component, pageProps }) {
         totalTickets,
         usedTickets,
         savPeriod,
+        isUploaded2,
         image: { src: image.src, height: image.height, width: image.width },
+        imageWish: {
+          src: imageWish.src,
+          height: imageWish.height,
+          width: imageWish.width,
+        },
         ...newCard,
       },
       ...cards,
@@ -338,14 +374,12 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyle />s
       <Header />
-
       <Head>
         <title>Capstone Project</title>
       </Head>
       <Layout />
-
       <Component
         {...pageProps}
         cards={cards}
@@ -359,6 +393,7 @@ export default function App({ Component, pageProps }) {
         handleFillCanvas={handleFillCanvas}
         handleShowInfo={handleShowInfo}
         isUploaded={isUploaded}
+        handleImageWishUpload={handleImageWishUpload}
       />
     </>
   );
