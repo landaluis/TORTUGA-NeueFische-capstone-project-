@@ -19,7 +19,7 @@ const TicketButton = styled.button`
   top: 90px;
   left: 298px;
   border: 1px solid grey;
-  background-color: #e08989;
+  background-color: #a8d9d4;
   transform: rotate(20deg);
   visibility: ${(props) => (props.gold ? "visible" : "hidden")};
 `;

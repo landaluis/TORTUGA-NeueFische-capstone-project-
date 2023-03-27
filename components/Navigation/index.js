@@ -25,12 +25,12 @@ const StyledList = styled.ul`
   display: flex;
   justify-content: space-around;
   width: 100%;
-  height: 65px;
+  height: 58px;
   position: fixed;
   bottom: 0;
   font-size: 10px;
   padding: 3px;
   align-items: center;
-  background-color: #eaeaea;
+  background-color: #faf1da;
   z-index: 21;
 `;

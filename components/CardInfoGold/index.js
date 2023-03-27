@@ -58,14 +58,15 @@ export default function CardInfoGold({
               <Image
                 src={imageWish}
                 alt={"My Wish come true"}
-                width="80"
-                height="80"
+                width="94"
+                height="85"
                 style={{
                   position: "absolute",
-                  top: "11px",
-                  left: "10px",
-                  borderTopLeftRadius: "10px",
-                  borderTopRightRadius: "10px",
+                  top: "20px",
+                  left: "16px",
+                  borderRadius: "10px",
+
+                  zIndex: 1,
 
                   /*    borderRadius: "10px", */
                 }}
@@ -73,14 +74,14 @@ export default function CardInfoGold({
               <Image
                 src={playaTortuga}
                 alt={"My Wish come true"}
-                width="80"
-                height="80"
+                width="335"
+                height="180"
                 style={{
                   position: "absolute",
-                  top: "91px",
-                  left: "10px",
-                  borderBottomLeftRadius: "10px",
-                  borderBottomRightRadius: "10px",
+                  top: "1.5px",
+                  left: "1.5px",
+                  borderRadius: "17px",
+
                   /* borderRadius: "10px", */
                 }}
               />
@@ -98,10 +99,10 @@ export default function CardInfoGold({
             </PhotoContainer>
           )}
 
-          <What>
+          <What isUploaded2={isUploaded2}>
             <strong>{what}</strong>{" "}
           </What>
-          <Why>{why}</Why>
+          <Why isUploaded2={isUploaded2}>{why}</Why>
           <Price>
             <strong>Price : </strong>
             {price}€
@@ -130,6 +131,7 @@ const What = styled.div`
   position: absolute;
   top: 5%;
   left: 35%;
+  color: ${(props) => (props.isUploaded2 ? " #faf1da" : "black")};
 `;
 
 const Why = styled.div`
@@ -137,6 +139,7 @@ const Why = styled.div`
   top: 15%;
   left: 35%;
   font-size: 14px;
+  color: ${(props) => (props.isUploaded2 ? "#D0CBD5" : "black")};
 `;
 
 const Birthday = styled.div`
@@ -187,7 +190,8 @@ const PhotoContainer = styled.div`
   border-radius: 10px;
   left: 5%;
   position: absolute;
-  background: grey;
+  background: #021e38;
+  color: #faf1da;
   top: 10%;
 `;
 

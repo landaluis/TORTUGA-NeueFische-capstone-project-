@@ -90,8 +90,9 @@ export default function ProfileForm({ cards }) {
             height="100"
             style={{
               position: "relative",
-              top: "10px",
+              top: "20px",
               right: "90px",
+              border: "2px solid white",
               borderRadius: "50%",
             }}
           />
@@ -125,7 +126,7 @@ const StyledForm = styled.form`
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
-  background-color: #eaeaea;
+  background-color: #faf1da;
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
@@ -144,7 +145,7 @@ const Create = styled.button`
 
 const Name = styled.div`
   position: relative;
-  top: 60px;
+  top: 70px;
   left: 32px;
 `;
 
@@ -171,11 +172,11 @@ const Upload = styled.div`
 const StyledCard = styled.div`
   box-sizing: border-box;
   text-align: center;
-  background: #eaeaea;
+  background-color: #faf1da;
   border: 1px solid #eaeaea;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;
-  width: 340px;
+  width: 310px;
   height: 300px;
   margin: 16px auto;
   position: relative;
@@ -188,11 +189,12 @@ const EditButton = styled.button`
   margin: 16px;
   position: absolute;
   top: 0px;
+  border-radius: 8px;
 `;
 
 const SocialM = styled.div`
   position: absolute;
-  top: 80px;
+  top: 90px;
   right: 58px;
   color: grey;
 `;

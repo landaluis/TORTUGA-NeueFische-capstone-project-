@@ -8,6 +8,12 @@ export default createGlobalStyle`
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family:'PressStart2P-Regular';
+  src: url('/Font/PressStart2P-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
   *,
   *::before,
@@ -17,7 +23,7 @@ export default createGlobalStyle`
   body {
     margin: 0;
     font-family:"Bahnschrift", sans-serif; 
-  background-color: black; 
+  background-color:#021e38; 
 /*   background: #09182f; */
   }
 `;

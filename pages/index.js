@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import Card from "../components/Card/index";
+import Image from "next/image";
+import WelcomeTortuga1 from "../public/WelcomeTortuga1.png";
+import About from "../components/About/index";
 
 export default function Home({
   cards,
@@ -8,14 +11,28 @@ export default function Home({
   handleShowInfo,
   handleImageWishUpload,
 }) {
-  console.log(cards);
   return (
     <main>
+      <About></About>
       {cards.length === 0 ? (
         <StyledWelcome>
-          Welcome to Tortuga app! To get started, simply tap the button with the
-          (+) sign in the navigation bar to create your very first card. You can
-          come back here to see your cards.
+          <Image
+            src={WelcomeTortuga1}
+            alt="Tortuga Logo"
+            width={150}
+            height={150}
+            style={{
+              position: "relative",
+              borderRadius: "10px",
+              /*  top: "20px",
+              left: "50px" */
+            }}
+          />
+          <p>
+            Welcome to Tortuga app! To get started, simply tap the button with
+            the (+) sign in the navigation bar to create your very first card.
+            You can come back here to see your cards.
+          </p>
         </StyledWelcome>
       ) : null}
       <WrapperDiv>
@@ -59,21 +76,28 @@ export default function Home({
   );
 }
 
-const StyledWelcome = styled.p`
+const StyledWelcome = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   box-sizing: border-box;
   text-align: center;
-
   z-index: 2;
   position: relative;
   width: 340px;
-  height: 184px;
-  background: #eaeaea;
+  height: 340px;
+  background: #faf1da;
   border: 1px solid #a6a6a6;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;
   margin: 0 auto;
-  margin-top: 80px;
+  margin-top: 130px;
+
+  & > p {
+    margin: 20px;
+    text-align: justify;
+  }
 `;
 
 const CardList = styled.div`
@@ -86,3 +110,5 @@ const WrapperDiv = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+/* const WelcomeMessage = styled.div``; */

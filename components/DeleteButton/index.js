@@ -26,7 +26,9 @@ const DeleteWrap = styled.div`
   border: none;
 `;
 
-const Delete = styled.button``;
+const Delete = styled.button`
+  border-radius: 8px;
+`;
 
 const QuestionWrapper = styled.div`
   border: 1px solid grey;
@@ -47,9 +49,12 @@ const Question = styled.p`
 const YesButton = styled.button`
   margin: 5px;
   border: 1px solid green;
+  border-radius: 10px;
 `;
 
 const NoButton = styled.button`
   margin: 5px;
   border: 1px solid red;
+
+  border-radius: 10px;
 `;

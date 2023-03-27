@@ -42,7 +42,7 @@ const StyledTicketContainer = styled.div`
 const StyledTicket = styled.div`
   box-sizing: border-box;
   text-align: center;
-  background: #e08989;
+  background: #a8d9d4;
   border: 1px solid #eaeaea;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;

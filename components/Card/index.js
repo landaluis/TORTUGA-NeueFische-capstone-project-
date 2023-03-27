@@ -55,7 +55,7 @@ export default function Card({
             {savings < price ? null : (
               <Image
                 /*  src={tortugaLogoDorado} */
-                src={isUploaded2 ? tortugaLogoPlatinum : tortugaLogoDorado}
+                src={isUploaded2 ? TortugaLogo : tortugaLogoDorado}
                 /*  { (isUploaded2) ?(src={tortugaLogoPlatinum}):( src={tortugaLogoDorado})} */
                 alt="Tortuga Logo"
                 width={97}
@@ -117,11 +117,11 @@ export default function Card({
 
         <GenerateButton
           gold={savings < price}
-          style={
+          /* style={
             savings >= price
               ? { background: "red" }
               : { background: "greenyellow" }
-          }
+          } */
           onClick={() =>
             handleFillCanvas(
               divisor,
@@ -152,7 +152,7 @@ const StyledCard = styled.div`
 
   background: ${(props) =>
     props.gold
-      ? "#eaeaea"
+      ? " #faf1da"
       : "linear-gradient(56deg, rgba(131,101,30,1) 0%, rgba(186,150,38,1) 12%, rgba(216,183,64,1) 24%, rgba(231,201,78,1) 37%, rgba(239,211,86,1) 44%, rgba(246,232,94,1) 54%, rgba(238,182,11,1) 86%, rgba(219,165,19,1) 91%, rgba(198,147,32,1) 96%, rgba(184,134,41,1) 100%)"};
 
   background: ${(props) =>
@@ -161,7 +161,7 @@ const StyledCard = styled.div`
       : null};
 
   border: 1px solid #eaeaea;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 10px 11px 14px 3px rgba(0, 0, 0, 0.89);
   border-radius: 17px;
   width: 340px;
   height: 184px;
@@ -174,6 +174,8 @@ const StyledCard = styled.div`
 const GenerateButton = styled.button`
   margin: 16px;
   position: absolute;
+  background: #038a7f;
+  color: #faf1da;
   bottom: 0px;
   right: -10px;
   border-radius: 50%;

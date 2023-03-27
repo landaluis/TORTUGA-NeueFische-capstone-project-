@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { CldImage, CldUploadButton } from "next-cloudinary";
 import Image from "next/image";
+import Router from "next/router";
 
 export default function CardForm({
   onAddCard,
@@ -33,6 +34,7 @@ export default function CardForm({
     window.location.reload();
 
     form.reset();
+    /* Router.push("/"); */
   }
 
   function handlePriceChange(event) {
@@ -42,10 +44,11 @@ export default function CardForm({
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>
-        <Title>New Wish</Title>
+        <Title>
+          <strong>New Tortuga Egg</strong>
+        </Title>
         <section>
           <What>
-            <label htmlFor="what">What: </label>
             <input
               type="text"
               id="what"
@@ -53,64 +56,94 @@ export default function CardForm({
               placeholder="Travel"
               required
             />
+            <label htmlFor="what">Wish </label>
           </What>
-
-          <Upload>
-            <CldUploadButton
-              uploadPreset="ceduvcvz"
-              onUpload={onHandleImageUpload}
-            />
-            {image && <Image src={image.src} width={100} height={100} alt="" />}
-            <Checked
-              style={
-                isUploaded
-                  ? { background: "green" }
-                  : { background: "#eaeaea", border: "1px solid grey" }
-              }
-            ></Checked>
-          </Upload>
+          <UploadPriceContainer>
+            <Upload>
+              <UploadCheckContainer>
+                <CldUploadButton
+                  uploadPreset="ceduvcvz"
+                  id="upload-btn"
+                  onUpload={onHandleImageUpload}
+                  style={{
+                    width: "60px",
+                    position: "relative",
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                />
+                {image && (
+                  <Image src={image.src} width={100} height={100} alt="" />
+                )}
+                <Checked
+                  style={
+                    isUploaded
+                      ? { background: "green" }
+                      : { background: "#eaeaea", border: "1px solid grey" }
+                  }
+                ></Checked>
+              </UploadCheckContainer>
+              <Label htmlFor="upload-btn">Picture</Label>
+            </Upload>
+            <Price>
+              <input
+                style={{ width: "80px" }}
+                type="number"
+                id="price"
+                name="price"
+                min="1"
+                placeholder="€"
+                required
+                onChange={handlePriceChange}
+              />
+              <label htmlFor="price">Price </label>
+            </Price>
+          </UploadPriceContainer>
 
           <Why>
-            <label htmlFor="why">Why: </label>
-            <input type="text" id="why" name="why" placeholder="I need relax" />
+            <input
+              type="text"
+              id="why"
+              name="why"
+              placeholder="I need to relax"
+            />
+            <label htmlFor="why">Why </label>
           </Why>
-          <Price>
-            <label htmlFor="price">Price: </label>
-            <input
-              type="number"
-              id="price"
-              name="price"
-              min="1"
-              required
-              onChange={handlePriceChange}
-            />
-          </Price>
 
-          <HowMuch>
-            <label htmlFor="howMuch">How much: </label>
-            <input
-              type="number"
-              id="howMuch"
-              name="howMuch"
-              min="1"
-              max={maxHowMuch}
-              required
-            />
-          </HowMuch>
-          <Frequency>
-            <label>How often: </label>
-            <select name="frequency" required>
-              <option value="0">-Choose Frequency-</option>
-              <option value="1">Daily</option>
-              <option value="2">Weekly</option>
-              <option value="3">Monthly</option>
-            </select>
-          </Frequency>
+          <Subtitle>
+            <strong>Hatching Plan</strong>
+          </Subtitle>
+          <HoWFrequencyContainer>
+            <HowMuch>
+              <input
+                style={{ width: "80px" }}
+                type="number"
+                id="howMuch"
+                name="howMuch"
+                min="1"
+                max={maxHowMuch}
+                placeholder="€ "
+                required
+              />
+              <label htmlFor="howMuch">Amount </label>
+            </HowMuch>
+            <Frequency>
+              <select name="frequency" required>
+                <option value="0">-Choose Frequency-</option>
+                <option value="1">Daily</option>
+                <option value="2">Weekly</option>
+                <option value="3">Monthly</option>
+              </select>
+              <label>Frequency </label>
+            </Frequency>
+          </HoWFrequencyContainer>
           <Reset type="reset">Reset</Reset>
           <Create type="submit">Create</Create>
         </section>
         <Exit>
-          <Link href={"/"}>
+          <Link href={"/"} style={{ color: "#faf1da" }}>
             <span className="material-symbols-outlined">
               disabled_by_default
             </span>
@@ -123,10 +156,12 @@ export default function CardForm({
 
 const Exit = styled.div`
   z-index: 30;
-  top: -20px;
+  top: -10px;
   position: absolute;
-  right: -30px;
+  right: -10px;
+  color: #faf1da;
 `;
+
 const StyledForm = styled.form`
   display: flex;
   position: relative;
@@ -155,60 +190,108 @@ const StyledForm = styled.form`
     rgba(190, 179, 183, 1) 100%
   );
 
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   box-shadow: inset 14px 26px 49px 0px rgba(255, 244, 222, 0.94),
     14px 26px 49px 0px rgba(0, 0, 0, 0.94);
+
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
 `;
 
 const Reset = styled.button`
   position: relative;
-  top: 160px;
+  top: 75px;
   left: -20px;
+  color: #1f2021;
+  border-radius: 5px;
 `;
 
 const Create = styled.button`
   position: relative;
-  top: 160px;
+  top: 75px;
   right: -20px;
+  color: #1f2021;
+  border-radius: 5px;
 `;
 
 const Frequency = styled.div`
   position: relative;
-  top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 55px;
+  right: 40px;
+  width: 30%;
+  color: #1f2021;
+  font-size: 15px;
 `;
 
 const HowMuch = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  top: 100px;
-`;
-
-const Price = styled.div`
-  position: relative;
-  top: 80px;
+  top: 55px;
+  display: flex;
+  left: 29px;
+  width: 30%;
+  font-size: 15px;
+  color: #1f2021;
 `;
 
 const Why = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  top: 55px;
+  top: 60px;
+  font-size: 15px;
+  color: #1f2021;
 `;
 
 const What = styled.div`
   position: relative;
-  top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 25px;
+  color: #1f2021;
+  font-size: 15px;
 `;
 
-const Title = styled.h4`
+const Title = styled.h3`
   position: relative;
   top: 25px;
+  color: #021e38;
 `;
 
+const UploadPriceContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Price = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 40px;
+  right: 40px;
+  font-size: 15px;
+`;
 const Upload = styled.div`
   position: relative;
-  top: 45px;
+  top: 35px;
+  left: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
+  width: 50%;
 `;
 
 const Checked = styled.span`
@@ -216,4 +299,33 @@ const Checked = styled.span`
   height: 12px;
   border-radius: 50%;
   margin: 5px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+`;
+
+const Subtitle = styled.h3`
+  position: relative;
+  top: 55px;
+  color: #021e38;
+`;
+
+const HoWFrequencyContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const UploadCheckContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 5px;
+`;
+
+const Label = styled.label`
+  position: relative;
+  top: 9px;
+  font-size: 15px;
 `;

@@ -100,7 +100,7 @@ export default function App({ Component, pageProps }) {
     if (needed < 0) {
       const newTicket = {
         id: uid(),
-        ticketValue: Math.abs("needed"),
+        ticketValue: -needed,
       };
       setTickets([newTicket, ...tickets]);
     }
@@ -374,7 +374,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <GlobalStyle />s
+      <GlobalStyle />
       <Header />
       <Head>
         <title>Capstone Project</title>
