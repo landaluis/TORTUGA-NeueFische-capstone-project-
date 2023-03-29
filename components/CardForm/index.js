@@ -4,7 +4,7 @@ import { useState } from "react";
 import { CldImage, CldUploadButton } from "next-cloudinary";
 import Image from "next/image";
 import Router from "next/router";
-import { useEffect } from "react";
+import { MaterialSymbol } from "material-symbols";
 
 export default function CardForm({
   onAddCard,
