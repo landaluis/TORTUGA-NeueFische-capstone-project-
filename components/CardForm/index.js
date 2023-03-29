@@ -349,7 +349,7 @@ const Label = styled.label`
 const PopUp = styled.div`
   border: 1px solid grey;
   position: absolute;
-  background: rgba(255, 253, 245);
+  background: #faf1da;
   top: 200px;
   z-index: 80;
   border-radius: 10px;

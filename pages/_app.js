@@ -42,7 +42,7 @@ export default function App({ Component, pageProps }) {
       let timer;
       timer = setTimeout(() => {
         setShowPopUp(false);
-      }, 2000);
+      }, 3000);
 
       showedGoldPopUp = true;
       const updatedCards = [...cards];
@@ -60,7 +60,7 @@ export default function App({ Component, pageProps }) {
       let timer;
       timer = setTimeout(() => {
         setShowPopUp2(false);
-      }, 4000);
+      }, 3000);
 
       showedPlatinumPopUp = true;
       const updatedCards = [...cards];

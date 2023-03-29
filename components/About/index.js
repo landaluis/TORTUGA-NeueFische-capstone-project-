@@ -153,7 +153,7 @@ const AboutInfo = styled.div`
   padding-top: 450px;
   padding-bottom: 60px;
   position: relative;
-  top: 330px;
+  top: 360px;
 `;
 
 const InfoContainer = styled.div`
@@ -170,9 +170,9 @@ const InfoContainer = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 30px;
   font-size: 16px;
-  height: 500px;
+  height: 480px;
   width: 350px;
   overflow: auto;
 `;

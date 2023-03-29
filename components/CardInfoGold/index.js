@@ -51,7 +51,7 @@ export default function CardInfoGold({
                   position: "absolute",
                   top: "1.5px",
                   left: "1.5px",
-                  borderRadius: "17px",
+                  borderRadius: "10px",
                 }}
               />
             </ImagesContainer>

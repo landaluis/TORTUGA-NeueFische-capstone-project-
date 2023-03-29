@@ -7,7 +7,7 @@ import Image from "next/image";
 import TortugaLogo from "../../public/TortugaLogo.png";
 import CardInfoGold from "../CardInfoGold/index.js";
 import tortugaLogoDorado from "../../public/tortugaLogoDorado.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Card({
   what,
@@ -47,6 +47,7 @@ export default function Card({
   useEffect(() => {
     handlePopUp(id, savings, price);
   }, [showPopUp, showedGoldPopUp, savings, showedPlatinumPopUp, isUploaded2]);
+  /*   const [show, setShow] = useState(false); */
 
   return (
     <>
@@ -125,6 +126,7 @@ export default function Card({
         <InfoButton
           onClick={() => handleShowInfo(id, showInfo)}
           gold={savings < price}
+          showInfo={showInfo}
         >
           i
         </InfoButton>
@@ -199,11 +201,13 @@ const InfoButton = styled.button`
   top: 10px;
   right: 8px;
   border-radius: 50%;
+  font-weight: bold;
+  color: ${(props) => (props.showInfo ? "black" : " red")};
 `;
 const PopUp = styled.div`
   border: 1px solid grey;
   position: absolute;
-  background: rgba(255, 253, 245);
+  background: #faf1da;
   top: 200px;
   z-index: 80;
   border-radius: 10px;
