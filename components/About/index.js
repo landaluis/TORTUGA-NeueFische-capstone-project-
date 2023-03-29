@@ -20,7 +20,7 @@ export default function About() {
             <AboutInfo>
               <h1>About</h1>
               <div>
-                Consumption is more than just satisfying basic needs.We spend
+                Consumption is more than just satisfying basic needs. We spend
                 money not only to have a roof over our heads, clothes on our
                 bodies and food in the refrigerator.
               </div>{" "}
@@ -49,8 +49,8 @@ export default function About() {
               </div>{" "}
               <br></br>
               <div>
-                Now it's time to get down to business! Indicate how often you
-                want to set aside how much money for this goal. You will
+                Now it&apos;s time to get down to business! Indicate how often
+                you want to set aside how much money for this goal. You will
                 immediately see when your turtle will hatch according to your
                 individual savings plan allowing you to fulfill your dream.{" "}
               </div>
@@ -95,8 +95,8 @@ export default function About() {
               </div>
               <br></br>
               <div>
-                You've reached your goal and set aside enough money with Tortuga
-                to let the turtle hatch and fulfill your wish?
+                You&apos;ve reached your goal and set aside enough money with
+                Tortuga to let the turtle hatch and fulfill your wish?
               </div>
               <div>
                 Congratulations! Now the way to the sea is clear - upload a

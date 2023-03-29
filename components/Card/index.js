@@ -47,7 +47,6 @@ export default function Card({
   useEffect(() => {
     handlePopUp(id, savings, price);
   }, [showPopUp, showedGoldPopUp, savings, showedPlatinumPopUp, isUploaded2]);
-  /*   const [show, setShow] = useState(false); */
 
   return (
     <>
