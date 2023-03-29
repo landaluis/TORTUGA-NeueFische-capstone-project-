@@ -13,7 +13,7 @@ export default function CardForm({
   isUploaded,
 }) {
   const [maxHowMuch, setMaxHowMuch] = useState(1);
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopUp, setShowPopUp] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -35,11 +35,11 @@ export default function CardForm({
     /*   window.location.reload(); */
     clearLocalStorageKey("image");
 
-    setShowPopup(true);
+    setShowPopUp(true);
     let timer;
     timer = setTimeout(() => {
       Router.push("/");
-      /*       setShowPopup(false); */
+      /*       setShowPopUp(false); */
     }, 2000);
     form.reset();
   }
@@ -50,7 +50,7 @@ export default function CardForm({
 
   return (
     <>
-      {showPopup ? (
+      {showPopUp ? (
         <PopUp>
           <p>Your card has been successfully created!</p>
         </PopUp>

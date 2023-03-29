@@ -7,6 +7,7 @@ import Image from "next/image";
 import TortugaLogo from "../../public/TortugaLogo.png";
 import CardInfoGold from "../CardInfoGold/index.js";
 import tortugaLogoDorado from "../../public/tortugaLogoDorado.png";
+import { useEffect } from "react";
 
 export default function Card({
   what,
@@ -37,9 +38,26 @@ export default function Card({
   handleImageWishUpload,
   imageWish,
   isUploaded2,
+  showPopUp,
+  handlePopUp,
+  showedGoldPopUp,
+  showPopUp2,
+  showedPlatinumPopUp,
 }) {
+  useEffect(() => {
+    handlePopUp(id, savings, price);
+  }, [showPopUp, showedGoldPopUp, savings, showedPlatinumPopUp, isUploaded2]);
+
   return (
     <>
+      {showPopUp && showedGoldPopUp && (
+        <PopUp>You have earned a Golden Card!</PopUp>
+      )}
+      {isUploaded2 && showPopUp2 && (
+        <PopUp>
+          <p>Your card has achieved the highest level Platinum!</p>
+        </PopUp>
+      )}
       <StyledCard gold={savings < price} platinum={isUploaded2}>
         {showInfo ? (
           <>
@@ -130,6 +148,7 @@ export default function Card({
               totalTickets,
               isUploaded2
             );
+            handlePopUp(id, savings, price);
           }}
         >
           €
@@ -180,4 +199,25 @@ const InfoButton = styled.button`
   top: 10px;
   right: 8px;
   border-radius: 50%;
+`;
+const PopUp = styled.div`
+  border: 1px solid grey;
+  position: absolute;
+  background: rgba(255, 253, 245);
+  top: 200px;
+  z-index: 80;
+  border-radius: 10px;
+  font-size: 18px;
+  width: 300px;
+  height: 200px;
+  left: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 5px 15px 5px #000000;
+  margin-right: 20px;
+  line-height: 30px;
+  & > p {
+    text-align: center;
+  }
 `;

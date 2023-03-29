@@ -16,18 +16,18 @@ export default function ProfileForm({ cards }) {
     defaultValue: false,
   });
   const [name, setName] = useLocalStorageState("name", { defaultValue: "" });
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopUp, setShowPopUp] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setShowProfile(true);
 
-    setShowPopup(true);
+    setShowPopUp(true);
 
     let timer;
 
     timer = setTimeout(() => {
-      setShowPopup(false);
+      setShowPopUp(false);
     }, 2000);
   };
 
@@ -50,7 +50,7 @@ export default function ProfileForm({ cards }) {
 
   return (
     <>
-      {showPopup ? <PopUp>Profile Created!</PopUp> : null}
+      {showPopUp ? <PopUp>Profile Created!</PopUp> : null}
       {!showProfile && (
         <StyledForm onSubmit={handleSubmit}>
           <Title>New User</Title>

@@ -1,8 +1,26 @@
 import styled from "styled-components";
+import { useState } from "react";
+import Router from "next/router";
 
 export default function TicketPage({ tickets, handleTicketApply }) {
+  const [showPopUp, setShowPopUp] = useState(false);
+
+  function handlePopUp() {
+    setShowPopUp(true);
+    let timer;
+    timer = setTimeout(() => {
+      Router.push("/");
+      setShowPopUp(false);
+    }, 1500);
+  }
+
   return (
     <>
+      {showPopUp ? (
+        <PopUp>
+          <p>You have applied a new ticket</p>
+        </PopUp>
+      ) : null}
       {tickets.length === 0 ? (
         <StyledWelcome>
           <p>
@@ -17,7 +35,12 @@ export default function TicketPage({ tickets, handleTicketApply }) {
           <StyledTicketContainer key={ticket?.id}>
             <StyledTicket>{ticket?.ticketValue}€</StyledTicket>
 
-            <StyledButton onClick={() => handleTicketApply(ticket.ticketValue)}>
+            <StyledButton
+              onClick={() => {
+                handleTicketApply(ticket.ticketValue);
+                handlePopUp();
+              }}
+            >
               Apply Ticket
             </StyledButton>
           </StyledTicketContainer>
@@ -88,5 +111,27 @@ const StyledWelcome = styled.p`
   & > p {
     margin: 20px;
     text-align: justify;
+  }
+`;
+
+const PopUp = styled.div`
+  border: 1px solid grey;
+  position: absolute;
+  background: rgba(255, 253, 245);
+  top: 200px;
+  z-index: 80;
+  border-radius: 10px;
+  font-size: 18px;
+  width: 300px;
+  height: 130px;
+  left: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 5px 15px 5px #000000;
+  margin-right: 20px;
+  line-height: 30px;
+  & > p {
+    text-align: center;
   }
 `;

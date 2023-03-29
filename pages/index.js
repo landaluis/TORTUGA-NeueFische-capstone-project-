@@ -9,6 +9,9 @@ export default function Home({
   handleFillCanvas,
   handleShowInfo,
   handleImageWishUpload,
+  handlePopUp,
+  showPopUp,
+  showPopUp2,
 }) {
   return (
     <main>
@@ -65,6 +68,11 @@ export default function Home({
               handleImageWishUpload={handleImageWishUpload}
               isUploaded2={card.isUploaded2}
               ticketValue={card.ticketValue}
+              showPopUp={showPopUp}
+              handlePopUp={handlePopUp}
+              showedGoldPopUp={card.showedGoldPopUp}
+              showPopUp2={showPopUp2}
+              showedPlatinumPopUp={card.showedPlatinumPopUp}
             />
           ))}
         </CardList>
