@@ -22,12 +22,13 @@ export default function FormTicket({ onAddTicket }) {
             id="ticketValue"
             name="ticketValue"
             min="1"
+            placeholder="€"
             required
           />
         </div>
 
-        <button type="reset">Reset</button>
-        <button type="submit">Buy a Ticket</button>
+        <ResetButton type="reset">Reset</ResetButton>
+        <CreateButton type="submit">Buy a Ticket</CreateButton>
       </section>
     </StyledForm>
   );
@@ -36,16 +37,31 @@ export default function FormTicket({ onAddTicket }) {
 const StyledForm = styled.form`
   box-sizing: border-box;
   text-align: center;
-  background: #cccfcc;
+  background: rgba(250, 241, 219, 0.92);
   border: 1px solid #eaeaea;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;
   position: fixed;
-  top: 80px;
+  top: 100px;
   left: 50%;
   transform: translateX(-50%);
   width: 340px;
   height: 184px;
   margin: 0 auto;
   z-index: 15;
+`;
+
+const ResetButton = styled.button`
+  position: fixed;
+  z-index: 8;
+  left: 90px;
+  top: 120px;
+  border-radius: 10px;
+`;
+
+const CreateButton = styled.button`
+  position: fixed;
+  left: 170px;
+  top: 120px;
+  border-radius: 10px;
 `;

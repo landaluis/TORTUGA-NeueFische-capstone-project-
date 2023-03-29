@@ -1,22 +1,58 @@
 import styled from "styled-components";
-import "material-symbols";
 import Link from "next/link";
-
+import Image from "next/image";
+import PlusIcon from "../../public/PlusIcon.svg";
+import TicketIcon from "../../public/TicketIcon.svg";
+import CardsIcon from "../../public/CardsIcon.svg";
+import ProfileIcon from "../../public/ProfileIcon.svg";
 export default function Navigation() {
   return (
     <StyledList>
-      <Link href={"/"}>
-        <span className="material-symbols-outlined">view_agenda</span>
-      </Link>
-      <Link href={"/create-card"}>
-        <span className="material-symbols-outlined">add_circle</span>
-      </Link>
-      <Link href={"/create-ticket"}>
-        <span className="material-symbols-outlined">payments</span>
-      </Link>
-      <Link href={"/profilePage"}>
-        <span className="material-symbols-outlined">person</span>
-      </Link>
+      <li>
+        <Link href={"/"}>
+          <Image
+            src={CardsIcon}
+            alt="Add Card"
+            title="AddCard"
+            width="35"
+            height="35"
+          />
+        </Link>
+      </li>
+      <li>
+        <Link href={"/create-card"}>
+          <Image
+            src={PlusIcon}
+            alt="Add Card"
+            title="AddCard"
+            width="35"
+            height="35"
+          />
+        </Link>
+      </li>
+      <li>
+        <Link href={"/create-ticket"}>
+          <Image
+            src={TicketIcon}
+            alt="Add Card"
+            title="AddCard"
+            width="35"
+            height="35"
+          />
+        </Link>
+      </li>
+      <li>
+        {" "}
+        <Link href={"/profilePage"}>
+          <Image
+            src={ProfileIcon}
+            alt="Add Card"
+            title="AddCard"
+            width="35"
+            height="35"
+          />
+        </Link>
+      </li>
     </StyledList>
   );
 }
@@ -25,12 +61,16 @@ const StyledList = styled.ul`
   display: flex;
   justify-content: space-around;
   width: 100%;
-  height: 65px;
+  height: 58px;
   position: fixed;
   bottom: 0;
   font-size: 10px;
   padding: 3px;
   align-items: center;
-  background-color: #eaeaea;
+  background-color: #faf1da;
   z-index: 21;
+
+  & > li {
+    list-style: none;
+  }
 `;

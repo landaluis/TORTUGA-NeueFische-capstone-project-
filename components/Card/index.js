@@ -4,8 +4,9 @@ import Canvas from "../Canvas";
 import TicketUse from "../TicketUse/index.js";
 import CardInfo from "../CardInfo/index.js";
 import Image from "next/image";
-import TortugaLogo from "../../lib/TortugaLogo.png";
+import TortugaLogo from "../../public/TortugaLogo.png";
 import CardInfoGold from "../CardInfoGold/index.js";
+import tortugaLogoDorado from "../../public/tortugaLogoDorado.png";
 
 export default function Card({
   what,
@@ -31,11 +32,15 @@ export default function Card({
   needed,
   totalTickets,
   usedTickets,
+  frequencyName,
+  savPeriod,
+  handleImageWishUpload,
+  imageWish,
+  isUploaded2,
 }) {
-  const gold = savings < price;
   return (
     <>
-      <StyledCard gold={savings < price}>
+      <StyledCard gold={savings < price} platinum={isUploaded2}>
         {showInfo ? (
           <>
             <CardPhoto what={what} image={image}></CardPhoto>
@@ -48,7 +53,7 @@ export default function Card({
             />
             {savings < price ? null : (
               <Image
-                src={TortugaLogo}
+                src={isUploaded2 ? TortugaLogo : tortugaLogoDorado}
                 alt="Tortuga Logo"
                 width={97}
                 height={109}
@@ -89,6 +94,12 @@ export default function Card({
               birthday={birthday}
               totalTickets={totalTickets}
               usedTickets={usedTickets}
+              frequencyName={frequencyName}
+              savPeriod={savPeriod}
+              handleImageWishUpload={handleImageWishUpload}
+              image={image}
+              imageWish={imageWish}
+              isUploaded2={isUploaded2}
             />
           </>
         )}
@@ -103,12 +114,7 @@ export default function Card({
 
         <GenerateButton
           gold={savings < price}
-          style={
-            savings >= price
-              ? { background: "red" }
-              : { background: "greenyellow" }
-          }
-          onClick={() =>
+          onClick={() => {
             handleFillCanvas(
               divisor,
               pixels,
@@ -121,9 +127,10 @@ export default function Card({
               howMuch,
               needed,
               price,
-              totalTickets
-            )
-          }
+              totalTickets,
+              isUploaded2
+            );
+          }}
         >
           €
         </GenerateButton>
@@ -138,12 +145,17 @@ const StyledCard = styled.div`
 
   background: ${(props) =>
     props.gold
-      ? "#eaeaea"
+      ? " #faf1da"
       : "linear-gradient(56deg, rgba(131,101,30,1) 0%, rgba(186,150,38,1) 12%, rgba(216,183,64,1) 24%, rgba(231,201,78,1) 37%, rgba(239,211,86,1) 44%, rgba(246,232,94,1) 54%, rgba(238,182,11,1) 86%, rgba(219,165,19,1) 91%, rgba(198,147,32,1) 96%, rgba(184,134,41,1) 100%)"};
 
+  background: ${(props) =>
+    props.platinum
+      ? "linear-gradient(56deg, rgba(155,155,155,1) 0%, rgba(130,130,130,1) 19%, rgba(174,174,174,1) 37%, rgba(233,233,233,1) 53%, rgba(204,204,204,1) 71%, rgba(157,157,157,1) 83%, rgba(123,123,123,1) 99%, rgba(155,155,155,1) 100%);"
+      : null};
+
   border: 1px solid #eaeaea;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 17px;
+  box-shadow: 10px 11px 14px 3px rgba(0, 0, 0, 0.89);
+  border-radius: 12px;
   width: 340px;
   height: 184px;
   margin: 16px auto;
@@ -155,6 +167,8 @@ const StyledCard = styled.div`
 const GenerateButton = styled.button`
   margin: 16px;
   position: absolute;
+  background: #038a7f;
+  color: #faf1da;
   bottom: 0px;
   right: -10px;
   border-radius: 50%;

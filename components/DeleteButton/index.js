@@ -26,16 +26,19 @@ const DeleteWrap = styled.div`
   border: none;
 `;
 
-const Delete = styled.button``;
+const Delete = styled.button`
+  border-radius: 8px;
+`;
 
 const QuestionWrapper = styled.div`
   border: 1px solid grey;
   position: relative;
-  background: rgba(255, 253, 245, 0.91);
+  background: rgba(255, 253, 245);
   bottom: 10px;
   right: 40px;
   height: 150px;
   width: 200px;
+  border-radius: 10px;
 `;
 
 const Question = styled.p`
@@ -46,9 +49,12 @@ const Question = styled.p`
 const YesButton = styled.button`
   margin: 5px;
   border: 1px solid green;
+  border-radius: 10px;
 `;
 
 const NoButton = styled.button`
   margin: 5px;
   border: 1px solid red;
+
+  border-radius: 10px;
 `;

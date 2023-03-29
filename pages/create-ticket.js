@@ -6,8 +6,8 @@ import styled from "styled-components";
 export default function CreateTicket({ onAddTicket, tickets, onDeleteTicket }) {
   return (
     <>
+      <FormTicket onAddTicket={onAddTicket} />
       <WrapperDiv>
-        <FormTicket onAddTicket={onAddTicket} />
         <TicketList>
           {tickets?.map((ticket) => (
             <Ticket
@@ -30,6 +30,6 @@ const WrapperDiv = styled.div`
 `;
 
 const TicketList = styled.div`
-  margin-top: 260px;
+  margin-top: 280px;
   margin-bottom: 70px;
 `;

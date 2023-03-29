@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { TortugaLogo } from "../../lib/TortugaLogo.png";
+import BlurryWish from "../../public/BlurryWish.png";
 
 export default function CardPhoto({ what, image }) {
   return (
@@ -8,13 +8,14 @@ export default function CardPhoto({ what, image }) {
       <StyledCardPhoto>
         {" "}
         <Image
-          src={image}
+          src={image || BlurryWish}
           alt={"My Wish"}
           width="100"
           height="100"
           style={{
             position: "relative",
             top: "10px",
+            borderRadius: "10px",
           }}
         />
         <StyledName>

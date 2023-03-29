@@ -25,7 +25,7 @@ const StyledProgressBar = styled.div`
   border-radius: 2px;
 `;
 const StyledSavings = styled.div`
-  background-color: #0ccf67;
+  background-color: #038a7f;
   height: 10px;
 `;
 
