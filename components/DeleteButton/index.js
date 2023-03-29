@@ -33,7 +33,7 @@ const Delete = styled.button`
 const QuestionWrapper = styled.div`
   border: 1px solid grey;
   position: relative;
-  background: rgba(255, 253, 245, 0.91);
+  background: rgba(255, 253, 245);
   bottom: 10px;
   right: 40px;
   height: 150px;

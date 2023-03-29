@@ -5,8 +5,10 @@ export default function TicketPage({ tickets, handleTicketApply }) {
     <>
       {tickets.length === 0 ? (
         <StyledWelcome>
-          Currently, there are no available tickets. To purchase new tickets,
-          please visit the Tickets section located in the Navigation bar.
+          <p>
+            Currently, there are no available tickets. To purchase new tickets,
+            please visit the Tickets section located in the Navigation bar.
+          </p>
         </StyledWelcome>
       ) : null}
 
@@ -66,18 +68,25 @@ const StyledButton = styled.button`
 `;
 
 const StyledWelcome = styled.p`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   box-sizing: border-box;
   text-align: center;
-
   z-index: 2;
   position: relative;
   width: 340px;
-  height: 184px;
-  background: #d9d9d9;
+  height: 240px;
+  background: #faf1da;
   border: 1px solid #a6a6a6;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 17px;
   margin: 0 auto;
-  margin-top: 80px;
+  margin-top: 130px;
+
+  & > p {
+    margin: 20px;
+    text-align: justify;
+  }
 `;

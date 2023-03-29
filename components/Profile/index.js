@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import Link from "next/link";
 import useLocalStorageState from "use-local-storage-state";
-import { CldImage, CldUploadButton } from "next-cloudinary";
+import { CldUploadButton } from "next-cloudinary";
 import Image from "next/image";
 import CounterCards from "../CounterCards";
+import { useState } from "react";
+import TortugaLogo from "../../public/TortugaLogo.png";
 
 export default function ProfileForm({ cards }) {
   const [imageProfile, setImageProfile] = useLocalStorageState("imageProfile", {
@@ -13,10 +15,19 @@ export default function ProfileForm({ cards }) {
     defaultValue: false,
   });
   const [name, setName] = useLocalStorageState("name", { defaultValue: "" });
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setShowProfile(true);
+
+    setShowPopup(true);
+
+    let timer;
+
+    timer = setTimeout(() => {
+      setShowPopup(false);
+    }, 2000);
   };
 
   const handleReset = () => {
@@ -38,6 +49,7 @@ export default function ProfileForm({ cards }) {
 
   return (
     <>
+      {showPopup ? <PopUp>Profile Created!</PopUp> : null}
       {!showProfile && (
         <StyledForm onSubmit={handleSubmit}>
           <Title>New User</Title>
@@ -55,7 +67,12 @@ export default function ProfileForm({ cards }) {
 
             <Upload>
               {imageProfile && (
-                <Image src={imageProfile.src} width={100} height={100} alt="" />
+                <Image
+                  src={imageProfile.src || TortugaLogo}
+                  width={100}
+                  height={100}
+                  alt="Image Profile"
+                />
               )}
               <CldUploadButton
                 uploadPreset="ceduvcvz"
@@ -99,7 +116,7 @@ export default function ProfileForm({ cards }) {
           <CounterCards cards={cards}></CounterCards>
 
           <SocialM>@neueFischeWhale</SocialM>
-          <EditButton onClick={handleReset}>Edit Profile</EditButton>
+          <EditButton onClick={handleReset}>Edit</EditButton>
         </StyledCard>
       )}
     </>
@@ -135,12 +152,14 @@ const Reset = styled.button`
   position: relative;
   top: 20px;
   left: -20px;
+  border-radius: 10px;
 `;
 
 const Create = styled.button`
   position: relative;
   top: 20px;
   right: -20px;
+  border-radius: 10px;
 `;
 
 const Name = styled.div`
@@ -167,6 +186,8 @@ const Upload = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  margin-left: 5px;
+  gap: 10px;
 `;
 
 const StyledCard = styled.div`
@@ -187,6 +208,7 @@ const StyledCard = styled.div`
 
 const EditButton = styled.button`
   margin: 16px;
+  right: 0px;
   position: absolute;
   top: 0px;
   border-radius: 8px;
@@ -195,6 +217,23 @@ const EditButton = styled.button`
 const SocialM = styled.div`
   position: absolute;
   top: 90px;
-  right: 58px;
-  color: grey;
+  right: 40px;
+  color: #2a2a2a;
+`;
+
+const PopUp = styled.div`
+  border: 1px solid grey;
+  position: absolute;
+  background: rgba(255, 253, 245);
+  right: 80px;
+  top: 200px;
+  z-index: 10;
+  left: 100px;
+  border-radius: 10px;
+  font-size: 18px;
+  width: 200px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

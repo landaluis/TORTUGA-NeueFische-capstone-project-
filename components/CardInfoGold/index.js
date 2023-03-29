@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import DeleteButton from "../DeleteButton";
-import { CldImage, CldUploadButton } from "next-cloudinary";
+import { CldUploadButton } from "next-cloudinary";
 import Image from "next/image";
-import useLocalStorageState from "use-local-storage-state";
-import { useState } from "react";
+
 import playaTortuga from "../../public/playaTortuga.png";
 
 export default function CardInfoGold({
@@ -22,33 +21,6 @@ export default function CardInfoGold({
   handleImageWishUpload,
   isUploaded2,
 }) {
-  /* const [imageWish, setImageWish] = useState({});
-
-  console.log(cards);
-
-  const handleImageWishUpload = (event) => {
-    if (event.event === "success") {
-      setImageWish({
-        src: event.info.secure_url,
-        height: event.info.height,
-        width: event.info.width,
-      });
-      let updatedCards = [...cards];
-      const index = updatedCards.findIndex((card) => card.id === cardId);
-      updatedCards[index] = {
-        ...updatedCards[index],
-        imageWish: {
-          src: imageWish.src,
-          height: imageWish.height,
-          width: imageWish.width,
-        },
-      };
-      setCards(updatedCards);
-    } else {
-      //Upload war nicht erfolgreich
-    }
-  }; */
-
   return (
     <>
       {savings < price ? null : (
@@ -67,8 +39,6 @@ export default function CardInfoGold({
                   borderRadius: "10px",
 
                   zIndex: 1,
-
-                  /*    borderRadius: "10px", */
                 }}
               />
               <Image
@@ -76,13 +46,12 @@ export default function CardInfoGold({
                 alt={"My Wish come true"}
                 width="335"
                 height="180"
+                priority
                 style={{
                   position: "absolute",
                   top: "1.5px",
                   left: "1.5px",
                   borderRadius: "17px",
-
-                  /* borderRadius: "10px", */
                 }}
               />
             </ImagesContainer>

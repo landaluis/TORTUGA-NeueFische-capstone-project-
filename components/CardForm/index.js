@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CldImage, CldUploadButton } from "next-cloudinary";
 import Image from "next/image";
 import Router from "next/router";
+import { useEffect } from "react";
 
 export default function CardForm({
   onAddCard,
@@ -12,6 +13,7 @@ export default function CardForm({
   isUploaded,
 }) {
   const [maxHowMuch, setMaxHowMuch] = useState(1);
+  const [showPopup, setShowPopup] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -30,11 +32,16 @@ export default function CardForm({
       localStorage.removeItem(image);
     };
 
+    /*   window.location.reload(); */
     clearLocalStorageKey("image");
-    window.location.reload();
 
+    setShowPopup(true);
+    let timer;
+    timer = setTimeout(() => {
+      Router.push("/");
+      /*       setShowPopup(false); */
+    }, 2000);
     form.reset();
-    /* Router.push("/"); */
   }
 
   function handlePriceChange(event) {
@@ -43,6 +50,11 @@ export default function CardForm({
 
   return (
     <>
+      {showPopup ? (
+        <PopUp>
+          <p>Your card has been successfully created!</p>
+        </PopUp>
+      ) : null}
       <StyledForm onSubmit={handleSubmit}>
         <Title>
           <strong>New Tortuga Egg</strong>
@@ -54,6 +66,7 @@ export default function CardForm({
               id="what"
               name="what"
               placeholder="Travel"
+              aria-label="Wish"
               required
             />
             <label htmlFor="what">Wish </label>
@@ -95,6 +108,7 @@ export default function CardForm({
                 name="price"
                 min="1"
                 placeholder="€"
+                aria-label="Price"
                 required
                 onChange={handlePriceChange}
               />
@@ -108,6 +122,7 @@ export default function CardForm({
               id="why"
               name="why"
               placeholder="I need to relax"
+              aria-label="Why"
             />
             <label htmlFor="why">Why </label>
           </Why>
@@ -125,6 +140,7 @@ export default function CardForm({
                 min="1"
                 max={maxHowMuch}
                 placeholder="€ "
+                aria-label="HowMuch"
                 required
               />
               <label htmlFor="howMuch">Amount </label>
@@ -328,4 +344,26 @@ const Label = styled.label`
   position: relative;
   top: 9px;
   font-size: 15px;
+`;
+
+const PopUp = styled.div`
+  border: 1px solid grey;
+  position: absolute;
+  background: rgba(255, 253, 245);
+  top: 200px;
+  z-index: 80;
+  border-radius: 10px;
+  font-size: 18px;
+  width: 300px;
+  height: 200px;
+  left: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 5px 15px 5px #000000;
+  margin-right: 20px;
+  line-height: 30px;
+  & > p {
+    text-align: center;
+  }
 `;

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export default function CounterCards({ cards }) {
-  console.log(cards);
   const activeCardsFilter = cards.filter((card) => card.savings < card.price);
   const activeCards = activeCardsFilter.length;
 
@@ -37,7 +36,7 @@ const CountContainer = styled.section`
   display: flex;
   flex-direction: row;
   top: 200px;
-  left: 29px;
+  left: 15px;
   position: absolute;
 `;
 

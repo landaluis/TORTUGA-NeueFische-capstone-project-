@@ -4,10 +4,9 @@ import Canvas from "../Canvas";
 import TicketUse from "../TicketUse/index.js";
 import CardInfo from "../CardInfo/index.js";
 import Image from "next/image";
-import TortugaLogo from "../../lib/TortugaLogo.png";
+import TortugaLogo from "../../public/TortugaLogo.png";
 import CardInfoGold from "../CardInfoGold/index.js";
-import tortugaLogoDorado from "../../lib/tortugaLogoDorado.png";
-import tortugaLogoPlatinum from "../../lib/tortugaLogoPlatinum.png";
+import tortugaLogoDorado from "../../public/tortugaLogoDorado.png";
 
 export default function Card({
   what,
@@ -54,9 +53,7 @@ export default function Card({
             />
             {savings < price ? null : (
               <Image
-                /*  src={tortugaLogoDorado} */
                 src={isUploaded2 ? TortugaLogo : tortugaLogoDorado}
-                /*  { (isUploaded2) ?(src={tortugaLogoPlatinum}):( src={tortugaLogoDorado})} */
                 alt="Tortuga Logo"
                 width={97}
                 height={109}
@@ -117,12 +114,7 @@ export default function Card({
 
         <GenerateButton
           gold={savings < price}
-          /* style={
-            savings >= price
-              ? { background: "red" }
-              : { background: "greenyellow" }
-          } */
-          onClick={() =>
+          onClick={() => {
             handleFillCanvas(
               divisor,
               pixels,
@@ -135,9 +127,10 @@ export default function Card({
               howMuch,
               needed,
               price,
-              totalTickets
-            )
-          }
+              totalTickets,
+              isUploaded2
+            );
+          }}
         >
           €
         </GenerateButton>
@@ -162,7 +155,7 @@ const StyledCard = styled.div`
 
   border: 1px solid #eaeaea;
   box-shadow: 10px 11px 14px 3px rgba(0, 0, 0, 0.89);
-  border-radius: 17px;
+  border-radius: 12px;
   width: 340px;
   height: 184px;
   margin: 16px auto;

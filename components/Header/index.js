@@ -12,6 +12,7 @@ export default function Header() {
           width={375}
           height={64}
           alt="Tortuga Banner"
+          priority
         />
       </HeaderContainer>
     </>
@@ -35,9 +36,7 @@ const StyledHeader = styled.h1`
   font-family: PressStart2P-Regular;
   font-size: 20px;
   color: #faf1da;
-  /*  box-shadow: 10px 11px 13px 3px rgba(0, 0, 0, 0.89); */
   text-shadow: 5px 4px 0px #130805;
-  /*   border: 1px solid grey; */
 `;
 
 const StyledImage = styled(Image)`

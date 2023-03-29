@@ -6,8 +6,8 @@ import useLocalStorageState from "use-local-storage-state";
 import { uid } from "uid";
 import styled from "styled-components";
 import Router from "next/router";
-import { pixelArray } from "@/lib/pixelArray";
-import { useState } from "react";
+import { pixelArray } from "../public/pixelArray.js";
+import { useState, useEffect } from "react";
 import next from "next";
 
 export default function App({ Component, pageProps }) {
@@ -42,7 +42,6 @@ export default function App({ Component, pageProps }) {
       };
       setCards(updatedCards);
     } else {
-      /*  setIsUploaded(false); */
       //Upload war nicht erfolgreich
     }
   };
@@ -72,9 +71,15 @@ export default function App({ Component, pageProps }) {
     price,
     totalTickets
   ) {
+    price = parseInt(price);
+    price = price;
+    savings = parseInt(savings);
+    savings = savings;
+
     if (savings >= price) {
       return;
     }
+
     let newPixels = [];
     const cardIndex = cards.findIndex((card) => card.id === id);
 
