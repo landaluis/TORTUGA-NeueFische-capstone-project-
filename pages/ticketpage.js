@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
 import Router from "next/router";
+import Image from "next/image";
+import TicketIcon from "../public/TicketIcon.svg";
 
 export default function TicketPage({ tickets, handleTicketApply }) {
   const [showPopUp, setShowPopUp] = useState(false);
@@ -23,8 +25,15 @@ export default function TicketPage({ tickets, handleTicketApply }) {
       ) : null}
       {tickets.length === 0 ? (
         <StyledWelcome>
+          <Image
+            src={TicketIcon}
+            alt="Ticket Icon"
+            title="AddCard"
+            width="50"
+            height="50"
+          />
           <p>
-            Currently, there are no available tickets. To purchase new tickets,
+            Currently, there are no available tickets . To purchase new tickets,
             please visit the Tickets section located in the Navigation bar.
           </p>
         </StyledWelcome>
@@ -100,7 +109,7 @@ const StyledWelcome = styled.p`
   z-index: 2;
   position: relative;
   width: 340px;
-  height: 240px;
+  height: 220px;
   background: #faf1da;
   border: 1px solid #a6a6a6;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

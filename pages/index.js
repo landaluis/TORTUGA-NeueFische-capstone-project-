@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Card from "../components/Card/index";
 import Image from "next/image";
 import WelcomeTortuga1 from "../public/WelcomeTortuga1.png";
+import About from "../components/About/index";
 
 export default function Home({
   cards,
@@ -15,6 +16,7 @@ export default function Home({
 }) {
   return (
     <main>
+      <About></About>
       {cards.length === 0 ? (
         <StyledWelcome>
           <Image
