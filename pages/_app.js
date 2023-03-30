@@ -20,6 +20,59 @@ export default function App({ Component, pageProps }) {
   });
   const [isUploaded, setIsUploaded] = useState(false);
 
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [showPopUp2, setShowPopUp2] = useState(false);
+
+  function handlePopUp(id, savings, price) {
+    const cardIndex = cards.findIndex((card) => card.id === id);
+    const card = cards[cardIndex];
+
+    let showedGoldPopUp = card.showedGoldPopUp;
+    let showedPlatinumPopUp = card.showedPlatinumPopUp;
+    let isUploaded2 = card.isUploaded2;
+
+    savings = parseInt(savings);
+    savings = savings;
+    price = parseInt(price);
+    price = price;
+
+    if (savings >= price && !showedGoldPopUp) {
+      setShowPopUp(true);
+
+      let timer;
+      timer = setTimeout(() => {
+        setShowPopUp(false);
+      }, 3000);
+
+      showedGoldPopUp = true;
+      const updatedCards = [...cards];
+      updatedCards[cardIndex] = {
+        ...updatedCards[cardIndex],
+        showedGoldPopUp: showedGoldPopUp,
+      };
+
+      setCards(updatedCards);
+
+      return () => clearTimeout(timer);
+    } else if (isUploaded2 && !showedPlatinumPopUp) {
+      setShowPopUp2(true);
+
+      let timer;
+      timer = setTimeout(() => {
+        setShowPopUp2(false);
+      }, 3000);
+
+      showedPlatinumPopUp = true;
+      const updatedCards = [...cards];
+      updatedCards[cardIndex] = {
+        ...updatedCards[cardIndex],
+        showedPlatinumPopUp: showedPlatinumPopUp,
+      };
+
+      setCards(updatedCards);
+    }
+  }
+
   const handleImageWishUpload = (event, id) => {
     const cardIndex = cards.findIndex((card) => card.id === id);
 
@@ -39,6 +92,7 @@ export default function App({ Component, pageProps }) {
           width: event.info.width,
         },
         isUploaded2: true,
+        /* showedPlatinumPopUp: true, */
       };
       setCards(updatedCards);
     } else {
@@ -199,6 +253,8 @@ export default function App({ Component, pageProps }) {
 
     let imageWish = {};
     let isUploaded2 = false;
+    let showedGoldPopUp = false;
+    let showedPlatinumPopUp = false;
 
     setCards([
       {
@@ -220,6 +276,9 @@ export default function App({ Component, pageProps }) {
         usedTickets,
         savPeriod,
         isUploaded2,
+        showedGoldPopUp,
+        showedPlatinumPopUp,
+
         image: { src: image.src, height: image.height, width: image.width },
         imageWish: {
           src: imageWish.src,
@@ -374,7 +433,7 @@ export default function App({ Component, pageProps }) {
       setTickets([newTicket, ...updatedTickets]);
     }
 
-    Router.push("/");
+    /*    Router.push("/"); */
   }
 
   return (
@@ -399,6 +458,9 @@ export default function App({ Component, pageProps }) {
         handleShowInfo={handleShowInfo}
         isUploaded={isUploaded}
         handleImageWishUpload={handleImageWishUpload}
+        handlePopUp={handlePopUp}
+        showPopUp={showPopUp}
+        showPopUp2={showPopUp2}
       />
     </>
   );

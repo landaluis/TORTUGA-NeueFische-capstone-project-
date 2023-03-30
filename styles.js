@@ -23,7 +23,7 @@ export default createGlobalStyle`
   body {
     margin: 0;
     font-family:"Bahnschrift", sans-serif; 
-  background-color:#021e38; 
-/*   background: #09182f; */
+  background-color: #021e38; 
+
   }
 `;

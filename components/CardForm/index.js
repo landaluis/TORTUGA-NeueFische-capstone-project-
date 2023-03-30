@@ -13,7 +13,7 @@ export default function CardForm({
   isUploaded,
 }) {
   const [maxHowMuch, setMaxHowMuch] = useState(1);
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopUp, setShowPopUp] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -35,11 +35,11 @@ export default function CardForm({
     /*   window.location.reload(); */
     clearLocalStorageKey("image");
 
-    setShowPopup(true);
+    setShowPopUp(true);
     let timer;
     timer = setTimeout(() => {
       Router.push("/");
-      /*       setShowPopup(false); */
+      /*       setShowPopUp(false); */
     }, 2000);
     form.reset();
   }
@@ -50,12 +50,12 @@ export default function CardForm({
 
   return (
     <>
-      {showPopup ? (
+      {showPopUp ? (
         <PopUp>
           <p>Your card has been successfully created!</p>
         </PopUp>
       ) : null}
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm autocomplete="off" onSubmit={handleSubmit}>
         <Title>
           <strong>New Tortuga Egg</strong>
         </Title>
@@ -67,6 +67,7 @@ export default function CardForm({
               name="what"
               placeholder="Travel"
               aria-label="Wish"
+              autocomplete="off"
               required
             />
             <label htmlFor="what">Wish </label>
@@ -123,6 +124,7 @@ export default function CardForm({
               name="why"
               placeholder="I need to relax"
               aria-label="Why"
+              autocomplete="off"
             />
             <label htmlFor="why">Why </label>
           </Why>
@@ -349,7 +351,7 @@ const Label = styled.label`
 const PopUp = styled.div`
   border: 1px solid grey;
   position: absolute;
-  background: rgba(255, 253, 245);
+  background: #faf1da;
   top: 200px;
   z-index: 80;
   border-radius: 10px;

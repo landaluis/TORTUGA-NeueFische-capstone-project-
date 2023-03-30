@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Card from "../components/Card/index";
 import Image from "next/image";
 import WelcomeTortuga1 from "../public/WelcomeTortuga1.png";
+import About from "../components/About/index";
 
 export default function Home({
   cards,
@@ -9,9 +10,13 @@ export default function Home({
   handleFillCanvas,
   handleShowInfo,
   handleImageWishUpload,
+  handlePopUp,
+  showPopUp,
+  showPopUp2,
 }) {
   return (
     <main>
+      <About></About>
       {cards.length === 0 ? (
         <StyledWelcome>
           <Image
@@ -65,6 +70,11 @@ export default function Home({
               handleImageWishUpload={handleImageWishUpload}
               isUploaded2={card.isUploaded2}
               ticketValue={card.ticketValue}
+              showPopUp={showPopUp}
+              handlePopUp={handlePopUp}
+              showedGoldPopUp={card.showedGoldPopUp}
+              showPopUp2={showPopUp2}
+              showedPlatinumPopUp={card.showedPlatinumPopUp}
             />
           ))}
         </CardList>
