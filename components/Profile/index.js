@@ -102,7 +102,7 @@ export default function ProfileForm({ cards }) {
           </Name>
 
           <Image
-            src={imageProfile || TortugaLogo}
+            src={imageProfile.src || TortugaLogo}
             alt={"Profile Pic"}
             width={100}
             height={100}

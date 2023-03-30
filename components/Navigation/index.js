@@ -12,8 +12,8 @@ export default function Navigation() {
         <Link href={"/"}>
           <Image
             src={CardsIcon}
-            alt="Add Card"
-            title="AddCard"
+            alt="Home Page"
+            title="Home Page"
             width="35"
             height="35"
           />
@@ -24,7 +24,7 @@ export default function Navigation() {
           <Image
             src={PlusIcon}
             alt="Add Card"
-            title="AddCard"
+            title="Add Card"
             width="35"
             height="35"
           />
@@ -34,8 +34,8 @@ export default function Navigation() {
         <Link href={"/create-ticket"}>
           <Image
             src={TicketIcon}
-            alt="Add Card"
-            title="AddCard"
+            alt="Create Ticket"
+            title="Create Ticket"
             width="35"
             height="35"
           />
@@ -46,8 +46,8 @@ export default function Navigation() {
         <Link href={"/profilePage"}>
           <Image
             src={ProfileIcon}
-            alt="Add Card"
-            title="AddCard"
+            alt="Profile Page"
+            title="Profile Page"
             width="35"
             height="35"
           />
