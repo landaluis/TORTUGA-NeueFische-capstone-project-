@@ -55,7 +55,7 @@ export default function CardForm({
           <p>Your card has been successfully created!</p>
         </PopUp>
       ) : null}
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm autocomplete="off" onSubmit={handleSubmit}>
         <Title>
           <strong>New Tortuga Egg</strong>
         </Title>
@@ -67,6 +67,7 @@ export default function CardForm({
               name="what"
               placeholder="Travel"
               aria-label="Wish"
+              autocomplete="off"
               required
             />
             <label htmlFor="what">Wish </label>
@@ -123,6 +124,7 @@ export default function CardForm({
               name="why"
               placeholder="I need to relax"
               aria-label="Why"
+              autocomplete="off"
             />
             <label htmlFor="why">Why </label>
           </Why>
