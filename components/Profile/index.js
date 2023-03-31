@@ -6,7 +6,6 @@ import Image from "next/image";
 import CounterCards from "../CounterCards";
 import { useState } from "react";
 import TortugaLogo from "../../public/TortugaLogo.png";
-import { MaterialSymbol } from "material-symbols";
 
 export default function ProfileForm({ cards }) {
   const [imageProfile, setImageProfile] = useLocalStorageState("imageProfile", {
