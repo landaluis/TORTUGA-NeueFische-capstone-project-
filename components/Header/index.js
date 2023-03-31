@@ -33,7 +33,7 @@ const StyledHeader = styled.h1`
   z-index: 10;
   margin: 0 auto;
   padding-top: 23px;
-  font-family: PressStart2P-Regular;
+  font-family: "PressStart2P-Regular";
   font-size: 20px;
   color: #faf1da;
   text-shadow: 5px 4px 0px #130805;
@@ -44,6 +44,7 @@ const StyledImage = styled(Image)`
   top: 0;
   left: 0;
   z-index: 2;
-  width: 100%;
+  /*   width: 100%;
+  height: 65px; */
   background-repeat: repeat-x;
 `;

@@ -1,14 +1,12 @@
-import GlobalStyle from "../styles";
+import GlobalStyle from "../styles.js";
 import Head from "next/head";
 import Header from "../components/Header/index";
 import Layout from "../components/Layout/index";
 import useLocalStorageState from "use-local-storage-state";
 import { uid } from "uid";
 import styled from "styled-components";
-import Router from "next/router";
 import { pixelArray } from "../public/pixelArray.js";
-import { useState, useEffect } from "react";
-import next from "next";
+import { useState } from "react";
 
 export default function App({ Component, pageProps }) {
   const [cards, setCards] = useLocalStorageState("cards", { defaultValue: [] });

@@ -1,20 +1,18 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-
 @font-face {
   font-family:'Bahnschrift';
-  src: local("Bahnschrift"), url('/Font/BAHNSCHRIFT1.ttf') format('truetype');
+  src: url('/BAHNSCHRIFT1.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family:'PressStart2P-Regular';
-  src: local("PressStart2P-Regular"), url('/Font/PressStart2P-Regular.ttf') format('truetype');
+  src: url('/PressStart2P-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
-
   *,
   *::before,
   *::after {
@@ -24,6 +22,5 @@ export default createGlobalStyle`
     margin: 0;
     font-family:"Bahnschrift", sans-serif; 
   background-color: #021e38; 
-
   }
 `;
