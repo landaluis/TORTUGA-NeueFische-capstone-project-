@@ -2,14 +2,14 @@
 
 ![Screenshots](/../capstone-project/public/ReadmeBild1.png)
 
-Introducing Tortuga, the ultimate Wishlist and saving app that helps you keep track of your desired items and manage your finances all in one place.
+### Introducing Tortuga, the ultimate Wishlist and saving app that helps you keep track of your desired items and manage your finances all in one place.
 
 ## Demo:
 
 ![Screenshots](/../capstone-project/public/ReadmeBild2.png)
 You can find the hosted version on [Vercel](https://capstone-project-tortuga.vercel.app/)
 
-**Important the project is optimized for mobile screen.**
+**IMPORTANT => the project is optimized for mobile screen.**
 
 ## Included Tech Stack
 
