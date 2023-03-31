@@ -6,12 +6,14 @@ export default createGlobalStyle`
   src: url('/BAHNSCHRIFT1.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+    font-display: swap;
 }
 @font-face {
   font-family:'PressStart2P-Regular';
   src: url('/PressStart2P-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+    font-display: swap;
 }
   *,
   *::before,
