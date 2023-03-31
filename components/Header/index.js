@@ -44,5 +44,6 @@ const StyledImage = styled(Image)`
   top: 0;
   left: 0;
   z-index: 2;
+  width: 100%;
   background-repeat: repeat-x;
 `;
