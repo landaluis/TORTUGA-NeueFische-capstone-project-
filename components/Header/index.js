@@ -30,7 +30,7 @@ const StyledHeader = styled.h1`
   width: 100%;
   height: 59px;
   text-align: center;
-  z-index: 10;
+  z-index: 15;
   margin: 0 auto;
   padding-top: 23px;
   font-family: "PressStart2P-Regular";
@@ -43,7 +43,7 @@ const StyledImage = styled(Image)`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 10;
   /*   width: 100%;
   height: 65px; */
   background-repeat: repeat-x;
