@@ -9,7 +9,7 @@
 ![Screenshots](/public/ReadmeBild2.png)
 You can find the hosted version on [Vercel](https://capstone-project-tortuga.vercel.app/)
 
-**IMPORTANT => the project is optimized for mobile screen.**
+**IMPORTANT the project is optimized for mobile screen. IMPORTANT**
 
 ## Included Tech Stack
 
