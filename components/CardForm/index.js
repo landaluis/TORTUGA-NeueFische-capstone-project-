@@ -182,6 +182,7 @@ const StyledForm = styled.form`
 	position: relative;
 	justify-content: center;
 	top: 100px;
+	bottom: 65px;
 	display: block;
 	width: 315px;
 	height: 450px;
