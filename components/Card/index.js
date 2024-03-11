@@ -190,7 +190,7 @@ const StyledCard = styled.div`
 	line-height: 35px;
 
 	@media (max-width: 320px) {
-		width: 310px;
+		width: 290px;
 		height: 167px;
 	}
 `;
