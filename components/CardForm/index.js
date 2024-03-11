@@ -356,7 +356,8 @@ const PopUp = styled.div`
 	font-size: 18px;
 	width: 300px;
 	height: 200px;
-	left: 40px;
+	left: 50%;
+	transform: translateX(-50%);
 	display: flex;
 	justify-content: center;
 	align-items: center;
