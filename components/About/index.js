@@ -128,7 +128,6 @@ const AboutWrapper = styled.section`
 	position: fixed;
 	color: red;
 	top: 65px;
-
 	left: 50%;
 	transform: translateX(-50%);
 	z-index: 40;
